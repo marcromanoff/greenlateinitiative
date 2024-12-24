@@ -17,8 +17,8 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
             GreenPlate Initiative
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-700">
-            Propelling schools toward a future of sustainability, balancing healthy and ethical meals that redefine standards.
+          <p className="text-xl md:text-2xl mb-8 text-gray-700 font-bold">
+            Seize the <span className="italic">gold standard</span> in sustainability
           </p>
           <Link
             to="/get-involved"
