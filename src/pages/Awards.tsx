@@ -12,31 +12,31 @@ const Awards = () => {
           
           <div className="space-y-8">
             <section>
+              <h2 className="text-2xl font-semibold mb-4">Grading Scale & Recognition Levels</h2>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <ul className="list-none space-y-2">
+                  <li className="text-lg font-semibold text-primary">100: GOLD STANDARD/PERFECT SCORE</li>
+                  <li>95–99: A++</li>
+                  <li>90–94: Exceeds Expectations</li>
+                  <li>80–89: Excellent</li>
+                  <li>66–79: Meets Expectations</li>
+                  <li>60–65: Approaching Expectations</li>
+                  <li>Below 60: Needs Improvement</li>
+                </ul>
+              </div>
+            </section>
+
+            <section>
               <h2 className="text-2xl font-semibold mb-4">Gold Standard Recognition</h2>
               <p className="text-gray-600 mb-4">
                 Schools that achieve a perfect score of 100 receive our prestigious Gold Standard recognition,
                 demonstrating exceptional commitment to sustainable dining practices.
               </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Achievement Levels</h2>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="p-6 bg-gray-50 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Excellence Award</h3>
-                  <p className="text-gray-600">Score: 90-99</p>
-                  <p className="text-gray-600 mt-2">
-                    Recognition for schools demonstrating outstanding commitment to sustainable dining practices.
-                  </p>
-                </div>
-                <div className="p-6 bg-gray-50 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Innovation Award</h3>
-                  <p className="text-gray-600">Score: 80-89</p>
-                  <p className="text-gray-600 mt-2">
-                    Celebrating schools that implement creative solutions for sustainable dining.
-                  </p>
-                </div>
-              </div>
+              <img 
+                src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
+                alt="Green Plate Gold Standard Certificate" 
+                className="max-w-sm w-full rounded-lg shadow-lg mx-auto"
+              />
             </section>
 
             <section>
