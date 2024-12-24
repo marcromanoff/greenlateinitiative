@@ -58,12 +58,21 @@ const Grading = () => {
               </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">3. Accessibility & Labeling (3 points)</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Clear Labeling of Dietary Options: 2 points</li>
-                <li>Student-Accessible Ingredient Lists Online with Dietary Information: 1 point</li>
-              </ul>
+            <section className="relative">
+              <div className="flex items-start gap-4">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-semibold mb-4">3. Accessibility & Labeling (3 points)</h2>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Clear Labeling of Dietary Options: 2 points</li>
+                    <li>Student-Accessible Ingredient Lists Online with Dietary Information: 1 point</li>
+                  </ul>
+                </div>
+                <img 
+                  src="/lovable-uploads/f3020dd2-574d-4dab-83b3-c23c8d2d756e.png" 
+                  alt="Accessibility & Labeling Logo" 
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
             </section>
 
             <section>
