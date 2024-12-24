@@ -35,7 +35,7 @@ const Awards = () => {
               <img 
                 src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
                 alt="Green Plate Gold Standard Certificate" 
-                className="max-w-sm w-full rounded-lg shadow-lg mx-auto"
+                className="max-w-md w-full rounded-lg shadow-lg mx-auto" // Increased from max-w-sm
               />
             </section>
 

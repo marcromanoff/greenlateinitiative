@@ -12,7 +12,7 @@ const Index = () => {
           <img 
             src="/lovable-uploads/ae2f3bdb-a66a-4aec-8f27-163735703db5.png"
             alt="GreenPlate Initiative Logo"
-            className="w-32 h-32 mx-auto mb-8"
+            className="w-48 h-48 mx-auto mb-8" // Increased from w-32 h-32
           />
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
             GreenPlate Initiative
