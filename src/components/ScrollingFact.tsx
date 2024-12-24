@@ -12,9 +12,9 @@ const ScrollingFact = ({ fact }: ScrollingFactProps) => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-secondary/10 py-4 my-8">
+    <div className="w-full overflow-hidden bg-secondary/10 py-4">
       <div
-        className={`text-primary font-semibold text-center ${
+        className={`animate-scroll-left whitespace-nowrap text-primary font-semibold ${
           isVisible ? "opacity-100" : "opacity-0"
         } transition-opacity duration-1000`}
       >
