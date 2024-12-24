@@ -9,6 +9,11 @@ const Index = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
+          <img 
+            src="/lovable-uploads/ae2f3bdb-a66a-4aec-8f27-163735703db5.png"
+            alt="GreenPlate Initiative Logo"
+            className="w-32 h-32 mx-auto mb-8"
+          />
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
             GreenPlate Initiative
           </h1>
