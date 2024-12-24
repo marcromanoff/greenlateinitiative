@@ -1,5 +1,6 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
+import { Link } from "react-router-dom";
 
 const Process = () => {
   return (
@@ -15,7 +16,7 @@ const Process = () => {
               <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">1</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Complete a brief form to receive more information</h3>
-                <p className="text-gray-600">Start your journey towards sustainability with a simple step.</p>
+                <p className="text-gray-600">Start your journey towards sustainability with a simple step. <Link to="/get-involved" className="text-primary hover:text-primary/80 font-semibold">Visit our Get Involved page →</Link></p>
               </div>
             </section>
 
