@@ -14,7 +14,7 @@ const GetInvolved = () => {
           <h1 className="text-4xl font-bold mb-8 text-primary">Get Involved</h1>
           
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white p-8 rounded-lg shadow-md group hover:shadow-lg transition-all duration-300">
+            <div className="bg-white p-8 pb-16 rounded-lg shadow-md group hover:shadow-lg transition-all duration-300">
               <h2 className="text-2xl font-semibold mb-4">For Students</h2>
               <p className="mb-6">Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!</p>
               <a 
@@ -31,7 +31,7 @@ const GetInvolved = () => {
               </a>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-md group hover:shadow-lg transition-all duration-300">
+            <div className="bg-white p-8 pb-16 rounded-lg shadow-md group hover:shadow-lg transition-all duration-300">
               <h2 className="text-2xl font-semibold mb-4">For Administrators</h2>
               <p className="mb-6">Join the GreenPlate Program. Showcase your school's commitment to health, sustainability, and the future.</p>
               <a 
