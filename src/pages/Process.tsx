@@ -24,7 +24,7 @@ const Process = () => {
               <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">2</div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Complete the Assessment Form</h3>
-                <p className="text-gray-600">Fill out a short form about your school's dining services. We'll evaluate your school's sustainability practices and provide a grade. After this, we will reach out to you and your suited administrator. Your school will receive a certificate based on your grade, which can be displayed in the cafeteria to showcase your commitment to sustainability.</p>
+                <p className="text-gray-600">After filling out the Student nomination form or administrator form, you will be sent a short form about your school's dining services. We'll evaluate your school's sustainability practices and provide a grade. After this, we will reach out to you and your suited administrator. Your school will receive a certificate based on your grade, which can be displayed in the cafeteria to showcase your commitment to sustainability.</p>
               </div>
             </section>
 
