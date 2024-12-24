@@ -3,57 +3,84 @@ import { Link, useLocation } from "react-router-dom";
 const Navigation = () => {
   const location = useLocation();
   
-  const isActive = (path: string) => location.pathname === path;
-  
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-primary">
-            GreenPlate Initiative
+    <nav className="bg-white border-b">
+      <div className="flex justify-between items-center h-16">
+        <div className="flex space-x-8 px-4">
+          <Link
+            to="/"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Home
           </Link>
-          <div className="flex space-x-4">
-            <Link
-              to="/"
-              className={`${
-                isActive("/") ? "text-primary" : "text-gray-600"
-              } hover:text-primary transition-colors`}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className={`${
-                isActive("/about") ? "text-primary" : "text-gray-600"
-              } hover:text-primary transition-colors`}
-            >
-              About
-            </Link>
-            <Link
-              to="/grading"
-              className={`${
-                isActive("/grading") ? "text-primary" : "text-gray-600"
-              } hover:text-primary transition-colors`}
-            >
-              Grading
-            </Link>
-            <Link
-              to="/get-involved"
-              className={`${
-                isActive("/get-involved") ? "text-primary" : "text-gray-600"
-              } hover:text-primary transition-colors`}
-            >
-              Get Involved
-            </Link>
-            <Link
-              to="/downloads"
-              className={`${
-                isActive("/downloads") ? "text-primary" : "text-gray-600"
-              } hover:text-primary transition-colors`}
-            >
-              Downloads
-            </Link>
-          </div>
+          <Link
+            to="/about"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/about")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            About
+          </Link>
+          <Link
+            to="/grading"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/grading")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Grading
+          </Link>
+          <Link
+            to="/process"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/process")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Process
+          </Link>
+          <Link
+            to="/awards"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/awards")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Awards
+          </Link>
+          <Link
+            to="/get-involved"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/get-involved")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Get Involved
+          </Link>
+          <Link
+            to="/downloads"
+            className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              isActive("/downloads")
+                ? "border-b-2 border-primary text-primary"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Downloads
+          </Link>
         </div>
       </div>
     </nav>
