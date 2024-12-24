@@ -17,13 +17,22 @@ const Grading = () => {
           </p>
 
           <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">1. Variety & Inclusivity (6 points)</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Vegetarian Alternative Main Entrée to Entrée: 4 points</li>
-                <li>Vegan Alternative Main Entrée to Entrée: 1 point</li>
-                <li>Gluten Free Alternative Main Entrée to Entrée: 1 point</li>
-              </ul>
+            <section className="relative">
+              <div className="flex items-start gap-4">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-semibold mb-4">1. Variety & Inclusivity (6 points)</h2>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Vegetarian Alternative Main Entrée to Entrée: 4 points</li>
+                    <li>Vegan Alternative Main Entrée to Entrée: 1 point</li>
+                    <li>Gluten Free Alternative Main Entrée to Entrée: 1 point</li>
+                  </ul>
+                </div>
+                <img 
+                  src="/lovable-uploads/2ad329d2-6a64-4531-856e-26f6e5488bb5.png" 
+                  alt="Variety & Inclusivity Logo" 
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
             </section>
 
             <section>
