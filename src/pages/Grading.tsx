@@ -98,17 +98,24 @@ const Grading = () => {
               </div>
             </section>
 
-            <section>
+            <section className="relative">
               <h2 className="text-2xl font-semibold mb-4">Final Grade</h2>
-              <ul className="list-none space-y-2">
-                <li>100: GOLD STANDARD/PERFECT SCORE</li>
-                <li>95–99: A++</li>
-                <li>90–94: Exceeds Expectations</li>
-                <li>80–89: Excellent</li>
-                <li>66–79: Meets Expectations</li>
-                <li>60–65: Approaching Expectations</li>
-                <li>Below 60: Needs Improvement</li>
-              </ul>
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <ul className="list-none space-y-2">
+                  <li className="text-lg font-semibold text-primary">100: GOLD STANDARD/PERFECT SCORE</li>
+                  <li>95–99: A++</li>
+                  <li>90–94: Exceeds Expectations</li>
+                  <li>80–89: Excellent</li>
+                  <li>66–79: Meets Expectations</li>
+                  <li>60–65: Approaching Expectations</li>
+                  <li>Below 60: Needs Improvement</li>
+                </ul>
+                <img 
+                  src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
+                  alt="Green Plate Gold Standard Certificate" 
+                  className="max-w-sm w-full rounded-lg shadow-lg animate-fade-in"
+                />
+              </div>
             </section>
           </div>
         </div>
