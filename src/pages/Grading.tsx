@@ -75,18 +75,27 @@ const Grading = () => {
               </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">4. Sourcing & Sustainability (4 points)</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Offers Fresh Fruits Daily: 2 points
-                  <ul className="list-circle pl-6 mt-2">
-                    <li>1 point for availability of fresh fruits daily</li>
-                    <li>1 point if the fresh fruits are organic</li>
+            <section className="relative">
+              <div className="flex items-start gap-4">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-semibold mb-4">4. Sourcing & Sustainability (4 points)</h2>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Offers Fresh Fruits Daily: 2 points
+                      <ul className="list-circle pl-6 mt-2">
+                        <li>1 point for availability of fresh fruits daily</li>
+                        <li>1 point if the fresh fruits are organic</li>
+                      </ul>
+                    </li>
+                    <li>Has Washable and/or Compostable Silverware and Dishes: 1 point</li>
+                    <li>Food is From Ethical Practices: 1 point</li>
                   </ul>
-                </li>
-                <li>Has Washable and/or Compostable Silverware and Dishes: 1 point</li>
-                <li>Food is From Ethical Practices: 1 point</li>
-              </ul>
+                </div>
+                <img 
+                  src="/lovable-uploads/14777aef-ae1e-4f50-8161-c0f7c05288c3.png" 
+                  alt="Sourcing & Sustainability Logo" 
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
             </section>
 
             <section>
