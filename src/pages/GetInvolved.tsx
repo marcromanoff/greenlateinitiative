@@ -2,6 +2,8 @@ import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 
 const GetInvolved = () => {
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe9HXGiGSVEkz2A0CchDkamFtvNTNFBYQTyGHPojLx0errswA/viewform?usp=header";
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -14,17 +16,27 @@ const GetInvolved = () => {
             <div className="bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-4">For Students</h2>
               <p className="mb-6">Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!</p>
-              <button className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
+              <a 
+                href={formUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+              >
                 Student Nomination Form
-              </button>
+              </a>
             </div>
             
             <div className="bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-4">For Administrators</h2>
               <p className="mb-6">Join the GreenPlate Program. Showcase your school's commitment to health, sustainability, and the future.</p>
-              <button className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
+              <a 
+                href={formUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+              >
                 Administrator Form
-              </button>
+              </a>
             </div>
           </div>
 
