@@ -17,7 +17,7 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
             GreenPlate Initiative
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-700 font-bold">
+          <p className="text-2xl md:text-4xl mb-8 text-gray-700 font-bold">
             Seize the <span className="italic font-extrabold text-amber-500">gold standard</span> in sustainability
           </p>
           <Link
