@@ -18,9 +18,6 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        impact: ['Impact', 'sans-serif'],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,7 +58,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "scroll-left": "scroll-left 40s linear infinite",
+        "scroll-left": "scroll-left 40s linear infinite", // Increased from 20s to 40s
         "fade-in": "fade-in 0.5s ease-out",
         pulse: "pulse 2s ease-in-out infinite",
       },
