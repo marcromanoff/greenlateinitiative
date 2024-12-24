@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
-import ScrollingFact from "../components/ScrollingFact";
 
 const Index = () => {
   return (
@@ -27,10 +26,6 @@ const Index = () => {
             Start Now
           </Link>
         </div>
-
-        <ScrollingFact fact="Students with access to healthier school meals are 25% more likely to perform better academically. (CDC)" />
-        
-        <ScrollingFact fact="Switching to plant-based options reduces a school's carbon footprint by up to 20%. (UN FAO)" />
       </main>
     </div>
   );
