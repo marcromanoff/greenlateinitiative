@@ -82,6 +82,16 @@ const Navigation = () => {
             >
               Downloads
             </Link>
+            <Link
+              to="/faq"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive("/faq")
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              FAQ
+            </Link>
           </div>
         </div>
       </div>

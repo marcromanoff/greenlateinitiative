@@ -10,6 +10,7 @@ import GetInvolved from "./pages/GetInvolved";
 import Downloads from "./pages/Downloads";
 import Process from "./pages/Process";
 import Awards from "./pages/Awards";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/downloads" element={<Downloads />} />
           <Route path="/process" element={<Process />} />
           <Route path="/awards" element={<Awards />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
