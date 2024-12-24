@@ -18,7 +18,7 @@ const Index = () => {
             GreenPlate Initiative
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-700">
-            Propelling schools toward a future of sustainability, delivering healthy and ethical meals that redefine standards.
+            Propelling schools toward a future of sustainability, balancing healthy and ethical meals that redefine standards.
           </p>
           <Link
             to="/get-involved"
