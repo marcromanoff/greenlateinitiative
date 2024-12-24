@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { GraduationCap, Clipboard } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const GetInvolved = () => {
   const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSe9HXGiGSVEkz2A0CchDkamFtvNTNFBYQTyGHPojLx0errswA/viewform?usp=header";
@@ -49,10 +50,24 @@ const GetInvolved = () => {
             </div>
           </div>
 
-          <div className="space-y-12">
-            <h2 className="text-3xl font-semibold mb-8">The Process</h2>
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 mb-8">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="process">The Process</TabsTrigger>
+            </TabsList>
             
-            <div className="space-y-8">
+            <TabsContent value="overview" className="space-y-4">
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <h2 className="text-3xl font-semibold mb-6">Join the GreenPlate Initiative</h2>
+                <p className="text-gray-600">
+                  The GreenPlate Initiative is a comprehensive program designed to evaluate and improve the sustainability of school dining services. 
+                  Whether you're a student passionate about making a difference or an administrator looking to lead change, 
+                  we provide the tools and support needed to create more sustainable dining environments.
+                </p>
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="process" className="space-y-8">
               <section className="flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">1</div>
                 <div>
@@ -92,8 +107,8 @@ const GetInvolved = () => {
                   <p className="text-gray-600">Schools excelling in sustainability will receive special recognition through the GreenPlate Initiative, celebrating their leadership in ethical dining. All participating schools will gain actionable insights, ensuring progress toward creating healthier, more sustainable dining programs.</p>
                 </div>
               </section>
-            </div>
-          </div>
+            </TabsContent>
+          </Tabs>
         </div>
 
         <ScrollingFact fact="Schools generate 530,000 tons of food waste annually. Compostable utensils and better planning can reduce this by 30%. (USDA)" />
