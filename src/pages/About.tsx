@@ -8,7 +8,7 @@ const About = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-primary">About Me</h1>
+          <h1 className="text-4xl font-bold mb-8 text-primary">About Ari</h1>
           
           <div className="prose prose-lg">
             <p className="text-xl leading-relaxed text-gray-700">
