@@ -12,13 +12,13 @@ const Index = () => {
           <img 
             src="/lovable-uploads/ae2f3bdb-a66a-4aec-8f27-163735703db5.png"
             alt="GreenPlate Initiative Logo"
-            className="w-48 h-48 mx-auto mb-8" // Increased from w-32 h-32
+            className="w-48 h-48 mx-auto mb-8"
           />
           <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
             GreenPlate Initiative
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-700 font-bold">
-            Seize the <span className="italic">gold standard</span> in sustainability
+            Seize the <span className="italic font-extrabold text-amber-500 animate-pulse">gold standard</span> in sustainability
           </p>
           <Link
             to="/get-involved"
