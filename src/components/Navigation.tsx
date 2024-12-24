@@ -33,14 +33,14 @@ const Navigation = () => {
               About
             </Link>
             <Link
-              to="/grading"
+              to="/get-involved"
               className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                isActive("/grading")
+                isActive("/get-involved")
                   ? "border-b-2 border-primary text-primary"
                   : "text-gray-500 hover:text-gray-700"
               }`}
             >
-              Grading
+              Get Involved
             </Link>
             <Link
               to="/process"
@@ -51,6 +51,16 @@ const Navigation = () => {
               }`}
             >
               Process
+            </Link>
+            <Link
+              to="/grading"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive("/grading")
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Grading
             </Link>
             <Link
               to="/awards"
@@ -71,16 +81,6 @@ const Navigation = () => {
               }`}
             >
               Vendors
-            </Link>
-            <Link
-              to="/get-involved"
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                isActive("/get-involved")
-                  ? "border-b-2 border-primary text-primary"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              Get Involved
             </Link>
             <Link
               to="/downloads"
