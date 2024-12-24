@@ -18,7 +18,7 @@ const Index = () => {
             GreenPlate Initiative
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-700 font-bold">
-            Seize the <span className="italic font-extrabold text-amber-500 animate-pulse">gold standard</span> in sustainability
+            Seize the <span className="italic font-extrabold text-amber-500">gold standard</span> in sustainability
           </p>
           <Link
             to="/get-involved"
