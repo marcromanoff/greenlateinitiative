@@ -35,18 +35,27 @@ const Grading = () => {
               </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">2. Nutritional Value (7 points)</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Nutritional Information Readily Available</li>
-                <li>Salad Bar that Includes Fresh Fruits, Vegetables, and Legumes:
-                  <ul className="list-circle pl-6 mt-2">
-                    <li>Fruits: 2 points</li>
-                    <li>Vegetables: 2 points</li>
-                    <li>Legumes: 2 points</li>
+            <section className="relative">
+              <div className="flex items-start gap-4">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-semibold mb-4">2. Nutritional Value (7 points)</h2>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Nutritional Information Readily Available</li>
+                    <li>Salad Bar that Includes Fresh Fruits, Vegetables, and Legumes:
+                      <ul className="list-circle pl-6 mt-2">
+                        <li>Fruits: 2 points</li>
+                        <li>Vegetables: 2 points</li>
+                        <li>Legumes: 2 points</li>
+                      </ul>
+                    </li>
                   </ul>
-                </li>
-              </ul>
+                </div>
+                <img 
+                  src="/lovable-uploads/dc0ebfe2-3cf3-4ff0-b16b-277f477ace55.png" 
+                  alt="Nutritional Value Logo" 
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
             </section>
 
             <section>
