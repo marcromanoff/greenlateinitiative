@@ -20,7 +20,7 @@ const GetInvolved = () => {
                 href={formUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary hover:scale-105 transition-all"
+                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Student Nomination Form
               </a>
@@ -33,7 +33,7 @@ const GetInvolved = () => {
                 href={formUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary hover:scale-105 transition-all"
+                className="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Administrator Form
               </a>
