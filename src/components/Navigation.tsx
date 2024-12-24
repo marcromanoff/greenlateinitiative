@@ -63,6 +63,16 @@ const Navigation = () => {
               Awards
             </Link>
             <Link
+              to="/vendors"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive("/vendors")
+                  ? "border-b-2 border-primary text-primary"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Vendors
+            </Link>
+            <Link
               to="/get-involved"
               className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
                 isActive("/get-involved")

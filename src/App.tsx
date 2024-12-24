@@ -11,6 +11,7 @@ import Downloads from "./pages/Downloads";
 import Process from "./pages/Process";
 import Awards from "./pages/Awards";
 import FAQ from "./pages/FAQ";
+import Vendors from "./pages/Vendors";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/downloads" element={<Downloads />} />
           <Route path="/process" element={<Process />} />
           <Route path="/awards" element={<Awards />} />
+          <Route path="/vendors" element={<Vendors />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
       </BrowserRouter>
