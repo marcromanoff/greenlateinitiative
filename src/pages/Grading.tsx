@@ -3,19 +3,13 @@ import ScrollingFact from "../components/ScrollingFact";
 
 const Grading = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-lightgreen-100">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-primary">Grading System</h1>
           
-          <p className="text-lg mb-8">
-            We will evaluate each day individually based on the specific criteria below. 
-            Each day on the school week menu (i.e., 5 school days) is worth 20 points. 
-            Your grade is determined by adding the scores from all 5 days together.
-          </p>
-
           <div className="space-y-8">
             <section className="relative">
               <div className="flex items-center gap-2">
@@ -27,7 +21,7 @@ const Grading = () => {
                     <li>Gluten Free Alternative Main Entrée to Entrée: 1 point</li>
                   </ul>
                 </div>
-                <div className="flex items-center justify-center w-32">
+                <div className="flex items-center justify-center w-32 bg-transparent">
                   <img 
                     src="/lovable-uploads/2ad329d2-6a64-4531-856e-26f6e5488bb5.png" 
                     alt="Variety & Inclusivity Logo" 
@@ -37,7 +31,7 @@ const Grading = () => {
               </div>
             </section>
 
-            <section className="relative">
+            <section className="relative bg-lightgreen-200 rounded-lg p-6">
               <div className="flex items-center gap-2">
                 <div className="flex-grow">
                   <h2 className="text-2xl font-semibold mb-4">2. Nutritional Value (7 points)</h2>
@@ -52,7 +46,7 @@ const Grading = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="flex items-center justify-center w-32">
+                <div className="flex items-center justify-center w-32 bg-transparent">
                   <img 
                     src="/lovable-uploads/dc0ebfe2-3cf3-4ff0-b16b-277f477ace55.png" 
                     alt="Nutritional Value Logo" 
@@ -71,7 +65,7 @@ const Grading = () => {
                     <li>Student-Accessible Ingredient Lists Online with Dietary Information: 1 point</li>
                   </ul>
                 </div>
-                <div className="flex items-center justify-center w-32">
+                <div className="flex items-center justify-center w-32 bg-transparent">
                   <img 
                     src="/lovable-uploads/f3020dd2-574d-4dab-83b3-c23c8d2d756e.png" 
                     alt="Accessibility & Labeling Logo" 
@@ -81,7 +75,7 @@ const Grading = () => {
               </div>
             </section>
 
-            <section className="relative">
+            <section className="relative bg-lightgreen-200 rounded-lg p-6">
               <div className="flex items-center gap-2">
                 <div className="flex-grow">
                   <h2 className="text-2xl font-semibold mb-4">4. Sourcing & Sustainability (4 points)</h2>
@@ -96,7 +90,7 @@ const Grading = () => {
                     <li>Food is From Ethical Practices: 1 point</li>
                   </ul>
                 </div>
-                <div className="flex items-center justify-center w-32">
+                <div className="flex items-center justify-center w-32 bg-transparent">
                   <img 
                     src="/lovable-uploads/14777aef-ae1e-4f50-8161-c0f7c05288c3.png" 
                     alt="Sourcing & Sustainability Logo" 
