@@ -15,7 +15,7 @@ const Downloads = () => {
 
   const handleAdminDownload = () => {
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/ea0420ad-fa02-4509-930c-111662069e4c.png';
+    link.href = '/lovable-uploads/074aace6-cce6-4e71-8194-1921316287a4.png';
     link.download = 'GreenPlate-Admin-Flyer.png';
     document.body.appendChild(link);
     link.click();
