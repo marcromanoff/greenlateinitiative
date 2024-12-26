@@ -1,14 +1,22 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, UserCheck, Users } from "lucide-react";
 
 const Downloads = () => {
-  const handleDownload = () => {
-    // Create a link element
+  const handleStudentDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/c83af6ec-6443-400a-9a77-1713121e5a7d.png';
+    link.download = 'GreenPlate-Student-Flyer.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleAdminDownload = () => {
     const link = document.createElement('a');
     link.href = '/lovable-uploads/ea0420ad-fa02-4509-930c-111662069e4c.png';
-    link.download = 'GreenPlate-Initiative-Flyer.png';
+    link.download = 'GreenPlate-Admin-Flyer.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -22,16 +30,27 @@ const Downloads = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-primary">Downloads</h1>
           
-          <div className="grid gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Promotional Materials</h2>
-              <Button 
-                onClick={handleDownload}
-                className="inline-flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                Download Flyer
-              </Button>
+          <div className="grid gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-6">Promotional Materials</h2>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  onClick={handleStudentDownload}
+                  className="flex-1 gap-2 text-lg py-6"
+                  variant="default"
+                >
+                  <Users className="w-6 h-6" />
+                  Student Flyer
+                </Button>
+                <Button 
+                  onClick={handleAdminDownload}
+                  className="flex-1 gap-2 text-lg py-6"
+                  variant="secondary"
+                >
+                  <UserCheck className="w-6 h-6" />
+                  Administrator Flyer
+                </Button>
+              </div>
             </div>
           </div>
         </div>
