@@ -13,6 +13,7 @@ import Awards from "./pages/Awards";
 import FAQ from "./pages/FAQ";
 import Vendors from "./pages/Vendors";
 import Calculator from "./pages/Calculator";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/awards" element={<Awards />} />
           <Route path="/vendors" element={<Vendors />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
       </BrowserRouter>

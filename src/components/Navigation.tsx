@@ -22,6 +22,7 @@ const Navigation = () => {
     { to: "/awards", label: "Awards" },
     { to: "/vendors", label: "Vendors" },
     { to: "/downloads", label: "Downloads" },
+    { to: "/contact", label: "Contact" },
     { to: "/faq", label: "FAQ" },
   ];
 
