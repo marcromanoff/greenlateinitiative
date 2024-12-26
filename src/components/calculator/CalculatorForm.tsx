@@ -4,9 +4,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useForm } from "react-hook-form";
 
 export type CalculatorInputs = {
-  mealsPerDay: number;
-  wastePerMeal: number;
-  foodCostPerMeal: number;
+  mealsPerDay: number | '';
+  wastePerMeal: number | '';
+  foodCostPerMeal: number | '';
   usesCompostable: boolean;
   usesOrganic: boolean;
   hasRecycling: boolean;
