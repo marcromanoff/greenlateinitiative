@@ -20,9 +20,9 @@ interface CalculatorFormProps {
 export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
   const form = useForm<CalculatorInputs>({
     defaultValues: {
-      mealsPerDay: 0,
-      wastePerMeal: 0,
-      foodCostPerMeal: 0,
+      mealsPerDay: '',
+      wastePerMeal: '',
+      foodCostPerMeal: '',
       usesCompostable: false,
       usesOrganic: false,
       hasRecycling: false,
