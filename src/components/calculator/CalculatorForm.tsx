@@ -20,9 +20,9 @@ interface CalculatorFormProps {
 export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
   const form = useForm<CalculatorInputs>({
     defaultValues: {
-      mealsPerDay: '',
-      wastePerMeal: '',
-      foodCostPerMeal: '',
+      mealsPerDay: 0,
+      wastePerMeal: 0,
+      foodCostPerMeal: 0,
       usesCompostable: false,
       usesOrganic: false,
       hasRecycling: false,
@@ -159,7 +159,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
           type="submit"
           className="w-full bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition-colors"
         >
-          Calculate Impact
+          Calculate GreenScore
         </button>
       </form>
     </Form>
