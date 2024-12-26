@@ -18,6 +18,7 @@ const Navigation = () => {
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },
     { to: "/grading", label: "Grading" },
+    { to: "/calculator", label: "Calculator" },
     { to: "/awards", label: "Awards" },
     { to: "/vendors", label: "Vendors" },
     { to: "/downloads", label: "Downloads" },
