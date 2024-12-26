@@ -5,7 +5,6 @@ import { CalculatorForm, type CalculatorInputs } from "@/components/calculator/C
 import { CalculatorResults } from "@/components/calculator/CalculatorResults";
 import { calculateSustainabilityMetrics } from "@/utils/calculatorUtils";
 import { useToast } from "@/components/ui/use-toast";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Calculator = () => {
   const [results, setResults] = useState<{
@@ -37,28 +36,13 @@ const Calculator = () => {
             <h1 className="text-4xl font-bold text-primary">Sustainability Calculator</h1>
           </div>
 
-          <Tabs defaultValue="calculator" className="space-y-8">
-            <TabsList>
-              <TabsTrigger value="calculator">Calculator</TabsTrigger>
-              <TabsTrigger value="results">Results</TabsTrigger>
-            </TabsList>
+          <div className="space-y-8">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <CalculatorForm onSubmit={handleCalculate} />
+            </div>
 
-            <TabsContent value="calculator">
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <CalculatorForm onSubmit={handleCalculate} />
-              </div>
-            </TabsContent>
-
-            <TabsContent value="results">
-              {results ? (
-                <CalculatorResults {...results} />
-              ) : (
-                <div className="text-center py-12 text-gray-500">
-                  Complete the calculator form to see your potential savings and impact
-                </div>
-              )}
-            </TabsContent>
-          </Tabs>
+            {results && <CalculatorResults {...results} />}
+          </div>
         </div>
       </main>
     </div>

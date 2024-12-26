@@ -20,9 +20,9 @@ interface CalculatorFormProps {
 export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
   const form = useForm<CalculatorInputs>({
     defaultValues: {
-      mealsPerDay: 0,
-      wastePerMeal: 0,
-      foodCostPerMeal: 0,
+      mealsPerDay: '',
+      wastePerMeal: '',
+      foodCostPerMeal: '',
       usesCompostable: false,
       usesOrganic: false,
       hasRecycling: false,
@@ -42,7 +42,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="0"
+                  placeholder="Enter number of meals"
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
@@ -60,7 +60,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="0"
+                  placeholder="Enter waste amount"
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
@@ -78,7 +78,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="0"
+                  placeholder="Enter cost per meal"
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
