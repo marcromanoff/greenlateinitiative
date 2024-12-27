@@ -3,51 +3,26 @@ import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent } from "../components/ui/card";
 
 const About = () => {
-  const reasons = [
+  const sections = [
     {
-      title: "Achieve the Gold Standard",
-      students: [
-        "Pride in Excellence: Be part of a school recognized for achieving the highest sustainability standards.",
-        "Raise Awareness: Use certification to encourage other schools to adopt similar initiatives.",
-      ],
-      administrators: [
-        "Visible Achievement: Display certification to demonstrate commitment to excellence.",
-        "Benchmark for Success: Clear, actionable steps to improve dining programs.",
-      ],
+      title: "For Students: Lead the Sustainability Movement",
+      points: [
+        "Be a GreenPlate Ambassador: Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.",
+        "Pride in Excellence: Be part of a school recognized for achieving the highest standards in sustainability.",
+        "Raise Awareness: Use your school's certification to encourage other schools to join the initiative.",
+        "Create Change: Advocate for better meals, reduced waste, and ethical practices in your cafeteria.",
+        "Stand Out: Highlight your leadership in sustainability on resumes and college applications.",
+      ]
     },
     {
-      title: "Showcase Leadership",
-      students: [
-        "Be a Role Model: Inspire other schools and peers to adopt sustainable practices.",
-        "Amplify Your Voice: Collaborate with other schools and share experiences.",
-      ],
-      administrators: [
-        "Lead the Pack: Set the bar for sustainability as an early adopter.",
-        "Inspire Partnerships: Open doors to collaborations with eco-friendly vendors and organizations.",
-      ],
-    },
-    {
-      title: "Gain a Competitive Edge",
-      students: [
-        "Be the Change-Maker: Show leadership in sustainability for college applications.",
-        "Better Food, Better Environment: Improve meal quality and reduce waste.",
-      ],
-      administrators: [
-        "Attract Students and Families: Stand out in the competitive education market.",
-        "Boost School Rankings: Attract media attention and recognition.",
-      ],
-    },
-    {
-      title: "Join a Movement That Matters",
-      students: [
-        "Make an Impact: Contribute to real solutions for food waste and climate change.",
-        "Build a Legacy: Create lasting improvements in your school's dining program.",
-      ],
-      administrators: [
-        "Lead with Purpose: Align with global sustainability goals.",
-        "Future-Proof Your Institution: Prepare for future expectations.",
-      ],
-    },
+      title: "For Administrators: Take the Lead",
+      points: [
+        "Achieve Recognition: Join the program and make your school a model for sustainability with the GreenPlate Certification.",
+        "Visible Achievement: Display your certification to showcase your school's leadership and excellence in sustainability.",
+        "Inspire Change: Set the bar for sustainability in your community, influencing neighboring schools and districts.",
+        "Boost Your School's Appeal: Gain recognition from families and communities for prioritizing sustainability and student health.",
+      ]
+    }
   ];
 
   return (
@@ -56,32 +31,20 @@ const About = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why Join GreenPlate?</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why GreenPlate?</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {reasons.map((reason, index) => (
+            {sections.map((section, index) => (
               <Card key={index} className="animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-semibold mb-4 text-primary">{reason.title}</h3>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="text-lg font-semibold mb-2 text-secondary">For Students</h4>
-                      <ul className="list-disc pl-5 space-y-2">
-                        {reason.students.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-lg font-semibold mb-2 text-secondary">For Administrators</h4>
-                      <ul className="list-disc pl-5 space-y-2">
-                        {reason.administrators.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  <h3 className="text-2xl font-semibold mb-4 text-primary">{section.title}</h3>
+                  <ul className="space-y-4">
+                    {section.points.map((point, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <span className="text-secondary mt-1.5">•</span>
+                        <span className="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             ))}
