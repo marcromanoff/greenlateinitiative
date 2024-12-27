@@ -1,104 +1,108 @@
 import Navigation from "../components/Navigation";
+import ScrollingFact from "../components/ScrollingFact";
+import { Card, CardContent } from "../components/ui/card";
 
 const About = () => {
+  const reasons = [
+    {
+      title: "Achieve the Gold Standard",
+      students: [
+        "Pride in Excellence: Be part of a school recognized for achieving the highest sustainability standards.",
+        "Raise Awareness: Use certification to encourage other schools to adopt similar initiatives.",
+      ],
+      administrators: [
+        "Visible Achievement: Display certification to demonstrate commitment to excellence.",
+        "Benchmark for Success: Clear, actionable steps to improve dining programs.",
+      ],
+    },
+    {
+      title: "Showcase Leadership",
+      students: [
+        "Be a Role Model: Inspire other schools and peers to adopt sustainable practices.",
+        "Amplify Your Voice: Collaborate with other schools and share experiences.",
+      ],
+      administrators: [
+        "Lead the Pack: Set the bar for sustainability as an early adopter.",
+        "Inspire Partnerships: Open doors to collaborations with eco-friendly vendors and organizations.",
+      ],
+    },
+    {
+      title: "Gain a Competitive Edge",
+      students: [
+        "Be the Change-Maker: Show leadership in sustainability for college applications.",
+        "Better Food, Better Environment: Improve meal quality and reduce waste.",
+      ],
+      administrators: [
+        "Attract Students and Families: Stand out in the competitive education market.",
+        "Boost School Rankings: Attract media attention and recognition.",
+      ],
+    },
+    {
+      title: "Join a Movement That Matters",
+      students: [
+        "Make an Impact: Contribute to real solutions for food waste and climate change.",
+        "Build a Legacy: Create lasting improvements in your school's dining program.",
+      ],
+      administrators: [
+        "Lead with Purpose: Align with global sustainability goals.",
+        "Future-Proof Your Institution: Prepare for future expectations.",
+      ],
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-12">
-          {/* For Students Section */}
-          <section className="bg-white rounded-lg p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-primary mb-6">For Students: Lead the Sustainability Movement</h2>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Be a GreenPlate Ambassador: Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Pride in Excellence: Be part of a school recognized for achieving the highest standards in sustainability.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Raise Awareness: Use your school's certification to encourage other schools to join the initiative.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Create Change: Advocate for better meals, reduced waste, and ethical practices in your cafeteria.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Stand Out: Highlight your leadership in sustainability on resumes and college applications.</span>
-              </li>
-            </ul>
-          </section>
+        <div className="mb-16">
+          <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why Join GreenPlate?</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {reasons.map((reason, index) => (
+              <Card key={index} className="animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-semibold mb-4 text-primary">{reason.title}</h3>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-secondary">For Students</h4>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {reason.students.map((item, i) => (
+                          <li key={i} className="text-gray-700">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-lg font-semibold mb-2 text-secondary">For Administrators</h4>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {reason.administrators.map((item, i) => (
+                          <li key={i} className="text-gray-700">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
 
-          {/* For Administrators Section */}
-          <section className="bg-white rounded-lg p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-primary mb-6">For Administrators: Take the Lead</h2>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Achieve Recognition: Join the program and make your school a model for sustainability with the GreenPlate Certification.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Visible Achievement: Display your certification to showcase your school's leadership and excellence in sustainability.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Inspire Change: Set the bar for sustainability in your community, influencing neighboring schools and districts.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <span className="text-primary font-bold">•</span>
-                <span>Boost Your School's Appeal: Gain recognition from families and communities for prioritizing sustainability and student health.</span>
-              </li>
-            </ul>
-          </section>
+        <ScrollingFact fact="91% of parents support healthier, more sustainable school meals. (Pew Research)" />
+        <ScrollingFact fact="Schools with sustainability programs see a 40% increase in community approval. (Education Sustainability Report)" />
 
-          {/* Benefits Section */}
-          <section className="bg-white rounded-lg p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-primary mb-6">Exclusive Benefits of the GreenPlate Ambassador Program</h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">For Students:</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Gain access to resources, workshops, and guides to advocate for sustainability.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Receive an official GreenPlate Ambassador Certificate for your contributions.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Collaborate with other ambassadors nationwide to share ideas and best practices.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-4">For Administrators:</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Receive a GreenPlate Certificate of Leadership in Sustainability for your time and participation.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Partner with eco-friendly vendors to optimize your sustainability efforts.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary font-bold">•</span>
-                    <span>Gain recognition through media coverage and awards for being a pioneer in sustainability.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
+        <div className="max-w-3xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold mb-8 text-primary">About Ari</h2>
+          
+          <div className="prose prose-lg">
+            <p className="text-xl leading-relaxed text-gray-700">
+              Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, is a dedicated 
+              pescetarian with a strong commitment to environmental sustainability. Ari founded the 
+              GreenPlate Initiative to promote transparency in school dining services. By developing 
+              a structured grading system, the initiative seeks to encourage schools to prioritize 
+              health, inclusivity, and sustainability in their food programs.
+            </p>
+          </div>
         </div>
       </main>
     </div>
