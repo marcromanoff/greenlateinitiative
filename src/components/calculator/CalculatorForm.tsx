@@ -85,7 +85,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
           type="submit"
           className="w-full bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition-colors"
         >
-          Calculate GreenScore
+          Calculate GreenGauge
         </button>
       </form>
     </Form>

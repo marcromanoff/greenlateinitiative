@@ -33,7 +33,7 @@ const Calculator = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <CalculatorIcon className="h-8 w-8 text-primary" />
-            <h1 className="text-4xl font-bold text-primary">GreenScore Calculator</h1>
+            <h1 className="text-4xl font-bold text-primary">GreenGauge Calculator</h1>
           </div>
 
           <div className="space-y-8">
