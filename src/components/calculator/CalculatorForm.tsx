@@ -1,16 +1,11 @@
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useForm } from "react-hook-form";
 
 export type CalculatorInputs = {
   mealsPerDay: number | '';
   wastePerMeal: number | '';
   foodCostPerMeal: number | '';
-  usesCompostable: boolean;
-  usesOrganic: boolean;
-  hasRecycling: boolean;
-  hasPlantBased: boolean;
 };
 
 interface CalculatorFormProps {
@@ -23,10 +18,6 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
       mealsPerDay: '',
       wastePerMeal: '',
       foodCostPerMeal: 3.50,
-      usesCompostable: false,
-      usesOrganic: false,
-      hasRecycling: false,
-      hasPlantBased: false,
     },
   });
 
@@ -34,8 +25,6 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="space-y-6 bg-white p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-4">1. Inputs</h3>
-          
           <FormField
             control={form.control}
             name="mealsPerDay"
@@ -87,74 +76,6 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
                     defaultValue={3.50}
                   />
                 </FormControl>
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="space-y-4 bg-white p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-primary">Current Sustainability Practices</h3>
-          
-          <FormField
-            control={form.control}
-            name="usesCompostable"
-            render={({ field }) => (
-              <FormItem className="flex items-center space-x-2">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="!mt-0">Compostable Utensils/Dishes</FormLabel>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="usesOrganic"
-            render={({ field }) => (
-              <FormItem className="flex items-center space-x-2">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="!mt-0">Organic or Locally Sourced Ingredients</FormLabel>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="hasRecycling"
-            render={({ field }) => (
-              <FormItem className="flex items-center space-x-2">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="!mt-0">Recycling and Composting Programs</FormLabel>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="hasPlantBased"
-            render={({ field }) => (
-              <FormItem className="flex items-center space-x-2">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="!mt-0">Plant-Based Meal Options</FormLabel>
               </FormItem>
             )}
           />

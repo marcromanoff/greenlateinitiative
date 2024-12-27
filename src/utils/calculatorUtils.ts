@@ -17,17 +17,9 @@ export const calculateSustainabilityMetrics = (data: CalculatorInputs) => {
   // Calculate carbon footprint (in metric tons)
   const carbonFootprint = annualWaste * CO2_PER_POUND_WASTE;
 
-  // Calculate potential savings
-  let savingsMultiplier = 0.25; // Base savings rate
-  
-  // Adjust savings based on current practices
-  if (!data.usesCompostable) savingsMultiplier += 0.05;
-  if (!data.usesOrganic) savingsMultiplier += 0.05;
-  if (!data.hasRecycling) savingsMultiplier += 0.05;
-  if (!data.hasPlantBased) savingsMultiplier += 0.05;
-
-  const potentialSavings = 
-    foodCostPerMeal * mealsPerDay * SCHOOL_DAYS * savingsMultiplier;
+  // Calculate potential savings with a fixed savings multiplier
+  const savingsMultiplier = 0.25; // Base savings rate
+  const potentialSavings = foodCostPerMeal * mealsPerDay * SCHOOL_DAYS * savingsMultiplier;
 
   return {
     annualWaste,
