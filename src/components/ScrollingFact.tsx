@@ -13,15 +13,12 @@ const ScrollingFact = ({ fact }: ScrollingFactProps) => {
 
   return (
     <div className="w-full overflow-hidden bg-secondary/10 py-4 my-8">
-      <div className="relative whitespace-nowrap">
-        <div className="animate-scroll-left inline-block">
-          <span className="text-primary font-semibold px-4">{fact}</span>
-          <span className="text-primary font-semibold px-4">•</span>
-        </div>
-        <div className="animate-scroll-left inline-block absolute left-full">
-          <span className="text-primary font-semibold px-4">{fact}</span>
-          <span className="text-primary font-semibold px-4">•</span>
-        </div>
+      <div
+        className={`text-primary font-semibold text-center ${
+          isVisible ? "opacity-100" : "opacity-0"
+        } transition-opacity duration-1000`}
+      >
+        {fact}
       </div>
     </div>
   );
