@@ -6,7 +6,7 @@ const StudentAdminSection = () => {
   return (
     <div className="grid md:grid-cols-2 gap-8 mb-16">
       <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-        <h2 className="text-2xl font-semibold mb-4">For Students</h2>
+        <h2 className="text-2xl font-semibold mb-4">For students</h2>
         <p className="text-gray-700 mb-6">
           Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!
         </p>

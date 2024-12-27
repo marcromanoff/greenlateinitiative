@@ -66,7 +66,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorFormProps) => {
             name="foodCostPerMeal"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Food Cost Per Meal</FormLabel>
+                <FormLabel>Food Cost Per Meal ($)</FormLabel>
                 <FormControl>
                   <Input
                     type="number"

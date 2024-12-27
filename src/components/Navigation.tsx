@@ -18,7 +18,7 @@ const Navigation = () => {
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },
     { to: "/grading", label: "Grading" },
-    { to: "/calculator", label: "GreenScore" },
+    { to: "/calculator", label: "GreenGauge" },
     { to: "/ambassador", label: "GreenPlate Ambassador" },
     { to: "/awards", label: "Awards" },
     { to: "/vendors", label: "Vendors" },
