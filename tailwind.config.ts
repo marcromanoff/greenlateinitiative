@@ -43,7 +43,7 @@ export default {
           to: { height: "0" },
         },
         "scroll-left": {
-          "0%": { transform: "translateX(100%)" },
+          "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" },
         },
         "fade-in": {
@@ -58,7 +58,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "scroll-left": "scroll-left 40s linear infinite", // Increased from 20s to 40s
+        "scroll-left": "scroll-left 20s linear infinite",
         "fade-in": "fade-in 0.5s ease-out",
         pulse: "pulse 2s ease-in-out infinite",
       },
