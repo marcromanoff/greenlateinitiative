@@ -86,7 +86,7 @@ const About = () => {
           
           <div className="prose prose-lg mx-auto">
             <p className="text-xl leading-relaxed text-gray-700 text-center">
-              Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, is a dedicated 
+              Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, NJ, is a dedicated 
               pescetarian with a strong commitment to environmental sustainability. Ari founded the 
               GreenPlate Initiative to promote transparency in school dining services. By developing 
               a structured grading system, the initiative seeks to encourage schools to prioritize 
