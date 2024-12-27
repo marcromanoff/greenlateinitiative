@@ -14,7 +14,6 @@ import FAQ from "./pages/FAQ";
 import Vendors from "./pages/Vendors";
 import Calculator from "./pages/Calculator";
 import Contact from "./pages/Contact";
-import Ambassador from "./pages/Ambassador";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +35,6 @@ const App = () => (
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/ambassador" element={<Ambassador />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
