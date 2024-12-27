@@ -34,7 +34,7 @@ const Navigation = () => {
             <div className="flex justify-between items-center h-16">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                className="text-gray-500 hover:text-gray-700 transition-all duration-300 transform hover:scale-105"
               >
                 <Menu size={24} />
               </button>
@@ -47,7 +47,7 @@ const Navigation = () => {
                       key={link.to}
                       to={link.to}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`px-2 py-1 text-sm font-medium transition-all duration-200 transform hover:scale-105 ${
+                      className={`px-2 py-1 text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                         isActive(link.to)
                           ? "text-primary border-l-2 border-primary animate-fade-in"
                           : "text-gray-500 hover:text-gray-700"
@@ -67,9 +67,9 @@ const Navigation = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-200 transform hover:scale-105 ${
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                     isActive(link.to)
-                      ? "border-b-2 border-primary text-primary animate-fade-in"
+                      ? "border-b-2 border-primary text-primary animate-fade-in scale-105"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
