@@ -29,7 +29,7 @@ const Navigation = () => {
 
   return (
     <nav className="bg-white border-b relative">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[98rem] mx-auto px-4">
         {isMobile ? (
           <div>
             <div className="flex justify-between items-center h-16">
@@ -62,8 +62,8 @@ const Navigation = () => {
             )}
           </div>
         ) : (
-          <div className="flex justify-center items-center h-16">
-            <div className="flex space-x-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex justify-between w-full">
               {links.map((link) => (
                 <Link
                   key={link.to}

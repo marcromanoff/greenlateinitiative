@@ -12,9 +12,7 @@ export const CalculatorResults = ({
   potentialSavings,
 }: CalculatorResultsProps) => {
   return (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-primary">2. Outputs</h3>
-      
+    <div className="space-y-6">      
       <div className="grid md:grid-cols-3 gap-6">
         <div className="bg-green-50 p-6 rounded-lg">
           <div className="flex items-center gap-2 mb-4">
