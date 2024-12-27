@@ -55,22 +55,8 @@ const About = () => {
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
-        <div className="max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl font-bold mb-8 text-primary">About Ari</h1>
-          
-          <div className="prose prose-lg">
-            <p className="text-xl leading-relaxed text-gray-700">
-              Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, is a dedicated 
-              pescetarian with a strong commitment to environmental sustainability. Ari founded the 
-              GreenPlate Initiative to promote transparency in school dining services. By developing 
-              a structured grading system, the initiative seeks to encourage schools to prioritize 
-              health, inclusivity, and sustainability in their food programs.
-            </p>
-          </div>
-        </div>
-
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center text-primary">Why Join GreenPlate?</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why Join GreenPlate?</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {reasons.map((reason, index) => (
               <Card key={index} className="animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
@@ -104,6 +90,20 @@ const About = () => {
 
         <ScrollingFact fact="91% of parents support healthier, more sustainable school meals. (Pew Research)" />
         <ScrollingFact fact="Schools with sustainability programs see a 40% increase in community approval. (Education Sustainability Report)" />
+
+        <div className="max-w-3xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold mb-8 text-primary">About Ari</h2>
+          
+          <div className="prose prose-lg">
+            <p className="text-xl leading-relaxed text-gray-700">
+              Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, is a dedicated 
+              pescetarian with a strong commitment to environmental sustainability. Ari founded the 
+              GreenPlate Initiative to promote transparency in school dining services. By developing 
+              a structured grading system, the initiative seeks to encourage schools to prioritize 
+              health, inclusivity, and sustainability in their food programs.
+            </p>
+          </div>
+        </div>
       </main>
     </div>
   );

@@ -14,7 +14,7 @@ const Navigation = () => {
 
   const links = [
     { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
+    { to: "/about", label: "Why Join" },
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },
     { to: "/grading", label: "Grading" },
