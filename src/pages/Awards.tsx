@@ -1,5 +1,6 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Awards = () => {
   return (
@@ -8,46 +9,135 @@ const Awards = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-primary">Awards & Recognition</h1>
+          <h1 className="text-4xl font-bold mb-8 text-primary">GreenPlate Grading Scale & Awards</h1>
           
           <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Grading Scale & Recognition Levels</h2>
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <ul className="list-none space-y-2">
-                  <li className="text-lg font-semibold text-primary">100: GOLD STANDARD/PERFECT SCORE</li>
-                  <li>95–99: A++</li>
-                  <li>90–94: Exceeds Expectations</li>
-                  <li>80–89: Excellent</li>
-                  <li>66–79: Meets Expectations</li>
-                  <li>60–65: Approaching Expectations</li>
-                  <li>Below 60: Needs Improvement</li>
-                </ul>
-              </div>
-            </section>
+            {/* Gold Standard Section */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-4">
+                  <img 
+                    src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
+                    alt="Gold Standard Medal" 
+                    className="w-16 h-16 object-contain"
+                  />
+                  <span className="text-2xl">100%: Gold Standard (A Perfect Score)</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold mb-2">What It Means:</h3>
+                    <p className="text-gray-600">
+                      Achieving the Gold Standard signifies that your school has reached the highest level of excellence 
+                      in sustainability, ethical dining practices, and inclusivity.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Why It's Special:</h3>
+                    <p className="text-gray-600">
+                      This award recognizes schools with the highest sustainable practice standards, 
+                      setting a benchmark for others to follow.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">What Your School Receives:</h3>
+                    <p className="text-gray-600">
+                      A prestigious Gold Standard Medal Certificate and certificate to proudly display 
+                      in your cafeteria or school.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Gold Standard Recognition</h2>
-              <p className="text-gray-600 mb-4">
-                Schools that achieve a perfect score of 100 receive our prestigious Gold Standard recognition,
-                demonstrating exceptional commitment to sustainable dining practices.
-              </p>
-              <img 
-                src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
-                alt="Green Plate Gold Standard Certificate" 
-                className="max-w-md w-full rounded-lg shadow-lg mx-auto" // Increased from max-w-sm
-              />
-            </section>
+            {/* Silver Medal Section */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-4">
+                  <span className="text-2xl">90%–99%: Silver Medal</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold mb-2">What It Means:</h3>
+                    <p className="text-gray-600">
+                      The Silver Medal celebrates schools that have demonstrated outstanding sustainability 
+                      efforts and made significant progress toward achieving the Gold Standard.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">What Your School Receives:</h3>
+                    <p className="text-gray-600">
+                      A Silver Medal Certificate and recognition for your impressive achievements in ethical dining.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Special Recognition</h2>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600">
-                <li>Most Improved School of the Year</li>
-                <li>Best Community Engagement</li>
-                <li>Innovative Menu Design</li>
-                <li>Outstanding Waste Reduction</li>
-              </ul>
-            </section>
+            {/* Bronze Medal Section */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-4">
+                  <span className="text-2xl">80%–89%: Bronze Medal</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold mb-2">What It Means:</h3>
+                    <p className="text-gray-600">
+                      The Bronze Medal highlights schools that are on the path to sustainability excellence, 
+                      making important strides and laying a strong foundation for future improvement.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">What Your School Receives:</h3>
+                    <p className="text-gray-600">
+                      A Bronze Medal Certificate to celebrate your school's commitment and motivate 
+                      continued improvement.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Keep Up the Good Work Section */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-4">
+                  <span className="text-2xl">Below 80%: Keep Up the Good Work</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-semibold mb-2">What It Means:</h3>
+                    <p className="text-gray-600">
+                      Your school is making progress and showing dedication to sustainability, 
+                      but there's room for improvement.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">What Your School Receives:</h3>
+                    <p className="text-gray-600">
+                      Personalized feedback and resources from GreenPlate to help improve your dining 
+                      program and reach higher milestones.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-8 p-6 bg-green-50 rounded-lg">
+            <p className="text-gray-700 italic">
+              Each medal is designed to honor schools for their efforts while motivating further action. 
+              GreenPlate is here to support every school on its journey to sustainability, making sure 
+              that every step forward creates a healthier, greener future for all!
+            </p>
           </div>
         </div>
 
