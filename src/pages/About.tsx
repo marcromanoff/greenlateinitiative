@@ -8,20 +8,38 @@ const About = () => {
     {
       title: "For Students: Lead the Sustainability Movement",
       points: [
-        "Be a GreenPlate Ambassador: Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.",
-        "Pride in Excellence: Be part of a school recognized for achieving the highest standards in sustainability.",
-        "Raise Awareness: Use your school's certification to encourage other schools to join the initiative.",
-        "Create Change: Advocate for better meals, reduced waste, and ethical practices in your cafeteria.",
-        "Stand Out: Highlight your leadership in sustainability on resumes and college applications.",
+        <>
+          <span className="font-bold">Be a GreenPlate Ambassador:</span> Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.
+        </>,
+        <>
+          <span className="font-bold">Pride in Excellence:</span> Be part of a school recognized for achieving the highest standards in sustainability.
+        </>,
+        <>
+          <span className="font-bold">Raise Awareness:</span> Use your school's certification to encourage other schools to join the initiative.
+        </>,
+        <>
+          <span className="font-bold">Create Change:</span> Advocate for better meals, reduced waste, and ethical practices in your cafeteria.
+        </>,
+        <>
+          <span className="font-bold">Stand Out:</span> Highlight your leadership in sustainability on resumes and college applications.
+        </>,
       ]
     },
     {
       title: "For Administrators: Take the Lead",
       points: [
-        "Achieve Recognition: Join the program and make your school a model for sustainability with the GreenPlate Certification.",
-        "Visible Achievement: Display your certification to showcase your school's leadership and excellence in sustainability.",
-        "Inspire Change: Set the bar for sustainability in your community, influencing neighboring schools and districts.",
-        "Boost Your School's Appeal: Gain recognition from families and communities for prioritizing sustainability and student health.",
+        <>
+          <span className="font-bold">Achieve Recognition:</span> Join the program and make your school a model for sustainability with the GreenPlate Certification.
+        </>,
+        <>
+          <span className="font-bold">Visible Achievement:</span> Display your certification to showcase your school's leadership and excellence in sustainability.
+        </>,
+        <>
+          <span className="font-bold">Inspire Change:</span> Set the bar for sustainability in your community, influencing neighboring schools and districts.
+        </>,
+        <>
+          <span className="font-bold">Boost Your School's Appeal:</span> Gain recognition from families and communities for prioritizing sustainability and student health.
+        </>,
       ]
     }
   ];
