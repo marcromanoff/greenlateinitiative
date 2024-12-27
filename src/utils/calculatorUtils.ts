@@ -5,8 +5,13 @@ export const calculateSustainabilityMetrics = (data: CalculatorInputs) => {
   const WASTE_REDUCTION_FACTOR = 0.3; // 30% reduction with GreenPlate practices
   const CO2_PER_POUND_WASTE = 0.0022; // Metric tons of CO2 per pound of food waste
 
+  // Convert input values to numbers and handle empty strings
+  const mealsPerDay = typeof data.mealsPerDay === 'number' ? data.mealsPerDay : 0;
+  const wastePerMeal = typeof data.wastePerMeal === 'number' ? data.wastePerMeal : 0;
+  const foodCostPerMeal = typeof data.foodCostPerMeal === 'number' ? data.foodCostPerMeal : 0;
+
   // Calculate annual waste
-  const dailyWaste = data.mealsPerDay * data.wastePerMeal / 16; // Convert ounces to pounds
+  const dailyWaste = mealsPerDay * wastePerMeal / 16; // Convert ounces to pounds
   const annualWaste = dailyWaste * SCHOOL_DAYS;
 
   // Calculate carbon footprint (in metric tons)
@@ -22,7 +27,7 @@ export const calculateSustainabilityMetrics = (data: CalculatorInputs) => {
   if (!data.hasPlantBased) savingsMultiplier += 0.05;
 
   const potentialSavings = 
-    data.foodCostPerMeal * data.mealsPerDay * SCHOOL_DAYS * savingsMultiplier;
+    foodCostPerMeal * mealsPerDay * SCHOOL_DAYS * savingsMultiplier;
 
   return {
     annualWaste,
