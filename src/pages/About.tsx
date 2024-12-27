@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent } from "../components/ui/card";
+import { Separator } from "../components/ui/separator";
 
 const About = () => {
   const sections = [
@@ -34,14 +35,18 @@ const About = () => {
           <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why GreenPlate?</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {sections.map((section, index) => (
-              <Card key={index} className="animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card 
+                key={index} 
+                className="animate-fade-in hover:shadow-lg transition-shadow duration-300"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-semibold mb-4 text-primary">{section.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-6 text-primary border-b pb-3">{section.title}</h3>
                   <ul className="space-y-4">
                     {section.points.map((point, i) => (
-                      <li key={i} className="flex items-start space-x-2">
-                        <span className="text-secondary mt-1.5">•</span>
-                        <span className="text-gray-700">{point}</span>
+                      <li key={i} className="flex items-start space-x-3">
+                        <span className="text-secondary mt-1.5 text-xl">•</span>
+                        <span className="text-gray-700 leading-relaxed">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -51,14 +56,18 @@ const About = () => {
           </div>
         </div>
 
+        <Separator className="my-12" />
+
         <ScrollingFact fact="91% of parents support healthier, more sustainable school meals. (Pew Research)" />
         <ScrollingFact fact="Schools with sustainability programs see a 40% increase in community approval. (Education Sustainability Report)" />
 
+        <Separator className="my-12" />
+
         <div className="max-w-3xl mx-auto mt-16">
-          <h2 className="text-3xl font-bold mb-8 text-primary">About Ari</h2>
+          <h2 className="text-3xl font-bold mb-8 text-primary text-center">About Ari</h2>
           
-          <div className="prose prose-lg">
-            <p className="text-xl leading-relaxed text-gray-700">
+          <div className="prose prose-lg mx-auto">
+            <p className="text-xl leading-relaxed text-gray-700 text-center">
               Ari Romanoff, an eighth-grade student at Newark Academy in Livingston, is a dedicated 
               pescetarian with a strong commitment to environmental sustainability. Ari founded the 
               GreenPlate Initiative to promote transparency in school dining services. By developing 
