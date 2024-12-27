@@ -21,7 +21,7 @@ const Index = () => {
           </p>
           <Link
             to="/get-involved"
-            className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all"
+            className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all animate-pulse shadow-[0_0_15px_rgba(47,133,90,0.5)] hover:shadow-[0_0_25px_rgba(47,133,90,0.8)]"
           >
             Start Now
           </Link>
