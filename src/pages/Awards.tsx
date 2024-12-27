@@ -16,11 +16,6 @@ const Awards = () => {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-4">
-                  <img 
-                    src="/lovable-uploads/8e215b20-4197-411a-800b-c17441f10d0e.png" 
-                    alt="Gold Standard Medal" 
-                    className="w-16 h-16 object-contain"
-                  />
                   <span className="text-2xl">100%: Gold Standard (A Perfect Score)</span>
                 </CardTitle>
               </CardHeader>
