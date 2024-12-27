@@ -34,22 +34,22 @@ const Navigation = () => {
             <div className="flex justify-between items-center h-16">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 transition-colors duration-200"
               >
                 <Menu size={24} />
               </button>
             </div>
             {isMenuOpen && (
-              <div className="absolute top-16 left-0 w-full bg-white border-b z-50">
+              <div className="absolute top-16 left-0 w-full bg-white border-b z-50 animate-fade-in">
                 <div className="flex flex-col p-4 space-y-4">
                   {links.map((link) => (
                     <Link
                       key={link.to}
                       to={link.to}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`px-2 py-1 text-sm font-medium ${
+                      className={`px-2 py-1 text-sm font-medium transition-all duration-200 transform hover:scale-105 ${
                         isActive(link.to)
-                          ? "text-primary border-l-2 border-primary"
+                          ? "text-primary border-l-2 border-primary animate-fade-in"
                           : "text-gray-500 hover:text-gray-700"
                       }`}
                     >
@@ -67,9 +67,9 @@ const Navigation = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-200 transform hover:scale-105 ${
                     isActive(link.to)
-                      ? "border-b-2 border-primary text-primary"
+                      ? "border-b-2 border-primary text-primary animate-fade-in"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
