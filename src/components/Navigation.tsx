@@ -19,6 +19,7 @@ const Navigation = () => {
     { to: "/process", label: "Process" },
     { to: "/grading", label: "Grading" },
     { to: "/calculator", label: "GreenScore" },
+    { to: "/ambassador", label: "GreenPlate Ambassador" },
     { to: "/awards", label: "Awards" },
     { to: "/vendors", label: "Vendors" },
     { to: "/downloads", label: "Downloads" },
