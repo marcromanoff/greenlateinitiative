@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-sans">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
