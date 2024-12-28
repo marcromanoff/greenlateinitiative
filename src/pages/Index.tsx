@@ -13,15 +13,15 @@ const Index = () => {
             alt="GreenPlate Initiative Logo"
             className="w-48 h-48 mx-auto mb-8"
           />
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-primary font-bubbleboddy">
             GreenPlate Initiative
           </h1>
-          <p className="text-2xl md:text-4xl mb-8 text-gray-700 font-bold">
+          <p className="text-2xl md:text-4xl mb-8 text-gray-700 font-bold font-bubbleboddy">
             Seize the <span className="font-extrabold text-amber-500">gold standard</span> in school sustainability
           </p>
           <Link
             to="/get-involved"
-            className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all animate-pulse shadow-[0_0_15px_rgba(47,133,90,0.5)] hover:shadow-[0_0_25px_rgba(47,133,90,0.8)]"
+            className="inline-block bg-primary text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all animate-pulse shadow-[0_0_15px_rgba(47,133,90,0.5)] hover:shadow-[0_0_25px_rgba(47,133,90,0.8)] font-bubbleboddy"
           >
             Start Now
           </Link>
