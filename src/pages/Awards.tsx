@@ -23,21 +23,21 @@ const Awards = () => {
                 <div className="space-y-4">
                   <div>
                     <h3 className="font-semibold mb-2">What It Means:</h3>
-                    <p className="text-gray-600">
+                    <p className="text-amber-800">
                       Achieving the Gold Standard signifies that your school has reached the highest level of excellence 
                       in sustainability, ethical dining practices, and inclusivity.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2">Why It's Special:</h3>
-                    <p className="text-gray-600">
+                    <p className="text-amber-800">
                       This award recognizes schools with the highest sustainable practice standards, 
                       setting a benchmark for others to follow.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2">What Your School Receives:</h3>
-                    <p className="text-gray-600">
+                    <p className="text-amber-800">
                       A prestigious Gold Standard Medal Certificate and certificate to proudly display 
                       in your cafeteria or school.
                     </p>
@@ -127,8 +127,8 @@ const Awards = () => {
             </Card>
           </div>
 
-          <div className="mt-8 p-6 bg-green-50 rounded-lg">
-            <p className="text-gray-700 italic">
+          <div className="mt-8 p-6 bg-amber-50 rounded-lg">
+            <p className="text-amber-800 italic">
               Each medal is designed to honor schools for their efforts while motivating further action. 
               GreenPlate is here to support every school on its journey to sustainability, making sure 
               that every step forward creates a healthier, greener future for all!
