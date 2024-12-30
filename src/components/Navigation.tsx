@@ -14,6 +14,7 @@ const Navigation = () => {
 
   const links = [
     { to: "/", label: "Home" },
+    { to: "/what-is-greenplate", label: "What is GreenPlate" },
     { to: "/about", label: "Why GreenPlate" },
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },

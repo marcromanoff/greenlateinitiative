@@ -15,6 +15,7 @@ import Vendors from "./pages/Vendors";
 import Calculator from "./pages/Calculator";
 import Contact from "./pages/Contact";
 import Ambassador from "./pages/Ambassador";
+import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/ambassador" element={<Ambassador />} />
+          <Route path="/what-is-greenplate" element={<WhatIsGreenPlate />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
