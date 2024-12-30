@@ -153,8 +153,8 @@ const Navigation = () => {
                 >
                   {item.label}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute top-0 left-0 w-full animate-fade-in">
-                  <div className="grid w-full gap-2 p-4 bg-white shadow-lg rounded-lg">
+                <NavigationMenuContent className="absolute left-0 top-full w-auto animate-fade-in z-50">
+                  <div className="grid w-[200px] gap-2 p-4 bg-white shadow-lg rounded-lg">
                     {item.items?.map((subItem, subIndex) => (
                       <Link
                         key={subIndex}
@@ -181,7 +181,7 @@ const Navigation = () => {
   );
 
   return (
-    <nav className="bg-white border-b relative">
+    <nav className="bg-white border-b fixed w-full top-0 z-50">
       <div className="max-w-[98rem] mx-auto">
         {isMobile ? renderMobileMenu() : renderDesktopMenu()}
       </div>
