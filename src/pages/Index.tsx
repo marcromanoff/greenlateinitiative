@@ -3,13 +3,13 @@ import Navigation from "../components/Navigation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-[#F2FCE2] font-sans">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
           <img 
-            src="/lovable-uploads/ae2f3bdb-a66a-4aec-8f27-163735703db5.png"
+            src="/lovable-uploads/b7457179-20d0-41c0-8bae-2bba7a31062d.png"
             alt="GreenPlate Initiative Logo"
             className="w-48 h-48 mx-auto mb-8"
           />
