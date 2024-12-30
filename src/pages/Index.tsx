@@ -6,7 +6,7 @@ const Index = () => {
     <div className="min-h-screen bg-[#F2FCE2] font-sans">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-12">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
           <img 
             src="/lovable-uploads/b7457179-20d0-41c0-8bae-2bba7a31062d.png"
