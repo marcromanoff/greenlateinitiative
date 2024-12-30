@@ -11,6 +11,16 @@ const Awards = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-primary">GreenPlate Grading Scale & Awards</h1>
           
+          {/* Example Certificate */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 text-primary">Example Gold Standard Certificate:</h2>
+            <img 
+              src="/lovable-uploads/d3add2d4-0f0c-493f-8c9c-7bd7b82f77b3.png"
+              alt="Example Gold Standard Certificate"
+              className="w-full rounded-lg shadow-lg mb-6"
+            />
+          </div>
+
           <div className="space-y-8">
             {/* Gold Standard Section */}
             <Card className="hover:shadow-lg transition-shadow">
