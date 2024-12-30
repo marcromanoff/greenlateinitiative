@@ -153,13 +153,13 @@ const Navigation = () => {
                 >
                   {item.label}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute left-0 top-full w-auto animate-fade-in">
-                  <div className="min-w-[220px] rounded-md border bg-white p-2 shadow-md">
+                <NavigationMenuContent className="absolute top-full left-0 w-[200px] animate-fade-in data-[motion=from-start]:animate-in data-[motion=from-end]:animate-out data-[motion=from-start]:fade-in data-[motion=to-end]:fade-out">
+                  <div className="w-full bg-white border rounded-md shadow-lg py-1">
                     {item.items?.map((subItem, subIndex) => (
                       <Link
                         key={subIndex}
                         to={subItem.to}
-                        className={`block select-none rounded-sm px-3 py-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 ${
+                        className={`block w-full px-4 py-2 text-sm transition-colors hover:bg-gray-100 ${
                           isActive(subItem.to)
                             ? "text-primary bg-gray-50"
                             : "text-gray-700"
