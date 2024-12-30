@@ -12,53 +12,46 @@ const WhatIsGreenPlate = () => {
           
           <div className="space-y-8">
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
+              <h2 className="text-2xl font-semibold mb-4">Our Initiative</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                GreenPlate is a pioneering initiative that evaluates and certifies school dining programs based on their commitment to sustainability, health, and inclusivity. Our mission is to transform school cafeterias into environmentally conscious spaces that serve nutritious, inclusive meals while minimizing their environmental impact.
+                The GreenPlate Initiative is a structured grading system that evaluates schools' sustainability. 
+                We grade using completely objective criteria and information provided by schools and GreenPlate ambassadors. 
+                We assess schools based on four key categories: Variety & Inclusivity, Sourcing & Sustainability, 
+                Nutritional Value, and Accessibility & Labeling.
+              </p>
+            </section>
+
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold mb-4">Recognition System</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Schools can earn Gold, Silver, or Bronze certification based on their commitment to sustainable dining practices. 
+                These certifications not only recognize schools for their achievements but also serve as a symbol of their 
+                commitment to creating a healthier, greener future for students and the planet.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Founded by Ari Romanoff, an eighth-grade student at Newark Academy, GreenPlate aims to create transparency and accountability in school dining services while promoting sustainable practices.
+                Schools earning certifications are celebrated for their leadership in sustainability and receive tools, 
+                resources, and actionable feedback to continue improving their dining programs.
               </p>
             </section>
 
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-4">Our Approach</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-xl font-medium mb-3 text-primary">Comprehensive Evaluation</h3>
-                  <p className="text-gray-700">
-                    We assess schools based on four key categories: Variety & Inclusivity, Sourcing & Sustainability, Nutritional Value, and Accessibility & Labeling.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium mb-3 text-primary">Recognition System</h3>
-                  <p className="text-gray-700">
-                    Schools can earn Gold, Silver, or Bronze certification based on their commitment to sustainable dining practices.
-                  </p>
-                </div>
-              </div>
+              <h2 className="text-2xl font-semibold mb-4">Collaborative Approach</h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                The GreenPlate Initiative encourages schools to take pride in their efforts, share their progress 
+                with their communities, and inspire others to join the movement. By fostering collaboration between 
+                students, administrators, and GreenPlate Ambassadors, we aim to create a nationwide shift toward 
+                ethical and sustainable dining standards, one school at a time.
+              </p>
             </section>
 
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-4">Why It Matters</h2>
-              <ul className="space-y-4">
-                <li className="flex items-start space-x-3">
-                  <span className="text-primary mt-1">•</span>
-                  <p className="text-gray-700">Promotes environmental sustainability in school dining services</p>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <span className="text-primary mt-1">•</span>
-                  <p className="text-gray-700">Ensures inclusive dining options for all dietary needs</p>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <span className="text-primary mt-1">•</span>
-                  <p className="text-gray-700">Encourages the use of locally-sourced, nutritious ingredients</p>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <span className="text-primary mt-1">•</span>
-                  <p className="text-gray-700">Creates transparency in school food service operations</p>
-                </li>
-              </ul>
+              <h2 className="text-2xl font-semibold mb-4">Our Vision</h2>
+              <p className="text-gray-700 leading-relaxed">
+                Our ultimate goal is to make sustainable dining practices the norm in schools, empowering them to 
+                serve meals that are not only nutritious and inclusive but also environmentally responsible. 
+                Together, we can build a future where every school cafeteria embodies the principles of health, 
+                sustainability, and inclusivity.
+              </p>
             </section>
           </div>
         </div>
