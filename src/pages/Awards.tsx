@@ -47,7 +47,7 @@ const Awards = () => {
                   <div>
                     <p className="text-sm text-gray-500 mb-2">Example Certificate:</p>
                     <img 
-                      src="/lovable-uploads/d3add2d4-0f0c-493f-8c9c-7bd7b82f77b3.png"
+                      src="/lovable-uploads/67d6aa38-24ae-46ec-adca-f610a85f0846.png"
                       alt="Example Gold Standard Certificate"
                       className="w-full rounded-lg shadow-md"
                     />
