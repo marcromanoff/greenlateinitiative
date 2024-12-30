@@ -1,22 +1,13 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Button } from "@/components/ui/button";
-import { Download, UserCheck, Users } from "lucide-react";
+import { Download } from "lucide-react";
 
 const Downloads = () => {
-  const handleStudentDownload = () => {
+  const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/c83af6ec-6443-400a-9a77-1713121e5a7d.png';
-    link.download = 'GreenPlate-Student-Flyer.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleAdminDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/lovable-uploads/074aace6-cce6-4e71-8194-1921316287a4.png';
-    link.download = 'GreenPlate-Admin-Flyer.png';
+    link.href = '/lovable-uploads/8f09744b-95f9-4fcd-b446-006194b56858.png';
+    link.download = 'GreenPlate-Initiative-Flyer.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -33,22 +24,19 @@ const Downloads = () => {
           <div className="grid gap-8">
             <div className="bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-6">Promotional Materials</h2>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col items-center gap-6">
+                <img 
+                  src="/lovable-uploads/8f09744b-95f9-4fcd-b446-006194b56858.png"
+                  alt="GreenPlate Initiative Flyer"
+                  className="max-w-md w-full rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                />
                 <Button 
-                  onClick={handleStudentDownload}
-                  className="flex-1 gap-2 text-lg py-6"
+                  onClick={handleDownload}
+                  className="gap-2 text-lg py-6 px-8"
                   variant="default"
                 >
-                  <Users className="w-6 h-6" />
-                  Student Flyer
-                </Button>
-                <Button 
-                  onClick={handleAdminDownload}
-                  className="flex-1 gap-2 text-lg py-6"
-                  variant="secondary"
-                >
-                  <UserCheck className="w-6 h-6" />
-                  Administrator Flyer
+                  <Download className="w-6 h-6" />
+                  Download Initiative Flyer
                 </Button>
               </div>
             </div>
