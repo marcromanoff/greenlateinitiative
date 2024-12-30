@@ -9,6 +9,7 @@ import { SourcingSection } from "../components/faq/SourcingSection";
 import { CertificationSection } from "../components/faq/CertificationSection";
 import { SupportSection } from "../components/faq/SupportSection";
 import { MethodologySection } from "../components/faq/MethodologySection";
+import { VeganVegetarianSection } from "../components/faq/VeganVegetarianSection";
 
 const FAQ = () => {
   return (
@@ -30,6 +31,7 @@ const FAQ = () => {
             <CertificationSection />
             <SupportSection />
             <MethodologySection />
+            <VeganVegetarianSection />
           </Accordion>
         </div>
 
