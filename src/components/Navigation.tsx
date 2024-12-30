@@ -127,7 +127,7 @@ const Navigation = () => {
   );
 
   const renderDesktopMenu = () => (
-    <NavigationMenu className="max-w-none justify-start px-4">
+    <NavigationMenu className="max-w-none justify-center px-4">
       <NavigationMenuList className="space-x-2">
         {menuItems.map((item, index) => (
           <NavigationMenuItem key={index}>
@@ -153,8 +153,8 @@ const Navigation = () => {
                 >
                   {item.label}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute top-0 left-0 w-full animate-fade-in">
-                  <div className="grid w-full gap-2 p-4 bg-white shadow-lg rounded-lg">
+                <NavigationMenuContent className="relative top-0 w-full animate-fade-in">
+                  <div className="grid w-full min-w-[200px] gap-2 p-4 bg-white shadow-lg rounded-lg">
                     {item.items?.map((subItem, subIndex) => (
                       <Link
                         key={subIndex}
