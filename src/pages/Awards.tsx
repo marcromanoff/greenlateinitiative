@@ -95,7 +95,8 @@ const Awards = () => {
             </Card>
           </div>
 
-          {/* Bronze Medal Section */}
+          {/* Bronze Medal Section with Certificate */}
+          <div className="mb-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-4">
@@ -103,24 +104,35 @@ const Awards = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-semibold mb-2">What It Means:</h3>
-                    <p className="text-gray-600">
-                      The Bronze Medal highlights schools that are on the path to sustainability excellence, 
-                      making important strides and laying a strong foundation for future improvement.
-                    </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="font-semibold mb-2">What It Means:</h3>
+                      <p className="text-gray-600">
+                        The Bronze Medal highlights schools that are on the path to sustainability excellence, 
+                        making important strides and laying a strong foundation for future improvement.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">What Your School Receives:</h3>
+                      <p className="text-gray-600">
+                        A Bronze Medal Certificate to celebrate your school's commitment and motivate 
+                        continued improvement.
+                      </p>
+                    </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">What Your School Receives:</h3>
-                    <p className="text-gray-600">
-                      A Bronze Medal Certificate to celebrate your school's commitment and motivate 
-                      continued improvement.
-                    </p>
+                    <p className="text-sm text-gray-500 mb-2">Example Certificate:</p>
+                    <img 
+                      src="/lovable-uploads/46f68c12-3244-417a-8f7d-74cc51f7d41e.png"
+                      alt="Example Bronze Medal Certificate"
+                      className="w-full rounded-lg shadow-md"
+                    />
                   </div>
                 </div>
               </CardContent>
             </Card>
+          </div>
 
           {/* Keep Up the Good Work Section */}
             <Card className="hover:shadow-lg transition-shadow">
