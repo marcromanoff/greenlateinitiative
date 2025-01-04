@@ -26,29 +26,31 @@ const NutritionSection = ({ isOpen, onToggle }: NutritionSectionProps) => {
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <Dialog>
-                <DialogTrigger className="text-left text-primary hover:text-primary/80">
-                  <span className="font-bold">Readily Available</span> (1 point)
+                <DialogTrigger className="text-left">
+                  <span className="font-bold text-primary hover:text-primary/80">Readily Available</span> (1 point)
                 </DialogTrigger>
-                <DialogContent className="bg-white p-4 relative">
-                  <h3 className="font-semibold mb-2">Nutritional information is considered readily available if it is:</h3>
-                  <ol className="list-decimal pl-4 space-y-2">
-                    <li>
-                      Displayed Consistently:
-                      <ul className="list-disc pl-4 mt-1">
-                        <li>On-site (menu boards or cafeteria screens)</li>
-                        <li>Online (school dining website or mobile app)</li>
-                        <li>On printed menus at dining stations</li>
-                      </ul>
-                    </li>
-                    <li>
-                      Includes Key Details:
-                      <ul className="list-disc pl-4 mt-1">
-                        <li>Caloric content</li>
-                        <li>Macronutrient breakdown (protein, carbs, fats)</li>
-                        <li>Allergen details (e.g., nuts, dairy, gluten)</li>
-                      </ul>
-                    </li>
-                  </ol>
+                <DialogContent className="bg-white p-8 relative max-w-2xl mx-auto font-sans">
+                  <div className="text-center">
+                    <h3 className="font-semibold text-xl mb-4">Nutritional information is considered readily available if it is:</h3>
+                    <ol className="list-decimal text-left space-y-4 mx-auto max-w-xl">
+                      <li>
+                        Displayed Consistently:
+                        <ul className="list-disc pl-6 mt-2">
+                          <li>On-site (menu boards or cafeteria screens)</li>
+                          <li>Online (school dining website or mobile app)</li>
+                          <li>On printed menus at dining stations</li>
+                        </ul>
+                      </li>
+                      <li>
+                        Includes Key Details:
+                        <ul className="list-disc pl-6 mt-2">
+                          <li>Caloric content</li>
+                          <li>Macronutrient breakdown (protein, carbs, fats)</li>
+                          <li>Allergen details (e.g., nuts, dairy, gluten)</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
                 </DialogContent>
               </Dialog>
             </li>

@@ -26,33 +26,35 @@ const AccessibilitySection = ({ isOpen, onToggle }: AccessibilitySectionProps) =
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <Dialog>
-                <DialogTrigger className="text-left text-primary hover:text-primary/80">
-                  <span className="font-bold">Clear Labeling</span> (2 points)
+                <DialogTrigger className="text-left">
+                  <span className="font-bold text-primary hover:text-primary/80">Clear Labeling</span> (2 points)
                 </DialogTrigger>
-                <DialogContent className="bg-white p-4 relative">
-                  <h3 className="font-semibold mb-2">Menu items are considered clearly labeled if:</h3>
-                  <ol className="list-decimal pl-4 space-y-2">
-                    <li>
-                      Dietary Icons/Text Are Present:
-                      <ul className="list-disc pl-4 mt-1">
-                        <li>Vegetarian (V), Vegan (VG), Gluten-Free (GF), and major allergen warnings</li>
-                        <li>Labels must appear directly next to menu items or at point of service</li>
-                      </ul>
-                    </li>
-                    <li>
-                      Icon Placement Standards:
-                      <ul className="list-disc pl-4 mt-1">
-                        <li>Online: Visible on digital menu, no more than one click away</li>
-                        <li>Printed: Included alongside menu descriptions at dining stations</li>
-                      </ul>
-                    </li>
-                    <li>
-                      Consistency Across Platforms:
-                      <ul className="list-disc pl-4 mt-1">
-                        <li>Labels should match across all platforms (on-site, app, and website)</li>
-                      </ul>
-                    </li>
-                  </ol>
+                <DialogContent className="bg-white p-8 relative max-w-2xl mx-auto font-sans">
+                  <div className="text-center">
+                    <h3 className="font-semibold text-xl mb-4">Menu items are considered clearly labeled if:</h3>
+                    <ol className="list-decimal text-left space-y-4 mx-auto max-w-xl">
+                      <li>
+                        Dietary Icons/Text Are Present:
+                        <ul className="list-disc pl-6 mt-2">
+                          <li>Vegetarian (V), Vegan (VG), Gluten-Free (GF), and major allergen warnings</li>
+                          <li>Labels must appear directly next to menu items or at point of service</li>
+                        </ul>
+                      </li>
+                      <li>
+                        Icon Placement Standards:
+                        <ul className="list-disc pl-6 mt-2">
+                          <li>Online: Visible on digital menu, no more than one click away</li>
+                          <li>Printed: Included alongside menu descriptions at dining stations</li>
+                        </ul>
+                      </li>
+                      <li>
+                        Consistency Across Platforms:
+                        <ul className="list-disc pl-6 mt-2">
+                          <li>Labels should match across all platforms (on-site, app, and website)</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
                 </DialogContent>
               </Dialog>
             </li>
