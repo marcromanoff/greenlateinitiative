@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NutritionSectionProps {
   isOpen: boolean;
@@ -25,35 +25,9 @@ const NutritionSection = ({ isOpen, onToggle }: NutritionSectionProps) => {
         <CollapsibleContent className="mt-4">
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <Dialog>
-                <DialogTrigger className="text-left">
-                  <span className="font-bold text-primary hover:text-primary/80">Readily Available</span> (1 point)
-                </DialogTrigger>
-                <DialogContent className="bg-white p-8 relative max-w-2xl mx-auto font-sans">
-                  <div className="text-center">
-                    <h3 className="font-semibold text-xl mb-4">Nutritional information is considered readily available if it is:</h3>
-                    <ol className="list-decimal text-left space-y-4 mx-auto max-w-xl">
-                      <li>
-                        Displayed Consistently:
-                        <ul className="list-disc pl-6 mt-2">
-                          <li>Visible in at least one of these formats:</li>
-                          <li>On-site (menu boards or cafeteria screens)</li>
-                          <li>Online (school dining website or mobile app)</li>
-                          <li>On printed menus at dining stations</li>
-                        </ul>
-                      </li>
-                      <li>
-                        Includes Key Details:
-                        <ul className="list-disc pl-6 mt-2">
-                          <li>Caloric content</li>
-                          <li>Macronutrient breakdown (protein, carbs, fats)</li>
-                          <li>Allergen details (e.g., nuts, dairy, gluten)</li>
-                        </ul>
-                      </li>
-                    </ol>
-                  </div>
-                </DialogContent>
-              </Dialog>
+              <Link to="/definitions" className="text-primary font-bold hover:text-primary/80">
+                Readily Available
+              </Link> (1 point)
             </li>
             <li>Salad Bar that Includes Fresh Fruits, Vegetables, and Legumes:
               <ul className="list-circle pl-6 mt-2">

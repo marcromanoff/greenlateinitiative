@@ -16,6 +16,7 @@ import Calculator from "./pages/Calculator";
 import Contact from "./pages/Contact";
 import Ambassador from "./pages/Ambassador";
 import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
+import Definitions from "./pages/Definitions";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/what-is-greenplate" element={<WhatIsGreenPlate />} />
+          <Route path="/definitions" element={<Definitions />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

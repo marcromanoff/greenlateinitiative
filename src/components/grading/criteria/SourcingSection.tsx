@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface SourcingSectionProps {
   isOpen: boolean;
@@ -32,21 +32,9 @@ const SourcingSection = ({ isOpen, onToggle }: SourcingSectionProps) => {
             </li>
             <li>Has Washable and/or Compostable Silverware and Dishes: 1 point</li>
             <li>
-              <Dialog>
-                <DialogTrigger className="text-left">
-                  <span className="font-bold text-primary hover:text-primary/80">Ethical Practices</span> (1 point)
-                </DialogTrigger>
-                <DialogContent className="bg-white p-8 relative max-w-2xl mx-auto font-sans">
-                  <div className="text-center">
-                    <h3 className="font-semibold text-xl mb-4">Ethical practices include:</h3>
-                    <ul className="list-disc text-left space-y-4 mx-auto max-w-xl">
-                      <li>Cage-Free, Certified Humane® Eggs: All eggs are cage-free and certified by recognized organizations such as Certified Humane® or GAP Level 3+</li>
-                      <li>Hormone-Free Milk: All milk is hormone-free, with suppliers providing clear documentation</li>
-                      <li>Grass-Fed or Pasture-Raised Meats: Meat is sourced from animals raised on grass or pasture, meeting humane standards</li>
-                    </ul>
-                  </div>
-                </DialogContent>
-              </Dialog>
+              <Link to="/definitions" className="text-primary font-bold hover:text-primary/80">
+                Ethical Practices
+              </Link> (1 point)
             </li>
           </ul>
         </CollapsibleContent>

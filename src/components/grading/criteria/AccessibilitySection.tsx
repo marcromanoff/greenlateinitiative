@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface AccessibilitySectionProps {
   isOpen: boolean;
@@ -25,38 +25,9 @@ const AccessibilitySection = ({ isOpen, onToggle }: AccessibilitySectionProps) =
         <CollapsibleContent className="mt-4">
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <Dialog>
-                <DialogTrigger className="text-left">
-                  <span className="font-bold text-primary hover:text-primary/80">Clear Labeling</span> (2 points)
-                </DialogTrigger>
-                <DialogContent className="bg-white p-8 relative max-w-2xl mx-auto font-sans">
-                  <div className="text-center">
-                    <h3 className="font-semibold text-xl mb-4">Menu items are considered clearly labeled if:</h3>
-                    <ol className="list-decimal text-left space-y-4 mx-auto max-w-xl">
-                      <li>
-                        Dietary Icons/Text Are Present:
-                        <ul className="list-disc pl-6 mt-2">
-                          <li>Vegetarian (V), Vegan (VG), Gluten-Free (GF), and major allergen warnings (nuts, dairy)</li>
-                          <li>Labels must appear directly next to menu items or at point of service</li>
-                        </ul>
-                      </li>
-                      <li>
-                        Icon Placement Standards:
-                        <ul className="list-disc pl-6 mt-2">
-                          <li>Online: Visible on digital menu, no more than one click away</li>
-                          <li>Printed: Included alongside menu descriptions at dining stations</li>
-                        </ul>
-                      </li>
-                      <li>
-                        Consistency Across Platforms:
-                        <ul className="list-disc pl-6 mt-2">
-                          <li>Labels should match across all platforms (on-site, app, and website)</li>
-                        </ul>
-                      </li>
-                    </ol>
-                  </div>
-                </DialogContent>
-              </Dialog>
+              <Link to="/definitions" className="text-primary font-bold hover:text-primary/80">
+                Clear Labeling
+              </Link> (2 points)
             </li>
             <li>Student-Accessible Ingredient Lists Online with Dietary Information: 1 point</li>
           </ul>
