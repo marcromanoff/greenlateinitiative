@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronRight } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface AccessibilitySectionProps {
   isOpen: boolean;
@@ -25,11 +25,11 @@ const AccessibilitySection = ({ isOpen, onToggle }: AccessibilitySectionProps) =
         <CollapsibleContent className="mt-4">
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <Tooltip>
-                <TooltipTrigger className="text-left">
-                  <span className="font-bold">Clear Labeling of Dietary Options</span> (2 points)
-                </TooltipTrigger>
-                <TooltipContent className="max-w-sm p-4">
+              <Dialog>
+                <DialogTrigger className="text-left text-primary hover:text-primary/80">
+                  <span className="font-bold">Clear Labeling</span> (2 points)
+                </DialogTrigger>
+                <DialogContent className="bg-white p-4 relative">
                   <h3 className="font-semibold mb-2">Menu items are considered clearly labeled if:</h3>
                   <ol className="list-decimal pl-4 space-y-2">
                     <li>
@@ -53,8 +53,8 @@ const AccessibilitySection = ({ isOpen, onToggle }: AccessibilitySectionProps) =
                       </ul>
                     </li>
                   </ol>
-                </TooltipContent>
-              </Tooltip>
+                </DialogContent>
+              </Dialog>
             </li>
             <li>Student-Accessible Ingredient Lists Online with Dietary Information: 1 point</li>
           </ul>

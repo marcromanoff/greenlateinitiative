@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronRight } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ChevronRight, X } from "lucide-react";
 
 interface NutritionSectionProps {
   isOpen: boolean;
@@ -25,11 +25,11 @@ const NutritionSection = ({ isOpen, onToggle }: NutritionSectionProps) => {
         <CollapsibleContent className="mt-4">
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <Tooltip>
-                <TooltipTrigger className="text-left">
-                  <span className="font-bold">Nutritional Information Readily Available</span> (1 point)
-                </TooltipTrigger>
-                <TooltipContent className="max-w-sm p-4">
+              <Dialog>
+                <DialogTrigger className="text-left text-primary hover:text-primary/80">
+                  <span className="font-bold">Readily Available</span> (1 point)
+                </DialogTrigger>
+                <DialogContent className="bg-white p-4 relative">
                   <h3 className="font-semibold mb-2">Nutritional information is considered readily available if it is:</h3>
                   <ol className="list-decimal pl-4 space-y-2">
                     <li>
@@ -49,8 +49,8 @@ const NutritionSection = ({ isOpen, onToggle }: NutritionSectionProps) => {
                       </ul>
                     </li>
                   </ol>
-                </TooltipContent>
-              </Tooltip>
+                </DialogContent>
+              </Dialog>
             </li>
             <li>Salad Bar that Includes Fresh Fruits, Vegetables, and Legumes:
               <ul className="list-circle pl-6 mt-2">
