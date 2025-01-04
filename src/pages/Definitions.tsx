@@ -1,11 +1,18 @@
-import Navigation from "../components/Navigation";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Definitions = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-12">
+    <Dialog open={true} onOpenChange={() => navigate(-1)}>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-primary mb-4">Definitions</DialogTitle>
+        </DialogHeader>
+        
+        <div className="space-y-12">
           <section>
             <h2 className="text-2xl font-bold mb-6 text-primary">Readily Available Definition</h2>
             <div className="bg-white p-8 rounded-lg shadow-md">
@@ -72,8 +79,17 @@ const Definitions = () => {
             </div>
           </section>
         </div>
-      </main>
-    </div>
+
+        <div className="mt-6 flex justify-end">
+          <Button 
+            onClick={() => navigate(-1)}
+            variant="outline"
+          >
+            Back
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
