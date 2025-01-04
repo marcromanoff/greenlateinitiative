@@ -36,7 +36,7 @@ const AccessibilitySection = ({ isOpen, onToggle }: AccessibilitySectionProps) =
                       <li>
                         Dietary Icons/Text Are Present:
                         <ul className="list-disc pl-6 mt-2">
-                          <li>Vegetarian (V), Vegan (VG), Gluten-Free (GF), and major allergen warnings</li>
+                          <li>Vegetarian (V), Vegan (VG), Gluten-Free (GF), and major allergen warnings (nuts, dairy)</li>
                           <li>Labels must appear directly next to menu items or at point of service</li>
                         </ul>
                       </li>

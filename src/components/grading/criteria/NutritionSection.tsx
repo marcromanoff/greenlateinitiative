@@ -1,6 +1,6 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 interface NutritionSectionProps {
   isOpen: boolean;
@@ -36,6 +36,7 @@ const NutritionSection = ({ isOpen, onToggle }: NutritionSectionProps) => {
                       <li>
                         Displayed Consistently:
                         <ul className="list-disc pl-6 mt-2">
+                          <li>Visible in at least one of these formats:</li>
                           <li>On-site (menu boards or cafeteria screens)</li>
                           <li>Online (school dining website or mobile app)</li>
                           <li>On printed menus at dining stations</li>
