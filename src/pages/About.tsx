@@ -11,6 +11,9 @@ const About = () => {
       points: [
         <>
           <span className="font-bold">Be a GreenPlate Ambassador:</span> Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.
+          <Link to="/ambassador" className="block mt-2 text-primary hover:text-primary/80 transition-colors text-sm">
+            See GreenPlate Ambassador for more details →
+          </Link>
         </>,
         <>
           <span className="font-bold">Pride in Excellence:</span> Be part of a school recognized for achieving the highest standards in sustainability.
@@ -60,12 +63,7 @@ const About = () => {
                   style={{animationDelay: `${index * 0.1}s`}}
                 >
                   <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-6 border-b pb-3">
-                      <h3 className="text-2xl font-semibold text-primary">{section.title}</h3>
-                      <Link to="/ambassador" className="text-primary hover:text-primary/80 transition-colors text-sm whitespace-nowrap ml-4">
-                        See GreenPlate Ambassador for more details →
-                      </Link>
-                    </div>
+                    <h3 className="text-2xl font-semibold mb-6 text-primary border-b pb-3">{section.title}</h3>
                     <ul className="space-y-4">
                       {section.points.map((point, i) => (
                         <li key={i} className="flex items-start space-x-3">
