@@ -27,7 +27,7 @@ const Process = () => {
               </AccordionTrigger>
               <AccordionContent className="px-20">
                 <p className="text-gray-600">
-                  Start your journey towards sustainability with a simple step. <Link to="/get-involved" className="text-primary hover:text-primary/80 font-semibold">Visit our Get Involved page →</Link>
+                  Start your journey towards school lunch sustainability with a simple step. <Link to="/get-involved" className="text-primary hover:text-primary/80 font-semibold">Visit our Get Involved page →</Link>
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -41,7 +41,7 @@ const Process = () => {
               </AccordionTrigger>
               <AccordionContent className="px-20">
                 <p className="text-gray-600">
-                  After filling out the Student nomination form or administrator form, you will be sent a short form about your school's dining services. We'll evaluate your school's sustainability practices and provide a grade. After this, we will reach out to you and your suited administrator. Your school will receive a certificate based on your grade, which can be displayed in the cafeteria to showcase your commitment to sustainability.
+                  After filling out the Student nomination form or administrator form, you will be sent a short form about your school's dining services. We'll evaluate your school's school lunch sustainability practices and provide a grade. After this, we will reach out to you and your suited administrator. Your school will receive a certificate based on your grade, which can be displayed in the cafeteria to showcase your commitment to school lunch sustainability.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -55,7 +55,7 @@ const Process = () => {
               </AccordionTrigger>
               <AccordionContent className="px-20">
                 <p className="text-gray-600">
-                  Once the assessment is complete, we'll provide tools and recommendations to help your school align with the GreenPlate grading standards. These resources will guide your efforts to improve sustainability at your school.
+                  Once the assessment is complete, we'll provide tools and recommendations to help your school align with the GreenPlate grading standards for school lunch sustainability. These resources will guide your efforts to improve school lunch sustainability at your school.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -69,7 +69,7 @@ const Process = () => {
               </AccordionTrigger>
               <AccordionContent className="px-20">
                 <p className="text-gray-600">
-                  If your school's grade leaves room for improvement, don't worry! You'll have the opportunity to make updates, implement the recommendations, and re-submit the form for a new evaluation. This ensures your school has every chance to achieve excellence and recognition.
+                  If your school's grade leaves room for improvement, don't worry! You'll have the opportunity to make updates, implement the recommendations, and re-submit the form for a new evaluation. This ensures your school has every chance to achieve excellence and recognition in school lunch sustainability.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -83,7 +83,7 @@ const Process = () => {
               </AccordionTrigger>
               <AccordionContent className="px-20">
                 <p className="text-gray-600">
-                  Schools excelling in sustainability will receive special recognition through the GreenPlate Initiative, celebrating their leadership in ethical dining. All participating schools will gain actionable insights, ensuring progress toward creating healthier, more sustainable dining programs.
+                  Schools excelling in school lunch sustainability will receive special recognition through the GreenPlate Initiative, celebrating their leadership in ethical dining. All participating schools will gain actionable insights, ensuring progress toward creating healthier, more sustainable dining programs.
                 </p>
               </AccordionContent>
             </AccordionItem>

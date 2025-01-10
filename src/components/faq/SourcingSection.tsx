@@ -3,7 +3,7 @@ import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/
 export const SourcingSection = () => {
   return (
     <AccordionItem value="sourcing">
-      <AccordionTrigger className="text-xl font-semibold">5. Sourcing & Sustainability</AccordionTrigger>
+      <AccordionTrigger className="text-xl font-semibold">5. Sourcing & School Lunch Sustainability</AccordionTrigger>
       <AccordionContent className="space-y-4">
         <div>
           <h4 className="font-semibold">What qualifies as sustainable utensils?</h4>

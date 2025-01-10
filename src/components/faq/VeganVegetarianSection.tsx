@@ -18,8 +18,8 @@ export const VeganVegetarianSection = () => {
           <p>Absolutely! Many students, regardless of dietary preference, enjoy plant-based meals for their taste, health benefits, or environmental impact. Offering these options provides everyone with an opportunity to explore healthier, sustainable eating.</p>
         </div>
         <div>
-          <h4 className="font-semibold">How does providing vegan and vegetarian options align with sustainability goals?</h4>
-          <p>Plant-based meals have a significantly lower environmental impact than meat-based dishes, using fewer resources and producing fewer greenhouse gas emissions. Including these options supports your school's commitment to sustainability while also benefiting student health.</p>
+          <h4 className="font-semibold">How does providing vegan and vegetarian options align with school lunch sustainability goals?</h4>
+          <p>Plant-based meals have a significantly lower environmental impact than meat-based dishes, using fewer resources and producing fewer greenhouse gas emissions. Including these options supports your school's commitment to school lunch sustainability while also benefiting student health.</p>
         </div>
       </AccordionContent>
     </AccordionItem>
