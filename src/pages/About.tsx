@@ -2,6 +2,7 @@ import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent } from "../components/ui/card";
 import { Separator } from "../components/ui/separator";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const sections = [
@@ -50,7 +51,12 @@ const About = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why GreenPlate?</h2>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-4xl font-bold text-primary">Why GreenPlate?</h2>
+            <Link to="/ambassador" className="text-blue-600 hover:text-blue-800 text-sm">
+              See GreenPlate Ambassador for more details →
+            </Link>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {sections.map((section, index) => (
               <Card 
