@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const About = () => {
   const sections = [
     {
-      title: "For Students: Lead the Sustainability Movement",
+      title: "For Students: Lead the School Lunch Sustainability Movement",
       points: [
         <>
           <span className="font-bold">Be a GreenPlate Ambassador:</span> Take the first step in transforming your school's dining services by nominating your school for the GreenPlate program.
@@ -16,16 +16,16 @@ const About = () => {
           </Link>
         </>,
         <>
-          <span className="font-bold">Pride in Excellence:</span> Be part of a school recognized for achieving the highest standards in sustainability.
+          <span className="font-bold">Pride in Excellence:</span> Be part of a school recognized for achieving the highest standards in school lunch sustainability.
         </>,
         <>
-          <span className="font-bold">Raise Awareness:</span> Use your school's certification to encourage other schools to join the initiative.
+          <span className="font-bold">Raise Awareness:</span> Use your school's certification to encourage other schools to join the school lunch sustainability initiative.
         </>,
         <>
           <span className="font-bold">Create Change:</span> Advocate for better meals, reduced waste, and ethical practices in your cafeteria.
         </>,
         <>
-          <span className="font-bold">Stand Out:</span> Highlight your leadership in sustainability on resumes and college applications.
+          <span className="font-bold">Stand Out:</span> Highlight your leadership in school lunch sustainability on resumes and college applications.
         </>,
       ]
     },
@@ -33,16 +33,16 @@ const About = () => {
       title: "For Administrators: Take the Lead",
       points: [
         <>
-          <span className="font-bold">Achieve Recognition:</span> Join the program and make your school a model for sustainability with the GreenPlate Certification.
+          <span className="font-bold">Achieve Recognition:</span> Join the program and make your school a model for school lunch sustainability with the GreenPlate Certification.
         </>,
         <>
-          <span className="font-bold">Visible Achievement:</span> Display your certification to showcase your school's leadership and excellence in sustainability.
+          <span className="font-bold">Visible Achievement:</span> Display your certification to showcase your school's leadership and excellence in school lunch sustainability.
         </>,
         <>
-          <span className="font-bold">Inspire Change:</span> Set the bar for sustainability in your community, influencing neighboring schools and districts.
+          <span className="font-bold">Inspire Change:</span> Set the bar for school lunch sustainability in your community, influencing neighboring schools and districts.
         </>,
         <>
-          <span className="font-bold">Boost Your School's Appeal:</span> Gain recognition from families and communities for prioritizing sustainability and student health.
+          <span className="font-bold">Boost Your School's Appeal:</span> Gain recognition from families and communities for prioritizing school lunch sustainability and student health.
         </>,
       ]
     }
@@ -82,7 +82,7 @@ const About = () => {
         <Separator className="my-12" />
 
         <ScrollingFact fact="91% of parents support healthier, more sustainable school meals. (Pew Research)" />
-        <ScrollingFact fact="Schools with sustainability programs see a 40% increase in community approval. (Education Sustainability Report)" />
+        <ScrollingFact fact="Schools with school lunch sustainability programs see a 40% increase in community approval. (Education Sustainability Report)" />
 
         <Separator className="my-12" />
 
@@ -95,7 +95,7 @@ const About = () => {
               pescetarian with a strong commitment to environmental sustainability. Ari founded the 
               GreenPlate Initiative to promote transparency in school dining services. By developing 
               a structured grading system, the initiative seeks to encourage schools to prioritize 
-              health, inclusivity, and sustainability in their food programs.
+              health, inclusivity, and school lunch sustainability in their food programs.
             </p>
           </div>
         </div>
