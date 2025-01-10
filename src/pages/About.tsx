@@ -2,6 +2,7 @@ import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent } from "../components/ui/card";
 import { Separator } from "../components/ui/separator";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const sections = [
@@ -53,23 +54,27 @@ const About = () => {
           <h2 className="text-4xl font-bold mb-8 text-center text-primary">Why GreenPlate?</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {sections.map((section, index) => (
-              <Card 
-                key={index} 
-                className="animate-fade-in hover:shadow-lg transition-shadow duration-300"
-                style={{animationDelay: `${index * 0.1}s`}}
-              >
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-semibold mb-6 text-primary border-b pb-3">{section.title}</h3>
-                  <ul className="space-y-4">
-                    {section.points.map((point, i) => (
-                      <li key={i} className="flex items-start space-x-3">
-                        <span className="text-secondary mt-1.5 text-xl">•</span>
-                        <span className="text-gray-700 leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              <div key={index}>
+                <Card 
+                  className="animate-fade-in hover:shadow-lg transition-shadow duration-300"
+                  style={{animationDelay: `${index * 0.1}s`}}
+                >
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-semibold mb-6 text-primary border-b pb-3">{section.title}</h3>
+                    <ul className="space-y-4">
+                      {section.points.map((point, i) => (
+                        <li key={i} className="flex items-start space-x-3">
+                          <span className="text-secondary mt-1.5 text-xl">•</span>
+                          <span className="text-gray-700 leading-relaxed">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Link to="/ambassador" className="block mt-4 text-primary hover:text-primary/80 transition-colors">
+                  See GreenPlate Ambassador for more details →
+                </Link>
+              </div>
             ))}
           </div>
         </div>
