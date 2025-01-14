@@ -31,6 +31,7 @@ const WhatIsGreenPlate = () => {
                     className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                   />
                   <p className="text-sm text-gray-500 mt-2 italic">Photo credit: Food Service Company</p>
+                  <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
