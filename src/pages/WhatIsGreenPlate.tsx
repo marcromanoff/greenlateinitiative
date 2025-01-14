@@ -24,15 +24,6 @@ const WhatIsGreenPlate = () => {
                     We assess schools based on four key categories:
                   </p>
                 </div>
-                <div className="relative h-48 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/63ababdd-8093-4efc-8804-9f156cfb0df7.png"
-                    alt="Sustainable school lunch example"
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                  />
-                  <p className="text-sm text-gray-500 mt-2 italic">Photo credit: Food Service Company</p>
-                  <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
-                </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 {[
