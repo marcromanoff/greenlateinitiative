@@ -15,7 +15,7 @@ const WhatIsGreenPlate = () => {
           
           <div className="space-y-8">
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
-              <div className="grid md:grid-cols-2 gap-8 items-center mb-6">
+              <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
                   <p className="text-gray-700 leading-relaxed mb-4">
