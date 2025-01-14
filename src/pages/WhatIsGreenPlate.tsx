@@ -30,6 +30,7 @@ const WhatIsGreenPlate = () => {
                     alt="Sustainable school lunch example"
                     className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
                   />
+                  <p className="text-sm text-gray-500 mt-2 italic">Photo credit: Food Service Company</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -54,19 +55,25 @@ const WhatIsGreenPlate = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="relative h-32 rounded-lg overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
-                        alt="Sustainable catering display"
-                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                      />
+                    <div className="space-y-2">
+                      <div className="relative h-32 rounded-lg overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
+                          alt="Sustainable catering display"
+                          className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
                     </div>
-                    <div className="relative h-32 rounded-lg overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/aa78668a-c29b-4dba-a8aa-1f61a85664dc.png"
-                        alt="Fresh food preparation"
-                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                      />
+                    <div className="space-y-2">
+                      <div className="relative h-32 rounded-lg overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/aa78668a-c29b-4dba-a8aa-1f61a85664dc.png"
+                          alt="Fresh food preparation"
+                          className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-500 italic">Photo credit: Sage Dining Services</p>
                     </div>
                   </div>
                 </div>
@@ -99,24 +106,30 @@ const WhatIsGreenPlate = () => {
                     ethical and sustainable dining standards, one school at a time.
                   </p>
                 </div>
-                <div className="relative h-48 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/6c0b369e-324c-45be-a5ff-5e99569d221f.png"
-                    alt="School lunch options"
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="space-y-2">
+                  <div className="relative h-48 rounded-lg overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/6c0b369e-324c-45be-a5ff-5e99569d221f.png"
+                      alt="School lunch options"
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 italic">Photo credit: Machiso's Food Services</p>
                 </div>
               </div>
             </section>
 
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
               <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative h-48 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/fb80305d-12fc-4647-b326-9b441fe226c8.png"
-                    alt="Sustainable meal preparation"
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="space-y-2">
+                  <div className="relative h-48 rounded-lg overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/fb80305d-12fc-4647-b326-9b441fe226c8.png"
+                      alt="Sustainable meal preparation"
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 italic">Photo credit: Creative Dining Services</p>
                 </div>
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Vision</h2>
