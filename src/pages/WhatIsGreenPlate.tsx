@@ -15,12 +15,23 @@ const WhatIsGreenPlate = () => {
           
           <div className="space-y-8">
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
-              <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                The GreenPlate Initiative is a structured grading system that evaluates sustainability in school lunches. 
-                We grade using completely objective criteria and information provided by schools and GreenPlate ambassadors. 
-                We assess schools based on four key categories:
-              </p>
+              <div className="grid md:grid-cols-2 gap-8 items-center mb-6">
+                <div>
+                  <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    The GreenPlate Initiative is a structured grading system that evaluates school lunch sustainability in school lunches. 
+                    We grade using completely objective criteria and information provided by schools and GreenPlate ambassadors. 
+                    We assess schools based on four key categories:
+                  </p>
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/63ababdd-8093-4efc-8804-9f156cfb0df7.png"
+                    alt="Sustainable school lunch example"
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 {[
                   "Variety & Inclusivity",
@@ -40,39 +51,83 @@ const WhatIsGreenPlate = () => {
             </section>
 
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
-              <h2 className="text-2xl font-semibold mb-4 text-primary">Recognition System</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Schools can earn <Link to="/awards" className="text-amber-600 hover:text-amber-700 font-semibold">Gold</Link>, 
-                <Link to="/awards" className="text-gray-500 hover:text-gray-600 font-semibold"> Silver</Link>, or 
-                <Link to="/awards" className="text-orange-600 hover:text-orange-700 font-semibold"> Bronze</Link> certification 
-                based on their commitment to sustainable dining practices. These certifications not only recognize schools 
-                for their achievements but also serve as a symbol of their commitment to creating a healthier, greener 
-                future for students and the planet.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                Schools earning certifications are celebrated for their leadership in sustainability and receive tools, 
-                resources, and actionable feedback to continue improving their dining programs.
-              </p>
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="order-2 md:order-1">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="relative h-32 rounded-lg overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
+                        alt="Sustainable catering display"
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="relative h-32 rounded-lg overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/aa78668a-c29b-4dba-a8aa-1f61a85664dc.png"
+                        alt="Fresh food preparation"
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="order-1 md:order-2">
+                  <h2 className="text-2xl font-semibold mb-4 text-primary">Recognition System</h2>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Schools can earn <Link to="/awards" className="text-amber-600 hover:text-amber-700 font-semibold">Gold</Link>, 
+                    <Link to="/awards" className="text-gray-500 hover:text-gray-600 font-semibold"> Silver</Link>, or 
+                    <Link to="/awards" className="text-orange-600 hover:text-orange-700 font-semibold"> Bronze</Link> certification 
+                    based on their commitment to sustainable dining practices. These certifications not only recognize schools 
+                    for their achievements but also serve as a symbol of their commitment to creating a healthier, greener 
+                    future for students and the planet.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    Schools earning certifications are celebrated for their leadership in school lunch sustainability and receive tools, 
+                    resources, and actionable feedback to continue improving their dining programs.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
-              <h2 className="text-2xl font-semibold mb-4 text-primary">Collaborative Approach</h2>
-              <p className="text-gray-700 leading-relaxed">
-                The GreenPlate Initiative encourages schools to take pride in their efforts, share their progress 
-                with their communities, and inspire others to join the movement. By fostering collaboration between 
-                students, administrators, and GreenPlate Ambassadors, we aim to create a nationwide shift toward 
-                ethical and sustainable dining standards, one school at a time.
-              </p>
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-semibold mb-4 text-primary">Collaborative Approach</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    The GreenPlate Initiative encourages schools to take pride in their efforts, share their progress 
+                    with their communities, and inspire others to join the movement. By fostering collaboration between 
+                    students, administrators, and GreenPlate Ambassadors, we aim to create a nationwide shift toward 
+                    ethical and sustainable dining standards, one school at a time.
+                  </p>
+                </div>
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/6c0b369e-324c-45be-a5ff-5e99569d221f.png"
+                    alt="School lunch options"
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
             </section>
 
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
-              <h2 className="text-2xl font-semibold mb-4 text-primary">Our Vision</h2>
-              <p className="text-gray-700 leading-relaxed">
-                Our ultimate goal is to make sustainable dining practices the norm in schools, empowering them to 
-                serve meals that are not only nutritious and inclusive but also environmentally responsible. 
-                Together, we can build a future where every school cafeteria embodies the principles of health, 
-                sustainability, and inclusivity.
-              </p>
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="relative h-48 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/fb80305d-12fc-4647-b326-9b441fe226c8.png"
+                    alt="Sustainable meal preparation"
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-semibold mb-4 text-primary">Our Vision</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Our ultimate goal is to make sustainable dining practices the norm in schools, empowering them to 
+                    serve meals that are not only nutritious and inclusive but also environmentally responsible. 
+                    Together, we can build a future where every school cafeteria embodies the principles of health, 
+                    school lunch sustainability, and inclusivity.
+                  </p>
+                </div>
+              </div>
             </section>
           </div>
         </div>
