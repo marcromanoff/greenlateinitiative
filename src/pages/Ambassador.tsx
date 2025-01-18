@@ -17,6 +17,18 @@ const Ambassador = () => {
               </Button>
             </Link>
           </div>
+
+          {/* Certificate Image */}
+          <div className="mb-12">
+            <div className="relative rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/1c49f39c-fad0-4949-b2e3-8455683ae9cc.png"
+                alt="Example GreenPlate Certificate of Nomination"
+                className="w-full object-contain"
+              />
+            </div>
+            <p className="text-sm text-gray-500 italic text-center mt-2">Example GreenPlate Certificate of Nomination</p>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Students Column */}
