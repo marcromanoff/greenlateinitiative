@@ -19,7 +19,7 @@ const WhatIsGreenPlate = () => {
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    The GreenPlate Initiative is a structured grading system that evaluates school lunch sustainability in school lunches. 
+                    The GreenPlate Initiative is a structured grading system that evaluates school lunch sustainability. 
                     We grade using completely objective criteria and information provided by schools and GreenPlate ambassadors. 
                     We assess schools based on four key categories:
                   </p>
