@@ -17,18 +17,6 @@ const Ambassador = () => {
               </Button>
             </Link>
           </div>
-
-          {/* Certificate Image */}
-          <div className="mb-12">
-            <div className="relative rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/1c49f39c-fad0-4949-b2e3-8455683ae9cc.png"
-                alt="Example GreenPlate Certificate of Nomination"
-                className="w-full object-contain"
-              />
-            </div>
-            <p className="text-sm text-gray-500 italic text-center mt-2">Example GreenPlate Certificate of Nomination</p>
-          </div>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Students Column */}
@@ -58,7 +46,7 @@ const Ambassador = () => {
             </section>
           </div>
 
-          <section className="bg-primary/10 p-8 rounded-lg">
+          <section className="bg-primary/10 p-8 rounded-lg mb-12">
             <h2 className="text-2xl font-bold text-primary mb-6">First Applicants Receive Exclusive Perks:</h2>
             <ul className="list-disc list-inside text-gray-700 space-y-3 mb-8 text-lg">
               <li>Official Certificate of Nomination</li>
@@ -66,6 +54,18 @@ const Ambassador = () => {
               <li>Recognition as a trailblazer in sustainability</li>
             </ul>
           </section>
+
+          {/* Certificate Image */}
+          <div className="mb-12 max-w-2xl mx-auto">
+            <div className="relative rounded-lg overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/1c49f39c-fad0-4949-b2e3-8455683ae9cc.png"
+                alt="Example GreenPlate Certificate of Nomination"
+                className="w-full object-contain"
+              />
+            </div>
+            <p className="text-sm text-gray-500 italic text-center mt-2">Example GreenPlate Certificate of Nomination</p>
+          </div>
         </div>
       </main>
     </div>
