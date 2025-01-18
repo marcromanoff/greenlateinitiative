@@ -23,6 +23,16 @@ const StudentAdminSection = () => {
           <p className="text-sm text-gray-600 text-center">
             Start making a difference at your school
           </p>
+          <div className="mt-4 space-y-2">
+            <div className="relative h-48 rounded-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/b1242c21-9120-419b-992a-f60f8e53669a.png"
+                alt="Plant-based jackfruit dish with rice and vegetables"
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <p className="text-sm text-gray-500 italic">Photo credit: The Jackfruit Company</p>
+          </div>
         </div>
       </div>
       
