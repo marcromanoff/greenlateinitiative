@@ -6,7 +6,7 @@ import { Download } from "lucide-react";
 const Downloads = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/ba1a37e3-498a-4041-b3b1-587dd4c3b16f.png';
+    link.href = '/lovable-uploads/7f4c154a-a8c6-4b32-962a-12a641241df9.png';
     link.download = 'GreenPlate-Initiative-Flyer.png';
     document.body.appendChild(link);
     link.click();
@@ -26,7 +26,7 @@ const Downloads = () => {
               <h2 className="text-2xl font-semibold mb-6">Promotional Materials</h2>
               <div className="flex flex-col items-center gap-6">
                 <img 
-                  src="/lovable-uploads/ba1a37e3-498a-4041-b3b1-587dd4c3b16f.png"
+                  src="/lovable-uploads/7f4c154a-a8c6-4b32-962a-12a641241df9.png"
                   alt="GreenPlate Initiative Flyer"
                   className="max-w-md w-full rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                 />
