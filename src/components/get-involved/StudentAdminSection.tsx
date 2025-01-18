@@ -44,6 +44,16 @@ const StudentAdminSection = () => {
           <p className="text-sm text-gray-600 text-center">
             Lead your school towards sustainability
           </p>
+          <div className="mt-4 space-y-2">
+            <div className="relative h-48 rounded-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/166b33be-226e-4fb6-9372-cb7c431eebe5.png"
+                alt="Sustainable catering display"
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <p className="text-sm text-gray-500 italic">Photo credit: Sage Dining</p>
+          </div>
         </div>
       </div>
     </div>
