@@ -72,6 +72,18 @@ const About = () => {
                         </li>
                       ))}
                     </ul>
+                    {section.title.includes("Administrators") && (
+                      <div className="mt-6 space-y-2">
+                        <div className="relative h-48 rounded-lg overflow-hidden">
+                          <img 
+                            src="/lovable-uploads/ca1f7893-1bfb-4f3c-a793-f80be2880d2e.png"
+                            alt="Sustainable catering appetizers"
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                        <p className="text-sm text-gray-500 italic">Photo credit: Sage Dining</p>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>
