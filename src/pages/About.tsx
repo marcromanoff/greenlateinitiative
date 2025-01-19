@@ -76,12 +76,12 @@ const About = () => {
                       <div className="mt-6 space-y-2">
                         <div className="relative h-48 rounded-lg overflow-hidden">
                           <img 
-                            src="/lovable-uploads/0510a9d7-2d25-4e11-bf53-fd1d32136c2d.png"
-                            alt="Sustainable food preparation with fresh ingredients"
+                            src="/lovable-uploads/22a28a6d-b4a9-4a55-819e-1bf723c4ef4e.png"
+                            alt="Sustainable school lunch preparation showing fresh ingredients"
                             className="object-cover w-full h-full"
                           />
                         </div>
-                        <p className="text-sm text-gray-500 italic">Photo credit: GreenPlate Initiative</p>
+                        <p className="text-sm text-gray-500 italic">Photo credit: Sage Dining</p>
                       </div>
                     )}
                     {section.title.includes("Administrators") && (
