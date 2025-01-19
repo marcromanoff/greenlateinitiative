@@ -46,27 +46,15 @@ const WhatIsGreenPlate = () => {
             <section className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-green-100">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <div className="relative h-32 rounded-lg overflow-hidden">
-                        <img 
-                          src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
-                          alt="Sustainable catering display"
-                          className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
+                  <div className="space-y-2">
+                    <div className="relative h-48 rounded-lg overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
+                        alt="Sustainable catering display"
+                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <div className="space-y-2">
-                      <div className="relative h-32 rounded-lg overflow-hidden">
-                        <img 
-                          src="/lovable-uploads/aa78668a-c29b-4dba-a8aa-1f61a85664dc.png"
-                          alt="Fresh food preparation"
-                          className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <p className="text-sm text-gray-500 italic">Photo credit: Sage Dining Services</p>
-                    </div>
+                    <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
                   </div>
                 </div>
                 <div className="order-1 md:order-2">
