@@ -76,8 +76,8 @@ const About = () => {
                       <div className="mt-6 space-y-2">
                         <div className="relative h-48 rounded-lg overflow-hidden">
                           <img 
-                            src="/lovable-uploads/2f44dbe2-bdb6-4068-a4ad-64e0e8cf6bf0.png"
-                            alt="Sustainable school lunch with stuffed peppers"
+                            src="/lovable-uploads/22a28a6d-b4a9-4a55-819e-1bf723c4ef4e.png"
+                            alt="Sustainable school lunch preparation showing fresh ingredients"
                             className="object-cover w-full h-full"
                           />
                         </div>
