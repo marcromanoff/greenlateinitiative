@@ -1,3 +1,4 @@
+
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ import {
 
 const Process = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#D3E4FD] via-[#E8F4E2] to-[#F2FCE2]">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
