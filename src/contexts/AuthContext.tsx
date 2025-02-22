@@ -29,28 +29,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const fetchUserRoles = async (userId: string): Promise<AppRole[]> => {
     console.log('🔍 Starting fetchUserRoles for userId:', userId);
     
+    if (!userId) {
+      console.log('❌ No userId provided to fetchUserRoles');
+      return ['user'];
+    }
+
     try {
-      // First check admin role using has_role function
-      const { data: isAdminRole, error: fnError } = await supabase
-        .rpc('has_role', {
-          _user_id: userId,
-          _role: 'admin' as AppRole
-        });
-
-      if (fnError) {
-        console.error('❌ Error checking admin role:', fnError);
-        throw fnError;
-      }
-
-      console.log('✅ has_role function result for admin:', isAdminRole);
-
-      // If has_role returns true, we know the user is an admin
-      if (isAdminRole) {
-        console.log('🎉 User confirmed as admin via has_role function');
-        return ['admin' as AppRole];
-      }
-
-      // If not admin, fetch all roles directly
+      // First try to get all roles directly from user_roles table
       const { data: userRoles, error: rolesError } = await supabase
         .from('user_roles')
         .select('role')
@@ -61,59 +46,108 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         throw rolesError;
       }
 
-      console.log('📋 User roles from database:', userRoles);
+      console.log('📋 Raw user roles from database:', userRoles);
 
       if (!userRoles || userRoles.length === 0) {
         console.log('ℹ️ No roles found for user, defaulting to user role');
-        return ['user' as AppRole]; // Default role
+        return ['user'];
       }
 
+      // Map the roles and check if admin is included
       const processedRoles = userRoles.map(r => r.role as AppRole);
-      console.log('✨ Processed roles:', processedRoles);
+      const isAdminUser = processedRoles.includes('admin');
+
+      // Double check admin status with has_role function for verification
+      if (isAdminUser) {
+        const { data: adminConfirmed, error: fnError } = await supabase
+          .rpc('has_role', {
+            _user_id: userId,
+            _role: 'admin' as AppRole
+          });
+
+        if (fnError) {
+          console.error('❌ Error confirming admin role:', fnError);
+          // Don't throw here, continue with roles from DB
+        } else if (!adminConfirmed) {
+          console.warn('⚠️ Admin role mismatch: DB says yes, function says no');
+          // Remove admin role if function check fails
+          return processedRoles.filter(role => role !== 'admin');
+        }
+      }
+
+      console.log('✨ Final processed roles:', processedRoles);
       return processedRoles;
 
     } catch (error) {
       console.error('❌ Error in fetchUserRoles:', error);
       toast.error('Failed to fetch user roles');
-      return ['user' as AppRole]; // Default to user role on error
+      return ['user']; // Default to user role on error
     }
   };
 
   useEffect(() => {
-    // Check active sessions and sets the user
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('🔄 Initial session check:', session?.user ?? 'No user');
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchUserRoles(session.user.id).then(fetchedRoles => {
-          console.log('👥 Setting initial roles:', fetchedRoles);
-          setRoles(fetchedRoles);
-        });
-      } else {
-        console.log('👤 No user session, setting default role');
-        setRoles(['user' as AppRole]); // Default role for logged out users
+    let mounted = true;
+
+    // Initial session check
+    const initializeAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        console.log('🔄 Initial session check:', session?.user ?? 'No user');
+        
+        if (mounted) {
+          setUser(session?.user ?? null);
+          
+          if (session?.user) {
+            const fetchedRoles = await fetchUserRoles(session.user.id);
+            console.log('👥 Setting initial roles:', fetchedRoles);
+            setRoles(fetchedRoles);
+          } else {
+            console.log('👤 No user session, setting default role');
+            setRoles(['user']);
+          }
+          
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error('❌ Error in initializeAuth:', error);
+        if (mounted) {
+          setIsLoading(false);
+          setRoles(['user']);
+        }
       }
-      setIsLoading(false);
+    };
+
+    initializeAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      console.log('🔄 Auth state changed:', {
+        event: _event,
+        userId: session?.user?.id,
+        email: session?.user?.email
+      });
+
+      if (mounted) {
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          const userRoles = await fetchUserRoles(session.user.id);
+          console.log('👥 Setting updated roles:', userRoles);
+          setRoles(userRoles);
+        } else {
+          console.log('👤 User logged out, setting default role');
+          setRoles(['user']);
+        }
+        
+        setIsLoading(false);
+      }
     });
 
-    // Listen for changes on auth state
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      console.log('🔄 Auth state changed:', session?.user ?? 'No user');
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        const userRoles = await fetchUserRoles(session.user.id);
-        console.log('👥 Setting updated roles:', userRoles);
-        setRoles(userRoles);
-      } else {
-        console.log('👤 User logged out, setting default role');
-        setRoles(['user' as AppRole]);
-      }
-      setIsLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    // Cleanup
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signOut = async () => {
@@ -124,7 +158,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       
       // Clear state immediately
       setUser(null);
-      setRoles(['user' as AppRole]);
+      setRoles(['user']);
       
       // Then attempt Supabase signout
       const { error } = await supabase.auth.signOut();
@@ -177,4 +211,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
