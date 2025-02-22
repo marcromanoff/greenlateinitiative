@@ -30,62 +30,56 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log('🔍 Starting fetchUserRoles for userId:', userId);
     
     if (!userId) {
-      console.error('❌ ERROR: fetchUserRoles called with an undefined userId. Stack:', new Error().stack);
+      console.error('❌ No userId provided for fetchUserRoles');
       return ['user'];
     }
 
     try {
-      console.log('📊 Attempting to fetch roles for user:', userId);
+      console.log('📊 Fetching roles from user_roles table...');
       
-      // First try to get all roles directly from user_roles table
       const { data: userRoles, error: rolesError } = await supabase
         .from('user_roles')
-        .select('*')  // Changed to select all columns for debugging
+        .select('role')
         .eq('user_id', userId);
 
       if (rolesError) {
         console.error('❌ Error fetching user roles:', rolesError);
-        throw rolesError;
-      }
-
-      console.log('📋 Raw user roles data from database:', JSON.stringify(userRoles, null, 2));
-
-      if (!userRoles || userRoles.length === 0) {
-        console.log('⚠️ No roles found in database for user:', userId);
         return ['user'];
       }
 
-      const processedRoles = userRoles.map(r => r.role as AppRole);
-      console.log('🔄 Processed roles from DB:', processedRoles);
-
-      // Double check admin role if present
-      if (processedRoles.includes('admin')) {
-        console.log('🔐 Verifying admin status via has_role function...');
-        
-        const { data: adminConfirmed, error: fnError } = await supabase
-          .rpc('has_role', {
-            _user_id: userId,
-            _role: 'admin' as AppRole
-          });
-
-        console.log('🏷️ has_role function response:', { adminConfirmed, error: fnError });
-
-        if (fnError) {
-          console.error('❌ Error from has_role function:', fnError);
-          toast.error('Error verifying admin role');
-        } else if (!adminConfirmed) {
-          console.warn('⚠️ Role mismatch detected: DB shows admin but function check failed');
-          return processedRoles.filter(role => role !== 'admin');
-        }
+      if (!userRoles || userRoles.length === 0) {
+        console.log('⚠️ No roles found, defaulting to user role');
+        return ['user'];
       }
 
-      console.log('✅ Final processed roles:', processedRoles);
-      return processedRoles;
+      const roles = userRoles.map(r => r.role as AppRole);
+      console.log('✅ Fetched roles:', roles);
+
+      return roles;
 
     } catch (error) {
-      console.error('❌ Detailed error in fetchUserRoles:', error);
-      toast.error('Failed to fetch user roles');
+      console.error('❌ Error in fetchUserRoles:', error);
       return ['user'];
+    }
+  };
+
+  // Function to handle role updates
+  const updateUserRoles = async (currentUser: User | null) => {
+    console.log('🔄 Updating roles for user:', currentUser?.email);
+    
+    if (!currentUser) {
+      console.log('ℹ️ No user, setting default role');
+      setRoles(['user']);
+      return;
+    }
+
+    try {
+      const fetchedRoles = await fetchUserRoles(currentUser.id);
+      console.log('✨ Setting roles:', fetchedRoles);
+      setRoles(fetchedRoles);
+    } catch (error) {
+      console.error('❌ Error updating roles:', error);
+      setRoles(['user']);
     }
   };
 
@@ -102,32 +96,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (session?.user) {
           console.log('👤 Session found for user:', session.user.email);
           setUser(session.user);
-          
-          console.log('🔄 Fetching initial roles...');
-          const userRoles = await fetchUserRoles(session.user.id);
-          console.log('✨ Initial roles set:', userRoles);
-          setRoles(userRoles);
+          await updateUserRoles(session.user);
         } else {
           console.log('ℹ️ No active session found');
           setUser(null);
           setRoles(['user']);
         }
-        
-        setIsLoading(false);
       } catch (error) {
         console.error('❌ Error in initializeAuth:', error);
         if (mounted) {
-          setIsLoading(false);
           setRoles(['user']);
-          toast.error('Error initializing authentication');
+        }
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
         }
       }
     };
 
-    // Run initial auth check
-    initializeAuth();
-
-    // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('🔄 Auth state changed:', {
         event,
@@ -140,11 +126,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (session?.user) {
         console.log('👤 User session updated:', session.user.email);
         setUser(session.user);
-        
-        console.log('🔄 Fetching updated roles...');
-        const userRoles = await fetchUserRoles(session.user.id);
-        console.log('✨ Updated roles:', userRoles);
-        setRoles(userRoles);
+        await updateUserRoles(session.user);
       } else {
         console.log('👤 No user in updated session');
         setUser(null);
@@ -153,6 +135,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       
       setIsLoading(false);
     });
+
+    // Run initial auth check
+    initializeAuth();
 
     return () => {
       mounted = false;
@@ -169,25 +154,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(null);
       setRoles(['user']);
       
-      // Force clear the session from storage
-      window.localStorage.removeItem('supabase.auth.token');
-      
       // Attempt Supabase signout
       const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error('❌ Error signing out:', error);
-        throw error;
-      }
+      if (error) throw error;
       
       console.log('✅ Successfully signed out');
-      
-      // Force a page reload to ensure clean state
       window.location.href = '/auth';
       
     } catch (error) {
-      console.error('❌ Detailed sign out error:', error);
+      console.error('❌ Sign out error:', error);
       toast.error('Error signing out');
-      // Force reload even on error to ensure clean state
       window.location.href = '/auth';
     } finally {
       setIsLoading(false);
@@ -225,4 +201,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
