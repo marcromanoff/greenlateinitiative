@@ -75,16 +75,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signOut = async () => {
     console.log('Starting sign out process...');
     try {
+      // Force clear the session from storage first
+      window.localStorage.removeItem('supabase.auth.token');
+      
+      // Clear state immediately
+      setUser(null);
+      setRoles([]);
+      
+      // Then attempt Supabase signout
       const { error } = await supabase.auth.signOut();
       if (error) {
         console.error("Error signing out:", error);
         throw error;
       }
+      
       console.log('Successfully signed out from Supabase');
-      setUser(null);
-      setRoles([]);
+      
+      // Force a page reload to ensure clean state
+      window.location.href = '/auth';
+      
     } catch (error) {
       console.error('Detailed sign out error:', error);
+      // Even if there's an error, we want to force a clean state
+      window.location.href = '/auth';
       throw error;
     }
   };
@@ -114,4 +127,3 @@ export const useAuth = () => {
   }
   return context;
 };
-

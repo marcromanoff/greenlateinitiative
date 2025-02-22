@@ -1,4 +1,3 @@
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
@@ -34,13 +33,9 @@ const Navigation = () => {
       console.log('Attempting to sign out...');
       await signOut();
       console.log('Successfully signed out');
-      toast.success('Successfully signed out');
-      console.log('Navigating to auth page...');
-      navigate('/auth');
     } catch (error) {
       console.error('Error signing out:', error);
       toast.error('Failed to sign out');
-    } finally {
       setIsSigningOut(false);
     }
   };
@@ -182,4 +177,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
