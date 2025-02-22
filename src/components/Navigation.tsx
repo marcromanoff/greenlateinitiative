@@ -25,8 +25,10 @@ const Navigation = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      navigate('/auth');
+      // First show the success message
       toast.success('Successfully signed out');
+      // Then navigate to auth page
+      navigate('/auth');
     } catch (error) {
       console.error('Error signing out:', error);
       toast.error('Failed to sign out');
@@ -158,4 +160,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

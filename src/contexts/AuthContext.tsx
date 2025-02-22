@@ -67,12 +67,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signOut = async () => {
-    try {
-      await supabase.auth.signOut();
-      setRoles([]);
-    } catch (error) {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
       console.error("Error signing out:", error);
+      throw error; // Propagate the error to be handled by the component
     }
+    setUser(null);
+    setRoles([]);
   };
 
   return (
