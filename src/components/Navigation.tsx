@@ -1,5 +1,5 @@
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
 import { useState } from "react";
@@ -8,12 +8,17 @@ import { Button } from "./ui/button";
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin } = useAuth();
   
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const goToAdminDashboard = () => {
+    navigate('/admin');
   };
 
   const links = [
@@ -45,6 +50,15 @@ const Navigation = () => {
                 <Menu size={24} />
               </button>
               <div className="flex items-center gap-2">
+                {user && isAdmin && (
+                  <Button 
+                    variant="default"
+                    size="sm"
+                    onClick={goToAdminDashboard}
+                  >
+                    Admin Dashboard
+                  </Button>
+                )}
                 {user ? (
                   <>
                     <span className="text-sm text-gray-600">{user.email}</span>
@@ -100,6 +114,15 @@ const Navigation = () => {
               ))}
             </div>
             <div className="ml-4 flex items-center gap-4">
+              {user && isAdmin && (
+                <Button 
+                  variant="default"
+                  size="sm"
+                  onClick={goToAdminDashboard}
+                >
+                  Admin Dashboard
+                </Button>
+              )}
               {user ? (
                 <>
                   <span className="text-sm text-gray-600">{user.email}</span>
@@ -123,3 +146,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
