@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 const Navigation = () => {
   const location = useLocation();
@@ -19,6 +20,17 @@ const Navigation = () => {
 
   const goToAdminDashboard = () => {
     navigate('/admin');
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigate('/auth');
+      toast.success('Successfully signed out');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast.error('Failed to sign out');
+    }
   };
 
   const links = [
@@ -62,7 +74,7 @@ const Navigation = () => {
                 {user ? (
                   <>
                     <span className="text-sm text-gray-600">{user.email}</span>
-                    <Button variant="outline" size="sm" onClick={signOut}>
+                    <Button variant="outline" size="sm" onClick={handleSignOut}>
                       Sign Out
                     </Button>
                   </>
@@ -126,7 +138,7 @@ const Navigation = () => {
               {user ? (
                 <>
                   <span className="text-sm text-gray-600">{user.email}</span>
-                  <Button variant="outline" size="sm" onClick={signOut}>
+                  <Button variant="outline" size="sm" onClick={handleSignOut}>
                     Sign Out
                   </Button>
                 </>
