@@ -1,12 +1,16 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "./ui/button";
 
 const Navigation = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -40,6 +44,19 @@ const Navigation = () => {
               >
                 <Menu size={24} />
               </button>
+              <div className="flex items-center gap-2">
+                {user ? (
+                  <Button variant="outline" size="sm" onClick={signOut}>
+                    Sign Out
+                  </Button>
+                ) : (
+                  <Link to="/auth">
+                    <Button variant="outline" size="sm">
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
             {isMenuOpen && (
               <div className="absolute top-16 left-0 w-full bg-white border-b z-50 animate-fade-in">
@@ -64,7 +81,7 @@ const Navigation = () => {
           </div>
         ) : (
           <div className="flex justify-between items-center h-16">
-            <div className="flex justify-between w-full">
+            <div className="flex justify-between flex-1">
               {links.map((link) => (
                 <Link
                   key={link.to}
@@ -78,6 +95,19 @@ const Navigation = () => {
                   {link.label}
                 </Link>
               ))}
+            </div>
+            <div className="ml-4">
+              {user ? (
+                <Button variant="outline" size="sm" onClick={signOut}>
+                  Sign Out
+                </Button>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="outline" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}
