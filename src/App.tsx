@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Toaster } from "./components/ui/toaster";
@@ -16,7 +17,8 @@ import Downloads from "./pages/Downloads";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
-import "./App.css";
+import AdminDashboard from "./pages/AdminDashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
@@ -38,6 +40,14 @@ const App = () => {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute allowedRoles={['admin']}>
+                  <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </main>
         <Toaster />
@@ -48,3 +58,4 @@ const App = () => {
 };
 
 export default App;
+
