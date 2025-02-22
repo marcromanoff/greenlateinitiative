@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { GraduationCap, Clipboard } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -15,8 +14,6 @@ interface NominationFormValues {
   school: string;
   schoolType: string;
   schoolTypeOther?: string;
-  position: string;
-  positionOther?: string;
   townState: string;
 }
 
@@ -31,7 +28,6 @@ const StudentAdminSection = () => {
       name: "",
       school: "",
       schoolType: "",
-      position: "",
       townState: ""
     }
   });
@@ -42,7 +38,6 @@ const StudentAdminSection = () => {
       name: "",
       school: "",
       schoolType: "",
-      position: "",
       townState: ""
     }
   });
@@ -58,8 +53,7 @@ const StudentAdminSection = () => {
           school: values.school,
           school_type: values.schoolType as any,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: values.position as any,
-          position_other: values.position === "other" ? values.positionOther : null,
+          position: 'student' as any,
           town_state: values.townState
         });
 
@@ -87,8 +81,7 @@ const StudentAdminSection = () => {
           school: values.school,
           school_type: values.schoolType as any,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: values.position as any,
-          position_other: values.position === "other" ? values.positionOther : null,
+          position: 'administrator' as any,
           town_state: values.townState
         });
 
@@ -111,7 +104,6 @@ const StudentAdminSection = () => {
     onCancel: () => void;
   }) => {
     const schoolType = form.watch("schoolType");
-    const position = form.watch("position");
 
     return (
       <Form {...form}>
@@ -201,48 +193,6 @@ const StudentAdminSection = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Specify School Type</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          )}
-
-          <FormField
-            control={form.control}
-            name="position"
-            rules={{ required: "Position is required" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Your Position</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your position" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="student">Student</SelectItem>
-                    <SelectItem value="administrator">Administrator</SelectItem>
-                    <SelectItem value="parent">Parent</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {position === "other" && (
-            <FormField
-              control={form.control}
-              name="positionOther"
-              rules={{ required: "Please specify your position" }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Specify Position</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -371,4 +321,3 @@ const StudentAdminSection = () => {
 };
 
 export default StudentAdminSection;
-
