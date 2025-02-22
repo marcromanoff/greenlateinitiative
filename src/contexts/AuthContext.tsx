@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [roles, setRoles] = useState<AppRole[]>([]);
 
   const fetchUserRoles = async (userId: string) => {
-    console.log('Fetching roles for user:', userId);
+    console.log('Starting fetchUserRoles for userId:', userId);
     
     try {
       // First try to verify if the user has admin role using the has_role function
@@ -42,23 +42,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         throw fnError;
       }
 
-      console.log('Has admin role result:', hasAdminRole);
+      console.log('has_role function result:', hasAdminRole);
 
-      // Then fetch all roles from the user_roles table
+      // Direct query to user_roles table with detailed logging
       const { data: roleData, error: queryError } = await supabase
         .from("user_roles")
-        .select("role")
+        .select("*")  // Select all columns for debugging
         .eq("user_id", userId);
 
       if (queryError) {
         console.error('Error fetching user roles:', queryError);
+        if (queryError.message.includes('policy')) {
+          console.error('This appears to be an RLS policy error');
+        }
         throw queryError;
       }
 
-      console.log('Fetched roles data:', roleData);
+      console.log('Raw user_roles query result:', roleData);
       
-      if (!roleData) {
-        console.log('No roles found for user');
+      if (!roleData || roleData.length === 0) {
+        console.log('No roles found for user in database');
         return [];
       }
 
@@ -134,7 +137,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const isAdmin = roles.includes('admin');
-  console.log('Current auth state:', { user: !!user, isAdmin, roles });
+  console.log('Current auth state:', { 
+    user: !!user, 
+    isAdmin, 
+    roles,
+    userId: user?.id,
+    email: user?.email 
+  });
 
   return (
     <AuthContext.Provider 
@@ -158,4 +167,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
