@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [roles, setRoles] = useState<AppRole[]>([]);
 
   const fetchUserRoles = async (userId: string) => {
+    console.log('Fetching roles for user:', userId);
     const { data, error } = await supabase
       .from("user_roles")
       .select("role")
@@ -36,12 +37,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       return [];
     }
 
+    console.log('Fetched roles:', data);
     return data.map((r) => r.role as AppRole);
   };
 
   useEffect(() => {
     // Check active sessions and sets the user
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log('Initial session check:', session?.user ?? 'No user');
       setUser(session?.user ?? null);
       if (session?.user) {
         fetchUserRoles(session.user.id).then(setRoles);
@@ -53,6 +56,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      console.log('Auth state changed:', session?.user ?? 'No user');
       setUser(session?.user ?? null);
       if (session?.user) {
         const userRoles = await fetchUserRoles(session.user.id);
@@ -70,20 +74,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("Error signing out:", error);
-      throw error; // Propagate the error to be handled by the component
+      throw error;
     }
     setUser(null);
     setRoles([]);
   };
+
+  const isAdmin = roles.includes('admin');
+  console.log('Current auth state:', { user: !!user, isAdmin, roles });
 
   return (
     <AuthContext.Provider 
       value={{ 
         user, 
         isLoading, 
-        signOut, 
-        roles, 
-        isAdmin: roles.includes('admin') 
+        signOut,
+        roles,
+        isAdmin 
       }}
     >
       {children}

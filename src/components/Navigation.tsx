@@ -25,15 +25,15 @@ const Navigation = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      // First show the success message
       toast.success('Successfully signed out');
-      // Then navigate to auth page
       navigate('/auth');
     } catch (error) {
       console.error('Error signing out:', error);
       toast.error('Failed to sign out');
     }
   };
+
+  console.log('Navigation render:', { user: !!user, isAdmin });
 
   const links = [
     { to: "/", label: "Home" },
