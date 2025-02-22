@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import NominationsFilters from '@/components/admin/NominationsFilters';
 import NominationsList from '@/components/admin/NominationsList';
+import { toast } from 'sonner';
 
 const AdminDashboard = () => {
   const [filters, setFilters] = useState({
@@ -30,10 +31,10 @@ const AdminDashboard = () => {
     if (filters.school) {
       conditions.push(`school.ilike.%${filters.school}%`);
     }
-    if (filters.schoolType) {
+    if (filters.schoolType && filters.schoolType !== 'all') {
       conditions.push(`school_type.eq.${filters.schoolType}`);
     }
-    if (filters.position) {
+    if (filters.position && filters.position !== 'all') {
       conditions.push(`position.eq.${filters.position}`);
     }
     if (filters.townState) {
@@ -41,7 +42,7 @@ const AdminDashboard = () => {
     }
 
     if (conditions.length > 0) {
-      query.or(conditions.join(','));
+      query = query.or(conditions.join(','));
     }
 
     return query;
@@ -50,32 +51,44 @@ const AdminDashboard = () => {
   const { data: studentNominations, isLoading: loadingStudents } = useQuery({
     queryKey: ['studentNominations', filters],
     queryFn: async () => {
-      let query = supabase
-        .from('student_nominations')
-        .select('*')
-        .order('created_at', { ascending: false });
+      try {
+        let query = supabase
+          .from('student_nominations')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-      query = buildSearchQuery(query);
+        query = buildSearchQuery(query);
 
-      const { data, error } = await query;
-      if (error) throw error;
-      return data;
+        const { data, error } = await query;
+        if (error) throw error;
+        return data;
+      } catch (error) {
+        console.error('Error fetching student nominations:', error);
+        toast.error('Failed to fetch student nominations');
+        return [];
+      }
     },
   });
 
   const { data: adminNominations, isLoading: loadingAdmins } = useQuery({
     queryKey: ['adminNominations', filters],
     queryFn: async () => {
-      let query = supabase
-        .from('admin_nominations')
-        .select('*')
-        .order('created_at', { ascending: false });
+      try {
+        let query = supabase
+          .from('admin_nominations')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-      query = buildSearchQuery(query);
+        query = buildSearchQuery(query);
 
-      const { data, error } = await query;
-      if (error) throw error;
-      return data;
+        const { data, error } = await query;
+        if (error) throw error;
+        return data;
+      } catch (error) {
+        console.error('Error fetching admin nominations:', error);
+        toast.error('Failed to fetch admin nominations');
+        return [];
+      }
     },
   });
 
@@ -123,3 +136,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
