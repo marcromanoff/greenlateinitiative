@@ -46,9 +46,12 @@ const Navigation = () => {
               </button>
               <div className="flex items-center gap-2">
                 {user ? (
-                  <Button variant="outline" size="sm" onClick={signOut}>
-                    Sign Out
-                  </Button>
+                  <>
+                    <span className="text-sm text-gray-600">{user.email}</span>
+                    <Button variant="outline" size="sm" onClick={signOut}>
+                      Sign Out
+                    </Button>
+                  </>
                 ) : (
                   <Link to="/auth">
                     <Button variant="outline" size="sm">
@@ -96,11 +99,14 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
-            <div className="ml-4">
+            <div className="ml-4 flex items-center gap-4">
               {user ? (
-                <Button variant="outline" size="sm" onClick={signOut}>
-                  Sign Out
-                </Button>
+                <>
+                  <span className="text-sm text-gray-600">{user.email}</span>
+                  <Button variant="outline" size="sm" onClick={signOut}>
+                    Sign Out
+                  </Button>
+                </>
               ) : (
                 <Link to="/auth">
                   <Button variant="outline" size="sm">
