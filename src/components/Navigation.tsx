@@ -13,7 +13,7 @@ const Navigation = () => {
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
-  const { user, signOut, isAdmin } = useAuth();
+  const { user, signOut, isAdmin, roles } = useAuth();
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -22,6 +22,13 @@ const Navigation = () => {
   const goToAdminDashboard = () => {
     navigate('/admin');
   };
+
+  console.log('Navigation render - Auth state:', { 
+    userEmail: user?.email,
+    isAdmin,
+    roles,
+    userId: user?.id 
+  });
 
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -40,8 +47,6 @@ const Navigation = () => {
       setIsSigningOut(false);
     }
   };
-
-  console.log('Navigation render:', { user: !!user, isAdmin });
 
   const links = [
     { to: "/", label: "Home" },
@@ -176,3 +181,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
