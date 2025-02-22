@@ -24,12 +24,7 @@ const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoading, setIsLoading } = useSupabaseAuth();
-  const { roles, updateUserRoles } = useUserRoles(user, setIsLoading);
-
-  // Update roles whenever user changes
-  if (user && roles.length === 0) {
-    updateUserRoles(user);
-  }
+  const { roles } = useUserRoles(user, setIsLoading);
 
   const signOut = async () => {
     setIsLoading(true);
