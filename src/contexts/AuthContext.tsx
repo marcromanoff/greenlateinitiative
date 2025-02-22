@@ -1,10 +1,11 @@
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 import type { User } from "@supabase/supabase-js";
 import type { AppRole } from "@/types/auth";
 import { useSupabaseAuth } from "@/hooks/useSupabaseAuth";
 import { useUserRoles } from "@/hooks/useUserRoles";
 import { signOut as supabaseSignOut } from "@/services/auth";
+import { toast } from "sonner";
 
 interface AuthContextType {
   user: User | null;
@@ -30,19 +31,28 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true);
     try {
       await supabaseSignOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast.error('Failed to sign out');
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Directly compute isAdmin from roles
   const isAdmin = roles.includes('admin');
-  console.log('🔑 Current auth state:', { 
-    userId: user?.id,
-    email: user?.email, 
-    isAdmin,
-    roles,
-    isLoading
-  });
+
+  // Log state changes
+  useEffect(() => {
+    console.log('🔐 Auth state updated:', { 
+      userId: user?.id,
+      email: user?.email, 
+      isAdmin,
+      roles,
+      isLoading,
+      timestamp: new Date().toISOString()
+    });
+  }, [user, isAdmin, roles, isLoading]);
 
   return (
     <AuthContext.Provider 
