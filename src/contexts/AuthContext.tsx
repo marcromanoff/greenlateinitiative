@@ -47,27 +47,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       // Direct query to user_roles table with detailed logging
       const { data: roleData, error: queryError } = await supabase
         .from("user_roles")
-        .select("*")  // Select all columns for debugging
+        .select("*");  // Select all columns for debugging
+
+      console.log('Full user_roles query result:', roleData);
+      
+      // Now try with the user_id filter
+      const { data: userRoles, error: filteredError } = await supabase
+        .from("user_roles")
+        .select("*")
         .eq("user_id", userId);
 
-      if (queryError) {
-        console.error('Error fetching user roles:', queryError);
-        if (queryError.message.includes('policy')) {
-          console.error('This appears to be an RLS policy error');
-        }
-        throw queryError;
+      if (filteredError) {
+        console.error('Error fetching filtered user roles:', filteredError);
+        throw filteredError;
       }
 
-      console.log('Raw user_roles query result:', roleData);
+      console.log('Filtered user roles for current user:', userRoles);
       
-      if (!roleData || roleData.length === 0) {
+      if (!userRoles || userRoles.length === 0) {
         console.log('No roles found for user in database');
         return [];
       }
 
-      const userRoles = roleData.map((r) => r.role as AppRole);
-      console.log('Processed user roles:', userRoles);
-      return userRoles;
+      const processedRoles = userRoles.map((r) => r.role as AppRole);
+      console.log('Processed user roles:', processedRoles);
+      return processedRoles;
+      
     } catch (error) {
       console.error('Error in fetchUserRoles:', error);
       toast.error('Failed to fetch user roles');
@@ -167,3 +172,4 @@ export const useAuth = () => {
   }
   return context;
 };
+
