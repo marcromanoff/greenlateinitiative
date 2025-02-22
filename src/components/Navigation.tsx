@@ -1,3 +1,4 @@
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
@@ -71,18 +72,17 @@ const Navigation = () => {
                 <Menu size={24} />
               </button>
               <div className="flex items-center gap-2">
-                {user && isAdmin && (
-                  <Button 
-                    variant="default"
-                    size="sm"
-                    onClick={goToAdminDashboard}
-                  >
-                    Admin Dashboard
-                  </Button>
-                )}
                 {user ? (
                   <>
-                    <span className="text-sm text-gray-600">{user.email}</span>
+                    {isAdmin && (
+                      <Button 
+                        variant="default"
+                        size="sm"
+                        onClick={goToAdminDashboard}
+                      >
+                        Admin Dashboard
+                      </Button>
+                    )}
                     <Button 
                       variant="outline" 
                       size="sm"
@@ -140,18 +140,17 @@ const Navigation = () => {
               ))}
             </div>
             <div className="ml-4 flex items-center gap-4">
-              {user && isAdmin && (
-                <Button 
-                  variant="default"
-                  size="sm"
-                  onClick={goToAdminDashboard}
-                >
-                  Admin Dashboard
-                </Button>
-              )}
               {user ? (
                 <>
-                  <span className="text-sm text-gray-600">{user.email}</span>
+                  {isAdmin && (
+                    <Button 
+                      variant="default"
+                      size="sm"
+                      onClick={goToAdminDashboard}
+                    >
+                      Admin Dashboard
+                    </Button>
+                  )}
                   <Button 
                     variant="outline" 
                     size="sm"
