@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { GraduationCap, Clipboard } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -19,6 +18,8 @@ interface NominationFormValues {
   positionOther?: string;
   townState: string;
 }
+
+const ADMIN_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfXuGvB1MZtthC9TZzFihI2YTtYuaEHwGaxwGuxUIBcXenDEQ/viewform";
 
 const StudentAdminSection = () => {
   const [showStudentForm, setShowStudentForm] = useState(false);
@@ -280,7 +281,7 @@ const StudentAdminSection = () => {
         </p>
         <div className="flex flex-col gap-4">
           <a 
-            href={formUrl}
+            href={ADMIN_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300"
