@@ -9,6 +9,48 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      student_nominations: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          position: Database["public"]["Enums"]["position_type"]
+          position_other: string | null
+          school: string
+          school_type: Database["public"]["Enums"]["school_type"]
+          school_type_other: string | null
+          town_state: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          position: Database["public"]["Enums"]["position_type"]
+          position_other?: string | null
+          school: string
+          school_type: Database["public"]["Enums"]["school_type"]
+          school_type_other?: string | null
+          town_state: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          position?: Database["public"]["Enums"]["position_type"]
+          position_other?: string | null
+          school?: string
+          school_type?: Database["public"]["Enums"]["school_type"]
+          school_type_other?: string | null
+          town_state?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -45,6 +87,16 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      position_type: "student" | "administrator" | "parent" | "other"
+      school_type:
+        | "public"
+        | "charter"
+        | "private"
+        | "parochial"
+        | "religious"
+        | "language_immersion"
+        | "boarding"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never
