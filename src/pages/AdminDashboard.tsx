@@ -13,22 +13,58 @@ import {
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Search } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 
 const AdminDashboard = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({
+    email: '',
+    name: '',
+    school: '',
+    schoolType: '',
+    position: '',
+    townState: ''
+  });
   const [activeTab, setActiveTab] = useState<'student' | 'admin'>('student');
 
+  const buildSearchQuery = (query: any) => {
+    let conditions = [];
+    
+    if (filters.email) {
+      conditions.push(`email.ilike.%${filters.email}%`);
+    }
+    if (filters.name) {
+      conditions.push(`name.ilike.%${filters.name}%`);
+    }
+    if (filters.school) {
+      conditions.push(`school.ilike.%${filters.school}%`);
+    }
+    if (filters.schoolType) {
+      conditions.push(`school_type.eq.${filters.schoolType}`);
+    }
+    if (filters.position) {
+      conditions.push(`position.eq.${filters.position}`);
+    }
+    if (filters.townState) {
+      conditions.push(`town_state.ilike.%${filters.townState}%`);
+    }
+
+    if (conditions.length > 0) {
+      query.or(conditions.join(','));
+    }
+
+    return query;
+  };
+
   const { data: studentNominations, isLoading: loadingStudents } = useQuery({
-    queryKey: ['studentNominations', searchTerm],
+    queryKey: ['studentNominations', filters],
     queryFn: async () => {
-      const query = supabase
+      let query = supabase
         .from('student_nominations')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (searchTerm) {
-        query.or(`name.ilike.%${searchTerm}%,school.ilike.%${searchTerm}%,email.ilike.%${searchTerm}%`);
-      }
+      query = buildSearchQuery(query);
 
       const { data, error } = await query;
       if (error) throw error;
@@ -37,16 +73,14 @@ const AdminDashboard = () => {
   });
 
   const { data: adminNominations, isLoading: loadingAdmins } = useQuery({
-    queryKey: ['adminNominations', searchTerm],
+    queryKey: ['adminNominations', filters],
     queryFn: async () => {
-      const query = supabase
+      let query = supabase
         .from('admin_nominations')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (searchTerm) {
-        query.or(`name.ilike.%${searchTerm}%,school.ilike.%${searchTerm}%,email.ilike.%${searchTerm}%`);
-      }
+      query = buildSearchQuery(query);
 
       const { data, error } = await query;
       if (error) throw error;
@@ -104,66 +138,139 @@ const AdminDashboard = () => {
       
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-6">
             Nominations Dashboard
           </h1>
-          <div className="relative">
-            <Input
-              type="text"
-              placeholder="Search by name, school, or email..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                placeholder="Search by email..."
+                value={filters.email}
+                onChange={(e) => setFilters(prev => ({ ...prev, email: e.target.value }))}
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                placeholder="Search by name..."
+                value={filters.name}
+                onChange={(e) => setFilters(prev => ({ ...prev, name: e.target.value }))}
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="school">School</Label>
+              <Input
+                id="school"
+                placeholder="Search by school..."
+                value={filters.school}
+                onChange={(e) => setFilters(prev => ({ ...prev, school: e.target.value }))}
+              />
+            </div>
+            
+            <div>
+              <Label htmlFor="schoolType">School Type</Label>
+              <Select
+                value={filters.schoolType}
+                onValueChange={(value) => setFilters(prev => ({ ...prev, schoolType: value }))}
+              >
+                <SelectTrigger id="schoolType">
+                  <SelectValue placeholder="Select school type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">All Types</SelectItem>
+                  <SelectItem value="public">Public</SelectItem>
+                  <SelectItem value="charter">Charter</SelectItem>
+                  <SelectItem value="private">Private</SelectItem>
+                  <SelectItem value="parochial">Parochial</SelectItem>
+                  <SelectItem value="religious">Religious</SelectItem>
+                  <SelectItem value="language_immersion">Language Immersion</SelectItem>
+                  <SelectItem value="boarding">Boarding</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <Label htmlFor="position">Position</Label>
+              <Select
+                value={filters.position}
+                onValueChange={(value) => setFilters(prev => ({ ...prev, position: value }))}
+              >
+                <SelectTrigger id="position">
+                  <SelectValue placeholder="Select position" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">All Positions</SelectItem>
+                  <SelectItem value="student">Student</SelectItem>
+                  <SelectItem value="administrator">Administrator</SelectItem>
+                  <SelectItem value="parent">Parent</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <Label htmlFor="townState">Town and State</Label>
+              <Input
+                id="townState"
+                placeholder="Search by location..."
+                value={filters.townState}
+                onChange={(e) => setFilters(prev => ({ ...prev, townState: e.target.value }))}
+              />
+            </div>
           </div>
+
+          <Tabs
+            value={activeTab}
+            onValueChange={(value) => setActiveTab(value as 'student' | 'admin')}
+          >
+            <TabsList className="mb-4">
+              <TabsTrigger value="student">
+                Student Nominations
+              </TabsTrigger>
+              <TabsTrigger value="admin">
+                Administrator Nominations
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="student">
+              {loadingStudents ? (
+                <div>Loading...</div>
+              ) : studentNominations?.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  No student nominations found
+                </div>
+              ) : (
+                studentNominations?.map((nomination) => (
+                  <NominationCard key={nomination.id} nomination={nomination} />
+                ))
+              )}
+            </TabsContent>
+
+            <TabsContent value="admin">
+              {loadingAdmins ? (
+                <div>Loading...</div>
+              ) : adminNominations?.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  No administrator nominations found
+                </div>
+              ) : (
+                adminNominations?.map((nomination) => (
+                  <NominationCard key={nomination.id} nomination={nomination} />
+                ))
+              )}
+            </TabsContent>
+          </Tabs>
         </div>
-
-        <Tabs
-          value={activeTab}
-          onValueChange={(value) => setActiveTab(value as 'student' | 'admin')}
-        >
-          <TabsList className="mb-4">
-            <TabsTrigger value="student">
-              Student Nominations
-            </TabsTrigger>
-            <TabsTrigger value="admin">
-              Administrator Nominations
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="student">
-            {loadingStudents ? (
-              <div>Loading...</div>
-            ) : studentNominations?.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                No student nominations found
-              </div>
-            ) : (
-              studentNominations?.map((nomination) => (
-                <NominationCard key={nomination.id} nomination={nomination} />
-              ))
-            )}
-          </TabsContent>
-
-          <TabsContent value="admin">
-            {loadingAdmins ? (
-              <div>Loading...</div>
-            ) : adminNominations?.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                No administrator nominations found
-              </div>
-            ) : (
-              adminNominations?.map((nomination) => (
-                <NominationCard key={nomination.id} nomination={nomination} />
-              ))
-            )}
-          </TabsContent>
-        </Tabs>
       </div>
     </div>
   );
 };
 
 export default AdminDashboard;
-
