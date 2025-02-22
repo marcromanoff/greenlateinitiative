@@ -30,8 +30,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log('Starting fetchUserRoles for userId:', userId);
     
     try {
-      // First try to verify if the user has admin role using the has_role function
-      const { data: hasAdminRole, error: fnError } = await supabase
+      // First check admin role using has_role function
+      const { data: isAdminRole, error: fnError } = await supabase
         .rpc('has_role', {
           _user_id: userId,
           _role: 'admin'
@@ -42,41 +42,40 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         throw fnError;
       }
 
-      console.log('has_role function result:', hasAdminRole);
+      console.log('has_role function result for admin:', isAdminRole);
 
-      // Direct query to user_roles table with detailed logging
-      const { data: roleData, error: queryError } = await supabase
-        .from("user_roles")
-        .select("*");  // Select all columns for debugging
-
-      console.log('Full user_roles query result:', roleData);
-      
-      // Now try with the user_id filter
-      const { data: userRoles, error: filteredError } = await supabase
-        .from("user_roles")
-        .select("*")
-        .eq("user_id", userId);
-
-      if (filteredError) {
-        console.error('Error fetching filtered user roles:', filteredError);
-        throw filteredError;
+      // If has_role returns true, we know the user is an admin
+      if (isAdminRole) {
+        console.log('User confirmed as admin via has_role function');
+        return ['admin'];
       }
 
-      console.log('Filtered user roles for current user:', userRoles);
-      
+      // If not admin, fetch all roles directly
+      const { data: userRoles, error: rolesError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId);
+
+      if (rolesError) {
+        console.error('Error fetching user roles:', rolesError);
+        throw rolesError;
+      }
+
+      console.log('User roles from database:', userRoles);
+
       if (!userRoles || userRoles.length === 0) {
-        console.log('No roles found for user in database');
-        return [];
+        console.log('No roles found for user');
+        return ['user']; // Default role
       }
 
       const processedRoles = userRoles.map((r) => r.role as AppRole);
-      console.log('Processed user roles:', processedRoles);
+      console.log('Processed roles:', processedRoles);
       return processedRoles;
-      
+
     } catch (error) {
       console.error('Error in fetchUserRoles:', error);
       toast.error('Failed to fetch user roles');
-      return [];
+      return ['user']; // Default to user role on error
     }
   };
 
@@ -88,7 +87,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (session?.user) {
         fetchUserRoles(session.user.id).then(setRoles);
       } else {
-        setRoles([]);
+        setRoles(['user']); // Default role for logged out users
       }
       setIsLoading(false);
     });
@@ -103,7 +102,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const userRoles = await fetchUserRoles(session.user.id);
         setRoles(userRoles);
       } else {
-        setRoles([]);
+        setRoles(['user']);
       }
       setIsLoading(false);
     });
@@ -119,7 +118,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       
       // Clear state immediately
       setUser(null);
-      setRoles([]);
+      setRoles(['user']);
       
       // Then attempt Supabase signout
       const { error } = await supabase.auth.signOut();
@@ -172,4 +171,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
