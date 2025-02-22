@@ -74,14 +74,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = async () => {
     console.log('Starting sign out process...');
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Error signing out:", error);
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Error signing out:", error);
+        throw error;
+      }
+      console.log('Successfully signed out from Supabase');
+      setUser(null);
+      setRoles([]);
+    } catch (error) {
+      console.error('Detailed sign out error:', error);
       throw error;
     }
-    console.log('Successfully signed out from Supabase');
-    setUser(null);
-    setRoles([]);
   };
 
   const isAdmin = roles.includes('admin');
@@ -109,3 +114,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

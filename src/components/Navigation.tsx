@@ -12,6 +12,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const { user, signOut, isAdmin } = useAuth();
   
   const isActive = (path: string) => {
@@ -22,8 +23,13 @@ const Navigation = () => {
     navigate('/admin');
   };
 
-  const handleSignOut = async () => {
+  const handleSignOut = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isSigningOut) return;
+
     console.log('Sign out clicked');
+    setIsSigningOut(true);
+    
     try {
       console.log('Attempting to sign out...');
       await signOut();
@@ -34,6 +40,8 @@ const Navigation = () => {
     } catch (error) {
       console.error('Error signing out:', error);
       toast.error('Failed to sign out');
+    } finally {
+      setIsSigningOut(false);
     }
   };
 
@@ -72,7 +80,6 @@ const Navigation = () => {
                   <Button 
                     variant="default"
                     size="sm"
-                    type="button"
                     onClick={goToAdminDashboard}
                   >
                     Admin Dashboard
@@ -84,15 +91,15 @@ const Navigation = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      type="button"
                       onClick={handleSignOut}
+                      disabled={isSigningOut}
                     >
-                      Sign Out
+                      {isSigningOut ? 'Signing out...' : 'Sign Out'}
                     </Button>
                   </>
                 ) : (
                   <Link to="/auth">
-                    <Button variant="outline" size="sm" type="button">
+                    <Button variant="outline" size="sm">
                       Sign In
                     </Button>
                   </Link>
@@ -142,7 +149,6 @@ const Navigation = () => {
                 <Button 
                   variant="default"
                   size="sm"
-                  type="button"
                   onClick={goToAdminDashboard}
                 >
                   Admin Dashboard
@@ -154,15 +160,15 @@ const Navigation = () => {
                   <Button 
                     variant="outline" 
                     size="sm"
-                    type="button"
                     onClick={handleSignOut}
+                    disabled={isSigningOut}
                   >
-                    Sign Out
+                    {isSigningOut ? 'Signing out...' : 'Sign Out'}
                   </Button>
                 </>
               ) : (
                 <Link to="/auth">
-                  <Button variant="outline" size="sm" type="button">
+                  <Button variant="outline" size="sm">
                     Sign In
                   </Button>
                 </Link>
@@ -176,3 +182,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
