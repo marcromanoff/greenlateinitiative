@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import type { AppRole } from "@/types/auth";
+import { toast } from "sonner";
 
 interface AuthContextType {
   user: User | null;
@@ -27,18 +28,48 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchUserRoles = async (userId: string) => {
     console.log('Fetching roles for user:', userId);
-    const { data, error } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId);
+    
+    try {
+      // First try to verify if the user has admin role using the has_role function
+      const { data: hasAdminRole, error: fnError } = await supabase
+        .rpc('has_role', {
+          _user_id: userId,
+          _role: 'admin'
+        });
 
-    if (error) {
-      console.error("Error fetching user roles:", error);
+      if (fnError) {
+        console.error('Error checking admin role:', fnError);
+        throw fnError;
+      }
+
+      console.log('Has admin role result:', hasAdminRole);
+
+      // Then fetch all roles from the user_roles table
+      const { data: roleData, error: queryError } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId);
+
+      if (queryError) {
+        console.error('Error fetching user roles:', queryError);
+        throw queryError;
+      }
+
+      console.log('Fetched roles data:', roleData);
+      
+      if (!roleData) {
+        console.log('No roles found for user');
+        return [];
+      }
+
+      const userRoles = roleData.map((r) => r.role as AppRole);
+      console.log('Processed user roles:', userRoles);
+      return userRoles;
+    } catch (error) {
+      console.error('Error in fetchUserRoles:', error);
+      toast.error('Failed to fetch user roles');
       return [];
     }
-
-    console.log('Fetched roles:', data);
-    return data.map((r) => r.role as AppRole);
   };
 
   useEffect(() => {
@@ -127,3 +158,4 @@ export const useAuth = () => {
   }
   return context;
 };
+
