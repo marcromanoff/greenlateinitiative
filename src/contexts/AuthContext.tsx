@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     
     if (!userId) {
       console.error('❌ No userId provided for fetchUserRoles');
-      return ['user'];
+      return [];
     }
 
     try {
@@ -44,32 +44,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (rolesError) {
         console.error('❌ Error fetching user roles:', rolesError);
-        return ['user'];
+        return [];
       }
 
       if (!userRoles || userRoles.length === 0) {
-        console.log('⚠️ No roles found, defaulting to user role');
-        return ['user'];
+        console.log('⚠️ No roles found, defaulting to empty array');
+        return [];
       }
 
-      const roles = userRoles.map(r => r.role as AppRole);
-      console.log('✅ Fetched roles:', roles);
-
-      return roles;
+      const fetchedRoles = userRoles.map(r => r.role as AppRole);
+      console.log('✅ Fetched roles:', fetchedRoles);
+      return fetchedRoles;
 
     } catch (error) {
       console.error('❌ Error in fetchUserRoles:', error);
-      return ['user'];
+      return [];
     }
   };
 
-  // Function to handle role updates
   const updateUserRoles = async (currentUser: User | null) => {
     console.log('🔄 Updating roles for user:', currentUser?.email);
     
     if (!currentUser) {
-      console.log('ℹ️ No user, setting default role');
-      setRoles(['user']);
+      console.log('ℹ️ No user, setting empty roles array');
+      setRoles([]);
       return;
     }
 
@@ -79,7 +77,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setRoles(fetchedRoles);
     } catch (error) {
       console.error('❌ Error updating roles:', error);
-      setRoles(['user']);
+      setRoles([]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -89,6 +89,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const initializeAuth = async () => {
       try {
         console.log('🚀 Starting auth initialization...');
+        setIsLoading(true);
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!mounted) return;
@@ -100,15 +101,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
           console.log('ℹ️ No active session found');
           setUser(null);
-          setRoles(['user']);
+          setRoles([]);
+          setIsLoading(false);
         }
       } catch (error) {
         console.error('❌ Error in initializeAuth:', error);
         if (mounted) {
-          setRoles(['user']);
-        }
-      } finally {
-        if (mounted) {
+          setRoles([]);
           setIsLoading(false);
         }
       }
@@ -123,6 +122,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (!mounted) return;
 
+      setIsLoading(true);
+
       if (session?.user) {
         console.log('👤 User session updated:', session.user.email);
         setUser(session.user);
@@ -130,13 +131,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         console.log('👤 No user in updated session');
         setUser(null);
-        setRoles(['user']);
+        setRoles([]);
+        setIsLoading(false);
       }
-      
-      setIsLoading(false);
     });
 
-    // Run initial auth check
     initializeAuth();
 
     return () => {
@@ -149,22 +148,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log('🚪 Starting sign out process...');
     try {
       setIsLoading(true);
-      
-      // Clear state immediately
-      setUser(null);
-      setRoles(['user']);
-      
-      // Attempt Supabase signout
       const { error } = await supabase.auth.signOut();
+      
       if (error) throw error;
       
+      setUser(null);
+      setRoles([]);
       console.log('✅ Successfully signed out');
       window.location.href = '/auth';
       
     } catch (error) {
       console.error('❌ Sign out error:', error);
       toast.error('Error signing out');
-      window.location.href = '/auth';
     } finally {
       setIsLoading(false);
     }
