@@ -48,6 +48,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(session?.user ?? null);
       if (session?.user) {
         fetchUserRoles(session.user.id).then(setRoles);
+      } else {
+        setRoles([]);
       }
       setIsLoading(false);
     });
@@ -71,11 +73,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signOut = async () => {
+    console.log('Starting sign out process...');
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("Error signing out:", error);
       throw error;
     }
+    console.log('Successfully signed out from Supabase');
     setUser(null);
     setRoles([]);
   };

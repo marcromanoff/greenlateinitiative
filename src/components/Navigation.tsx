@@ -23,9 +23,13 @@ const Navigation = () => {
   };
 
   const handleSignOut = async () => {
+    console.log('Sign out clicked');
     try {
+      console.log('Attempting to sign out...');
       await signOut();
+      console.log('Successfully signed out');
       toast.success('Successfully signed out');
+      console.log('Navigating to auth page...');
       navigate('/auth');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -68,6 +72,7 @@ const Navigation = () => {
                   <Button 
                     variant="default"
                     size="sm"
+                    type="button"
                     onClick={goToAdminDashboard}
                   >
                     Admin Dashboard
@@ -76,13 +81,18 @@ const Navigation = () => {
                 {user ? (
                   <>
                     <span className="text-sm text-gray-600">{user.email}</span>
-                    <Button variant="outline" size="sm" onClick={handleSignOut}>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      type="button"
+                      onClick={handleSignOut}
+                    >
                       Sign Out
                     </Button>
                   </>
                 ) : (
                   <Link to="/auth">
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" type="button">
                       Sign In
                     </Button>
                   </Link>
@@ -132,6 +142,7 @@ const Navigation = () => {
                 <Button 
                   variant="default"
                   size="sm"
+                  type="button"
                   onClick={goToAdminDashboard}
                 >
                   Admin Dashboard
@@ -140,13 +151,18 @@ const Navigation = () => {
               {user ? (
                 <>
                   <span className="text-sm text-gray-600">{user.email}</span>
-                  <Button variant="outline" size="sm" onClick={handleSignOut}>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    type="button"
+                    onClick={handleSignOut}
+                  >
                     Sign Out
                   </Button>
                 </>
               ) : (
                 <Link to="/auth">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" type="button">
                     Sign In
                   </Button>
                 </Link>
