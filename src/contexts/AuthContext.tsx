@@ -30,15 +30,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log('🔍 Starting fetchUserRoles for userId:', userId);
     
     if (!userId) {
-      console.log('❌ No userId provided to fetchUserRoles');
+      console.error('❌ ERROR: fetchUserRoles called with an undefined userId. Stack:', new Error().stack);
       return ['user'];
     }
 
     try {
+      console.log('📊 Attempting to fetch roles for user:', userId);
+      
       // First try to get all roles directly from user_roles table
       const { data: userRoles, error: rolesError } = await supabase
         .from('user_roles')
-        .select('role')
+        .select('*')  // Changed to select all columns for debugging
         .eq('user_id', userId);
 
       if (rolesError) {
@@ -46,104 +48,112 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         throw rolesError;
       }
 
-      console.log('📋 Raw user roles from database:', userRoles);
+      console.log('📋 Raw user roles data from database:', JSON.stringify(userRoles, null, 2));
 
       if (!userRoles || userRoles.length === 0) {
-        console.log('ℹ️ No roles found for user, defaulting to user role');
+        console.log('⚠️ No roles found in database for user:', userId);
         return ['user'];
       }
 
-      // Map the roles and check if admin is included
       const processedRoles = userRoles.map(r => r.role as AppRole);
-      const isAdminUser = processedRoles.includes('admin');
+      console.log('🔄 Processed roles from DB:', processedRoles);
 
-      // Double check admin status with has_role function for verification
-      if (isAdminUser) {
+      // Double check admin role if present
+      if (processedRoles.includes('admin')) {
+        console.log('🔐 Verifying admin status via has_role function...');
+        
         const { data: adminConfirmed, error: fnError } = await supabase
           .rpc('has_role', {
             _user_id: userId,
             _role: 'admin' as AppRole
           });
 
+        console.log('🏷️ has_role function response:', { adminConfirmed, error: fnError });
+
         if (fnError) {
-          console.error('❌ Error confirming admin role:', fnError);
-          // Don't throw here, continue with roles from DB
+          console.error('❌ Error from has_role function:', fnError);
+          toast.error('Error verifying admin role');
         } else if (!adminConfirmed) {
-          console.warn('⚠️ Admin role mismatch: DB says yes, function says no');
-          // Remove admin role if function check fails
+          console.warn('⚠️ Role mismatch detected: DB shows admin but function check failed');
           return processedRoles.filter(role => role !== 'admin');
         }
       }
 
-      console.log('✨ Final processed roles:', processedRoles);
+      console.log('✅ Final processed roles:', processedRoles);
       return processedRoles;
 
     } catch (error) {
-      console.error('❌ Error in fetchUserRoles:', error);
+      console.error('❌ Detailed error in fetchUserRoles:', error);
       toast.error('Failed to fetch user roles');
-      return ['user']; // Default to user role on error
+      return ['user'];
     }
   };
 
   useEffect(() => {
     let mounted = true;
 
-    // Initial session check
     const initializeAuth = async () => {
       try {
+        console.log('🚀 Starting auth initialization...');
         const { data: { session } } = await supabase.auth.getSession();
-        console.log('🔄 Initial session check:', session?.user ?? 'No user');
         
-        if (mounted) {
-          setUser(session?.user ?? null);
+        if (!mounted) return;
+
+        if (session?.user) {
+          console.log('👤 Session found for user:', session.user.email);
+          setUser(session.user);
           
-          if (session?.user) {
-            const fetchedRoles = await fetchUserRoles(session.user.id);
-            console.log('👥 Setting initial roles:', fetchedRoles);
-            setRoles(fetchedRoles);
-          } else {
-            console.log('👤 No user session, setting default role');
-            setRoles(['user']);
-          }
-          
-          setIsLoading(false);
+          console.log('🔄 Fetching initial roles...');
+          const userRoles = await fetchUserRoles(session.user.id);
+          console.log('✨ Initial roles set:', userRoles);
+          setRoles(userRoles);
+        } else {
+          console.log('ℹ️ No active session found');
+          setUser(null);
+          setRoles(['user']);
         }
+        
+        setIsLoading(false);
       } catch (error) {
         console.error('❌ Error in initializeAuth:', error);
         if (mounted) {
           setIsLoading(false);
           setRoles(['user']);
+          toast.error('Error initializing authentication');
         }
       }
     };
 
+    // Run initial auth check
     initializeAuth();
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('🔄 Auth state changed:', {
-        event: _event,
-        userId: session?.user?.id,
-        email: session?.user?.email
+        event,
+        user: session?.user?.email,
+        userId: session?.user?.id
       });
 
-      if (mounted) {
-        setUser(session?.user ?? null);
+      if (!mounted) return;
+
+      if (session?.user) {
+        console.log('👤 User session updated:', session.user.email);
+        setUser(session.user);
         
-        if (session?.user) {
-          const userRoles = await fetchUserRoles(session.user.id);
-          console.log('👥 Setting updated roles:', userRoles);
-          setRoles(userRoles);
-        } else {
-          console.log('👤 User logged out, setting default role');
-          setRoles(['user']);
-        }
-        
-        setIsLoading(false);
+        console.log('🔄 Fetching updated roles...');
+        const userRoles = await fetchUserRoles(session.user.id);
+        console.log('✨ Updated roles:', userRoles);
+        setRoles(userRoles);
+      } else {
+        console.log('👤 No user in updated session');
+        setUser(null);
+        setRoles(['user']);
       }
+      
+      setIsLoading(false);
     });
 
-    // Cleanup
     return () => {
       mounted = false;
       subscription.unsubscribe();
@@ -153,40 +163,44 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signOut = async () => {
     console.log('🚪 Starting sign out process...');
     try {
-      // Force clear the session from storage first
-      window.localStorage.removeItem('supabase.auth.token');
+      setIsLoading(true);
       
       // Clear state immediately
       setUser(null);
       setRoles(['user']);
       
-      // Then attempt Supabase signout
+      // Force clear the session from storage
+      window.localStorage.removeItem('supabase.auth.token');
+      
+      // Attempt Supabase signout
       const { error } = await supabase.auth.signOut();
       if (error) {
-        console.error("❌ Error signing out:", error);
+        console.error('❌ Error signing out:', error);
         throw error;
       }
       
-      console.log('✅ Successfully signed out from Supabase');
+      console.log('✅ Successfully signed out');
       
       // Force a page reload to ensure clean state
       window.location.href = '/auth';
       
     } catch (error) {
       console.error('❌ Detailed sign out error:', error);
-      // Even if there's an error, we want to force a clean state
+      toast.error('Error signing out');
+      // Force reload even on error to ensure clean state
       window.location.href = '/auth';
-      throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const isAdmin = roles.includes('admin');
   console.log('🔑 Current auth state:', { 
-    user: !!user, 
-    isAdmin, 
-    roles,
     userId: user?.id,
-    email: user?.email 
+    email: user?.email, 
+    isAdmin,
+    roles,
+    isLoading
   });
 
   return (
@@ -211,3 +225,4 @@ export const useAuth = () => {
   }
   return context;
 };
+
