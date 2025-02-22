@@ -9,6 +9,48 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      admin_nominations: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          position: Database["public"]["Enums"]["position_type"]
+          position_other: string | null
+          school: string
+          school_type: Database["public"]["Enums"]["school_type"]
+          school_type_other: string | null
+          town_state: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          position: Database["public"]["Enums"]["position_type"]
+          position_other?: string | null
+          school: string
+          school_type: Database["public"]["Enums"]["school_type"]
+          school_type_other?: string | null
+          town_state: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          position?: Database["public"]["Enums"]["position_type"]
+          position_other?: string | null
+          school?: string
+          school_type?: Database["public"]["Enums"]["school_type"]
+          school_type_other?: string | null
+          town_state?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       student_nominations: {
         Row: {
           created_at: string
