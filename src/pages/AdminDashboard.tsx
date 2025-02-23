@@ -20,29 +20,24 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'admin'>('student');
 
   const buildSearchQuery = (query: any) => {
-    let conditions = [];
-    
+    // Apply each filter individually using .ilike() for text searches
     if (filters.email) {
-      conditions.push(`email.ilike.%${filters.email}%`);
+      query = query.ilike('email', `%${filters.email.toLowerCase()}%`);
     }
     if (filters.name) {
-      conditions.push(`name.ilike.%${filters.name}%`);
+      query = query.ilike('name', `%${filters.name}%`);
     }
     if (filters.school) {
-      conditions.push(`school.ilike.%${filters.school}%`);
+      query = query.ilike('school', `%${filters.school}%`);
     }
     if (filters.schoolType && filters.schoolType !== 'all') {
-      conditions.push(`school_type.eq.${filters.schoolType}`);
+      query = query.eq('school_type', filters.schoolType);
     }
     if (filters.position && filters.position !== 'all') {
-      conditions.push(`position.eq.${filters.position}`);
+      query = query.eq('position', filters.position);
     }
     if (filters.townState) {
-      conditions.push(`town_state.ilike.%${filters.townState}%`);
-    }
-
-    if (conditions.length > 0) {
-      query = query.or(conditions.join(','));
+      query = query.ilike('town_state', `%${filters.townState}%`);
     }
 
     return query;
@@ -51,7 +46,7 @@ const AdminDashboard = () => {
   const { data: studentNominations, isLoading: loadingStudents } = useQuery({
     queryKey: ['studentNominations', filters],
     queryFn: async () => {
-      console.log('Fetching student nominations...');
+      console.log('Fetching student nominations with filters:', filters);
       try {
         let query = supabase
           .from('student_nominations')
@@ -79,7 +74,7 @@ const AdminDashboard = () => {
   const { data: adminNominations, isLoading: loadingAdmins } = useQuery({
     queryKey: ['adminNominations', filters],
     queryFn: async () => {
-      console.log('Fetching admin nominations...');
+      console.log('Fetching admin nominations with filters:', filters);
       try {
         let query = supabase
           .from('admin_nominations')
