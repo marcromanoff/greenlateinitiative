@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -19,6 +20,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'admin'>('student');
 
   const buildSearchQuery = (query: any) => {
+    console.log('Building search query with filters:', filters);
     if (filters.email) {
       query = query.ilike('email', `%${filters.email.toLowerCase()}%`);
     }
@@ -37,14 +39,13 @@ const AdminDashboard = () => {
     if (filters.townState) {
       query = query.ilike('town_state', `%${filters.townState}%`);
     }
-
     return query;
   };
 
   const { data: studentNominations, isLoading: loadingStudents } = useQuery({
     queryKey: ['studentNominations', filters],
     queryFn: async () => {
-      console.log('Fetching student nominations with filters:', filters);
+      console.log('Fetching student nominations...');
       try {
         let query = supabase
           .from('student_nominations')
@@ -52,18 +53,20 @@ const AdminDashboard = () => {
           .order('created_at', { ascending: false });
 
         query = buildSearchQuery(query);
-
+        
         const { data, error } = await query;
+        
         if (error) {
           console.error('Error fetching student nominations:', error);
-          toast.error('Failed to fetch student nominations');
+          toast.error('Error fetching student nominations');
           throw error;
         }
-        console.log('Student nominations fetched:', data?.length);
+        
+        console.log('Student nominations fetched successfully:', data?.length);
         return data;
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error in student nominations query:', error);
-        toast.error('Failed to fetch student nominations');
+        toast.error(`Failed to fetch student nominations: ${error.message}`);
         return [];
       }
     },
@@ -72,7 +75,7 @@ const AdminDashboard = () => {
   const { data: adminNominations, isLoading: loadingAdmins } = useQuery({
     queryKey: ['adminNominations', filters],
     queryFn: async () => {
-      console.log('Fetching admin nominations with filters:', filters);
+      console.log('Fetching admin nominations...');
       try {
         let query = supabase
           .from('admin_nominations')
@@ -80,18 +83,20 @@ const AdminDashboard = () => {
           .order('created_at', { ascending: false });
 
         query = buildSearchQuery(query);
-
+        
         const { data, error } = await query;
+        
         if (error) {
           console.error('Error fetching admin nominations:', error);
-          toast.error('Failed to fetch admin nominations');
+          toast.error('Error fetching admin nominations');
           throw error;
         }
-        console.log('Admin nominations fetched:', data?.length);
+        
+        console.log('Admin nominations fetched successfully:', data?.length);
         return data;
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error in admin nominations query:', error);
-        toast.error('Failed to fetch admin nominations');
+        toast.error(`Failed to fetch admin nominations: ${error.message}`);
         return [];
       }
     },
