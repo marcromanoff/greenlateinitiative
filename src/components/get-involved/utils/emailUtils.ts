@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
 // Get your Public Key from https://dashboard.emailjs.com/admin/account
-const EMAILJS_PUBLIC_KEY = process.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key_here";
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key_here";
 
 interface NominationFormValues {
   email: string;
@@ -82,3 +82,4 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
     throw new Error(`Failed to send confirmation email: ${error.message}`);
   }
 };
+
