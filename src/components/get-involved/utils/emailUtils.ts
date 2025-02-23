@@ -2,6 +2,9 @@
 import { supabase } from "@/integrations/supabase/client";
 import emailjs from "@emailjs/browser";
 
+// EmailJS public key can be stored directly since it's meant to be public
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
+
 interface NominationFormValues {
   email: string;
   name: string;
@@ -12,7 +15,6 @@ interface NominationFormValues {
 }
 
 interface EmailJSSecrets {
-  EMAILJS_PUBLIC_KEY: string;
   EMAILJS_SERVICE_ID: string;
   EMAILJS_TEMPLATE_ID: string;
   EMAILJS_API_KEY: string;
@@ -21,7 +23,6 @@ interface EmailJSSecrets {
 export const sendConfirmationEmail = async (values: NominationFormValues) => {
   try {
     const secretsToFetch = [
-      'EMAILJS_PUBLIC_KEY',
       'EMAILJS_SERVICE_ID',
       'EMAILJS_TEMPLATE_ID',
       'EMAILJS_API_KEY'
@@ -44,7 +45,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
     console.log('EmailJS configuration loaded successfully');
 
     // Initialize EmailJS with the public key
-    emailjs.init(secrets.EMAILJS_PUBLIC_KEY);
+    emailjs.init(EMAILJS_PUBLIC_KEY);
 
     // Prepare template parameters
     const templateParams = {
