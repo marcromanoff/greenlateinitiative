@@ -3,9 +3,6 @@ import { supabase } from "@/integrations/supabase/client";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
-// Get your Public Key from https://dashboard.emailjs.com/admin/account
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key_here";
-
 interface NominationFormValues {
   email: string;
   name: string;
@@ -18,7 +15,7 @@ interface NominationFormValues {
 interface EmailJSSecrets {
   EMAILJS_SERVICE_ID: string;
   EMAILJS_TEMPLATE_ID: string;
-  EMAILJS_API_KEY: string;
+  EMAILJS_PUBLIC_KEY: string;
 }
 
 export const sendConfirmationEmail = async (values: NominationFormValues) => {
@@ -26,7 +23,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
     const secretsToFetch = [
       'EMAILJS_SERVICE_ID',
       'EMAILJS_TEMPLATE_ID',
-      'EMAILJS_API_KEY'
+      'EMAILJS_PUBLIC_KEY'
     ];
 
     console.log('Fetching EmailJS secrets...');
@@ -54,7 +51,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
     console.log('EmailJS configuration loaded successfully');
 
     // Initialize EmailJS with the public key
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.init(secrets.EMAILJS_PUBLIC_KEY);
 
     // Prepare template parameters
     const templateParams = {
@@ -69,7 +66,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
       secrets.EMAILJS_SERVICE_ID,
       secrets.EMAILJS_TEMPLATE_ID,
       templateParams,
-      secrets.EMAILJS_API_KEY
+      secrets.EMAILJS_PUBLIC_KEY // Pass the public key here as well
     );
 
     console.log('Email sent successfully:', response);
@@ -78,8 +75,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
 
   } catch (error: any) {
     console.error('Error sending confirmation email:', error);
-    toast.error(`Failed to send confirmation email: ${error.message}`);
-    throw new Error(`Failed to send confirmation email: ${error.message}`);
+    toast.error(`Failed to send confirmation email: ${error.text || error.message}`);
+    throw error;
   }
 };
-
