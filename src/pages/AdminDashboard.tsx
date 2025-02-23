@@ -51,6 +51,7 @@ const AdminDashboard = () => {
   const { data: studentNominations, isLoading: loadingStudents } = useQuery({
     queryKey: ['studentNominations', filters],
     queryFn: async () => {
+      console.log('Fetching student nominations...');
       try {
         let query = supabase
           .from('student_nominations')
@@ -60,10 +61,15 @@ const AdminDashboard = () => {
         query = buildSearchQuery(query);
 
         const { data, error } = await query;
-        if (error) throw error;
+        if (error) {
+          console.error('Error fetching student nominations:', error);
+          toast.error('Failed to fetch student nominations');
+          throw error;
+        }
+        console.log('Student nominations fetched:', data?.length);
         return data;
       } catch (error) {
-        console.error('Error fetching student nominations:', error);
+        console.error('Error in student nominations query:', error);
         toast.error('Failed to fetch student nominations');
         return [];
       }
@@ -73,6 +79,7 @@ const AdminDashboard = () => {
   const { data: adminNominations, isLoading: loadingAdmins } = useQuery({
     queryKey: ['adminNominations', filters],
     queryFn: async () => {
+      console.log('Fetching admin nominations...');
       try {
         let query = supabase
           .from('admin_nominations')
@@ -82,10 +89,15 @@ const AdminDashboard = () => {
         query = buildSearchQuery(query);
 
         const { data, error } = await query;
-        if (error) throw error;
+        if (error) {
+          console.error('Error fetching admin nominations:', error);
+          toast.error('Failed to fetch admin nominations');
+          throw error;
+        }
+        console.log('Admin nominations fetched:', data?.length);
         return data;
       } catch (error) {
-        console.error('Error fetching admin nominations:', error);
+        console.error('Error in admin nominations query:', error);
         toast.error('Failed to fetch admin nominations');
         return [];
       }
@@ -136,4 +148,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
