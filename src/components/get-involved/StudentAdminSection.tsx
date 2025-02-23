@@ -3,12 +3,10 @@ import { useState } from "react";
 import { GraduationCap, Clipboard } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { supabase } from "@/integrations/supabase/client";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import emailjs from "@emailjs/browser";
+import NominationForm from "./forms/NominationForm";
+import NominationSection from "./sections/NominationSection";
+import { sendConfirmationEmail } from "./utils/emailUtils";
 
 interface NominationFormValues {
   email: string;
@@ -44,49 +42,6 @@ const StudentAdminSection = () => {
     }
   });
 
-  const sendConfirmationEmail = async (values: NominationFormValues) => {
-    try {
-      // Get all required EmailJS credentials from Supabase secrets
-      const [
-        { data: { EMAILJS_PUBLIC_KEY } },
-        { data: { EMAILJS_SERVICE_ID } },
-        { data: { EMAILJS_TEMPLATE_ID } },
-        { data: { EMAILJS_API_KEY } }
-      ] = await Promise.all([
-        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_PUBLIC_KEY' } }),
-        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_SERVICE_ID' } }),
-        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_TEMPLATE_ID' } }),
-        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_API_KEY' } })
-      ]);
-
-      if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_API_KEY) {
-        throw new Error('Missing EmailJS configuration');
-      }
-
-      // Initialize EmailJS with the public key
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-
-      // Prepare template parameters to match the email template variables
-      const templateParams = {
-        Name: values.name,
-        "Your School": values.school,
-        to_email: values.email
-      };
-
-      // Send the confirmation email
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_API_KEY
-      );
-
-    } catch (error: any) {
-      console.error('Error sending confirmation email:', error);
-      throw error;
-    }
-  };
-
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
@@ -104,7 +59,6 @@ const StudentAdminSection = () => {
 
       if (error) throw error;
 
-      // Send confirmation email
       await sendConfirmationEmail(values);
 
       toast.success("Student nomination submitted successfully!");
@@ -135,7 +89,6 @@ const StudentAdminSection = () => {
 
       if (error) throw error;
 
-      // Send confirmation email
       await sendConfirmationEmail(values);
 
       toast.success("Administrator nomination submitted successfully!");
@@ -149,221 +102,48 @@ const StudentAdminSection = () => {
     }
   };
 
-  const NominationForm = ({ form, onSubmit, onCancel }: { 
-    form: any;
-    onSubmit: (values: NominationFormValues) => Promise<void>;
-    onCancel: () => void;
-  }) => {
-    const schoolType = form.watch("schoolType");
-
-    return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <FormField
-            control={form.control}
-            name="email"
-            rules={{ required: "Email is required", pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Invalid email address"
-            }}}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input {...field} type="email" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="name"
-            rules={{ required: "Name is required" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Your Name</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="school"
-            rules={{ required: "School name is required" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>School Name</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="schoolType"
-            rules={{ required: "School type is required" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>School Type</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select school type" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="public">Public</SelectItem>
-                    <SelectItem value="charter">Charter</SelectItem>
-                    <SelectItem value="private">Private</SelectItem>
-                    <SelectItem value="parochial">Parochial</SelectItem>
-                    <SelectItem value="religious">Religious</SelectItem>
-                    <SelectItem value="language_immersion">Language Immersion</SelectItem>
-                    <SelectItem value="boarding">Boarding</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {schoolType === "other" && (
-            <FormField
-              control={form.control}
-              name="schoolTypeOther"
-              rules={{ required: "Please specify the school type" }}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Specify School Type</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          )}
-
-          <FormField
-            control={form.control}
-            name="townState"
-            rules={{ required: "Town and state are required" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Town and State</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="e.g., Boston, MA" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="flex gap-4 pt-4">
-            <Button 
-              type="button" 
-              variant="outline"
-              onClick={onCancel}
-            >
-              Cancel
-            </Button>
-            <Button 
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Submit Nomination
-            </Button>
-          </div>
-        </form>
-      </Form>
-    );
-  };
-
   return (
     <div className="grid md:grid-cols-2 gap-8 mb-16">
       <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-        <h2 className="text-2xl font-semibold mb-4">For students</h2>
         {!showStudentForm ? (
-          <>
-            <p className="text-gray-700 mb-6">
-              Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!
-            </p>
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={() => setShowStudentForm(true)}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300"
-              >
-                <GraduationCap className="w-5 h-5" />
-                <span>Student Nomination Form</span>
-              </button>
-              <p className="text-sm text-gray-600 text-center">
-                Start making a difference at your school
-              </p>
-              <div className="mt-4 space-y-2">
-                <div className="relative h-48 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/b1242c21-9120-419b-992a-f60f8e53669a.png"
-                    alt="Plant-based jackfruit dish with rice and vegetables"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <p className="text-sm text-gray-500 italic">Photo credit: The Jackfruit Company</p>
-              </div>
-            </div>
-          </>
+          <NominationSection
+            title="For students"
+            description="Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!"
+            buttonText="Student Nomination Form"
+            Icon={GraduationCap}
+            onButtonClick={() => setShowStudentForm(true)}
+            imageSrc="/lovable-uploads/b1242c21-9120-419b-992a-f60f8e53669a.png"
+            imageAlt="Plant-based jackfruit dish with rice and vegetables"
+            imageCredit="Photo credit: The Jackfruit Company"
+          />
         ) : (
           <NominationForm 
             form={studentForm} 
             onSubmit={handleStudentSubmit}
             onCancel={() => setShowStudentForm(false)}
+            isSubmitting={isSubmitting}
           />
         )}
       </div>
       
       <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-        <h2 className="text-2xl font-semibold mb-4">For Administrators</h2>
         {!showAdminForm ? (
-          <>
-            <p className="text-gray-700 mb-6">
-              Join the GreenPlate Program. Showcase your school's commitment to health, sustainability, and the future.
-            </p>
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={() => setShowAdminForm(true)}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300"
-              >
-                <Clipboard className="w-5 h-5" />
-                <span>Administrator Nomination Form</span>
-              </button>
-              <p className="text-sm text-gray-600 text-center">
-                Lead your school towards sustainability
-              </p>
-              <div className="mt-4 space-y-2">
-                <div className="relative h-48 rounded-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/c0d754a9-3d47-4199-bf02-8ff636da57c2.png"
-                    alt="Plant-based hot dog with vegetables"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <p className="text-sm text-gray-500 italic">Photo credit: Beyond Meat Inc.</p>
-              </div>
-            </div>
-          </>
+          <NominationSection
+            title="For Administrators"
+            description="Join the GreenPlate Program. Showcase your school's commitment to health, sustainability, and the future."
+            buttonText="Administrator Nomination Form"
+            Icon={Clipboard}
+            onButtonClick={() => setShowAdminForm(true)}
+            imageSrc="/lovable-uploads/c0d754a9-3d47-4199-bf02-8ff636da57c2.png"
+            imageAlt="Plant-based hot dog with vegetables"
+            imageCredit="Photo credit: Beyond Meat Inc."
+          />
         ) : (
           <NominationForm 
             form={adminForm}
             onSubmit={handleAdminSubmit}
             onCancel={() => setShowAdminForm(false)}
+            isSubmitting={isSubmitting}
           />
         )}
       </div>
@@ -372,4 +152,3 @@ const StudentAdminSection = () => {
 };
 
 export default StudentAdminSection;
-
