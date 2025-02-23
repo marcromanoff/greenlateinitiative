@@ -6,11 +6,12 @@ interface NominationsListProps {
   type: 'student' | 'admin';
   nominations: any[] | undefined;
   isLoading: boolean;
+  value: string;
 }
 
-const NominationsList = ({ type, nominations, isLoading }: NominationsListProps) => {
+const NominationsList = ({ type, nominations, isLoading, value }: NominationsListProps) => {
   return (
-    <TabsContent value={type}>
+    <TabsContent value={value}>
       {isLoading ? (
         <div>Loading...</div>
       ) : nominations?.length === 0 ? (

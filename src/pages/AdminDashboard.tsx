@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -20,7 +19,6 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'admin'>('student');
 
   const buildSearchQuery = (query: any) => {
-    // Apply each filter individually using .ilike() for text searches
     if (filters.email) {
       query = query.ilike('email', `%${filters.email.toLowerCase()}%`);
     }
@@ -111,10 +109,7 @@ const AdminDashboard = () => {
           
           <NominationsFilters filters={filters} setFilters={setFilters} />
 
-          <Tabs
-            value={activeTab}
-            onValueChange={(value) => setActiveTab(value as 'student' | 'admin')}
-          >
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'student' | 'admin')}>
             <TabsList className="mb-4">
               <TabsTrigger value="student">
                 Student Nominations
@@ -126,12 +121,14 @@ const AdminDashboard = () => {
 
             <NominationsList 
               type="student"
+              value="student"
               nominations={studentNominations}
               isLoading={loadingStudents}
             />
 
             <NominationsList 
               type="admin"
+              value="admin"
               nominations={adminNominations}
               isLoading={loadingAdmins}
             />
