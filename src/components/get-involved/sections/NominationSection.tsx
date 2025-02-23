@@ -1,5 +1,4 @@
 
-import Image from "@/components/ui/image";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
 
@@ -57,3 +56,4 @@ const NominationSection = ({
 };
 
 export default NominationSection;
+
