@@ -17,22 +17,31 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const form = e.currentTarget;
-      const { data: { EMAILJS_API_KEY } } = await supabase
-        .functions.invoke('get-secret', {
-          body: { name: 'EMAILJS_API_KEY' }
-        });
+      // Get all required EmailJS credentials from Supabase secrets
+      const [
+        { data: { EMAILJS_PUBLIC_KEY } },
+        { data: { EMAILJS_SERVICE_ID } },
+        { data: { EMAILJS_TEMPLATE_ID } },
+        { data: { EMAILJS_API_KEY } }
+      ] = await Promise.all([
+        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_PUBLIC_KEY' } }),
+        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_SERVICE_ID' } }),
+        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_TEMPLATE_ID' } }),
+        supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_API_KEY' } })
+      ]);
 
-      if (!EMAILJS_API_KEY) {
-        throw new Error('EmailJS API key not found');
+      if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_API_KEY) {
+        throw new Error('Missing EmailJS configuration');
       }
 
-      // Initialize EmailJS with your public key
-      emailjs.init("YOUR_PUBLIC_KEY");
+      // Initialize EmailJS with the public key
+      emailjs.init(EMAILJS_PUBLIC_KEY);
 
+      // Send the email using the form data
+      const form = e.currentTarget;
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         form,
         EMAILJS_API_KEY
       );
