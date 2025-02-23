@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import emailjs from "@emailjs/browser";
 
 // EmailJS public key can be stored directly since it's meant to be public
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
+const EMAILJS_PUBLIC_KEY = "CN3eL5x89CJDoRASU";
 
 interface NominationFormValues {
   email: string;
