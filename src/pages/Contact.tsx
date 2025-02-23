@@ -1,35 +1,121 @@
 
+import { useState } from "react";
 import Navigation from "../components/Navigation";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/integrations/supabase/client";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const form = e.currentTarget;
+      const { data: { EMAILJS_API_KEY } } = await supabase
+        .functions.invoke('get-secret', {
+          body: { name: 'EMAILJS_API_KEY' }
+        });
+
+      if (!EMAILJS_API_KEY) {
+        throw new Error('EmailJS API key not found');
+      }
+
+      // Initialize EmailJS with your public key
+      emailjs.init("YOUR_PUBLIC_KEY");
+
+      await emailjs.sendForm(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        form,
+        EMAILJS_API_KEY
+      );
+
+      toast.success("Message sent successfully!");
+      form.reset();
+    } catch (error: any) {
+      console.error('Error sending email:', error);
+      toast.error(error.message || "Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#D3E4FD] via-[#E8F4E2] to-[#F2FCE2]">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
-        <div className="max-w-2xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-8 text-primary">Contact Us</h1>
-          <p className="text-xl mb-8 text-gray-600">
-            Have questions or want to get involved? We'd love to hear from you!
-          </p>
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold mb-4 text-primary">Contact Us</h1>
+            <p className="text-xl text-gray-600">
+              Have questions or want to get involved? We'd love to hear from you!
+            </p>
+          </div>
           
-          <a 
-            href="mailto:greenplateinitiative@gmail.com"
-            className="inline-block"
+          <form 
+            onSubmit={handleSubmit}
+            className="bg-white rounded-lg shadow-md p-8 space-y-6"
           >
+            <div>
+              <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-1">
+                Name
+              </label>
+              <Input
+                id="user_name"
+                name="user_name"
+                required
+                className="w-full"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <Input
+                id="user_email"
+                name="user_email"
+                type="email"
+                required
+                className="w-full"
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                required
+                className="w-full min-h-[150px]"
+                placeholder="How can we help you?"
+              />
+            </div>
+
             <Button 
-              className="text-lg px-6 py-3 flex items-center gap-2"
-              size="lg"
+              type="submit" 
+              className="w-full"
+              disabled={isSubmitting}
             >
-              <Mail className="w-5 h-5" />
-              Email Us
+              <Mail className="mr-2 h-5 w-5" />
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
-          </a>
+          </form>
           
-          <p className="mt-6 text-gray-500">
-            greenplateinitiative@gmail.com
+          <p className="mt-6 text-center text-gray-500">
+            Or email us directly at: greenplateinitiative@gmail.com
           </p>
         </div>
       </main>
