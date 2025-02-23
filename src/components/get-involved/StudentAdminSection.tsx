@@ -8,11 +8,14 @@ import NominationForm from "./forms/NominationForm";
 import NominationSection from "./sections/NominationSection";
 import { sendConfirmationEmail } from "./utils/emailUtils";
 
+type SchoolType = "public" | "charter" | "private" | "parochial" | "religious" | "language_immersion" | "boarding" | "other";
+type PositionType = "student" | "administrator" | "parent" | "other";
+
 interface NominationFormValues {
   email: string;
   name: string;
   school: string;
-  schoolType: string;
+  schoolType: SchoolType;
   schoolTypeOther?: string;
   townState: string;
 }
@@ -27,7 +30,7 @@ const StudentAdminSection = () => {
       email: "",
       name: "",
       school: "",
-      schoolType: "",
+      schoolType: "public",
       townState: ""
     }
   });
@@ -37,7 +40,7 @@ const StudentAdminSection = () => {
       email: "",
       name: "",
       school: "",
-      schoolType: "",
+      schoolType: "public",
       townState: ""
     }
   });
@@ -45,22 +48,20 @@ const StudentAdminSection = () => {
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      // First try to insert the nomination
       const { error: dbError } = await supabase
         .from("student_nominations")
         .insert({
           email: values.email,
           name: values.name,
           school: values.school,
-          school_type: values.schoolType,
+          school_type: values.schoolType as SchoolType,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: 'student',
+          position: "student" as PositionType,
           town_state: values.townState
         });
 
       if (dbError) throw dbError;
 
-      // If successful, try to send the email
       await sendConfirmationEmail(values);
 
       toast.success("Student nomination submitted successfully!");
@@ -77,22 +78,20 @@ const StudentAdminSection = () => {
   const handleAdminSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      // First try to insert the nomination
       const { error: dbError } = await supabase
         .from("admin_nominations")
         .insert({
           email: values.email,
           name: values.name,
           school: values.school,
-          school_type: values.schoolType,
+          school_type: values.schoolType as SchoolType,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: 'administrator',
+          position: "administrator" as PositionType,
           town_state: values.townState
         });
 
       if (dbError) throw dbError;
 
-      // If successful, try to send the email
       await sendConfirmationEmail(values);
 
       toast.success("Administrator nomination submitted successfully!");

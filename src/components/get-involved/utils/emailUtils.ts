@@ -11,6 +11,13 @@ interface NominationFormValues {
   townState: string;
 }
 
+interface EmailJSSecrets {
+  EMAILJS_PUBLIC_KEY: string;
+  EMAILJS_SERVICE_ID: string;
+  EMAILJS_TEMPLATE_ID: string;
+  EMAILJS_API_KEY: string;
+}
+
 export const sendConfirmationEmail = async (values: NominationFormValues) => {
   try {
     const secretsToFetch = [
@@ -32,7 +39,7 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
         throw new Error(`Missing ${secretsToFetch[index]} configuration`);
       }
       return { ...acc, [secretsToFetch[index]]: secretValue };
-    }, {});
+    }, {} as EmailJSSecrets);
 
     console.log('EmailJS configuration loaded successfully');
 
