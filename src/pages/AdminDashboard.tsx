@@ -17,6 +17,7 @@ const AdminDashboard = () => {
     position: '',
     townState: ''
   });
+  const [activeTab, setActiveTab] = useState<'student' | 'admin'>('student');
 
   const buildSearchQuery = (query: any) => {
     // Apply each filter individually using .ilike() for text searches
@@ -110,7 +111,19 @@ const AdminDashboard = () => {
           
           <NominationsFilters filters={filters} setFilters={setFilters} />
 
-          <div className="space-y-8">
+          <Tabs
+            value={activeTab}
+            onValueChange={(value) => setActiveTab(value as 'student' | 'admin')}
+          >
+            <TabsList className="mb-4">
+              <TabsTrigger value="student">
+                Student Nominations
+              </TabsTrigger>
+              <TabsTrigger value="admin">
+                Administrator Nominations
+              </TabsTrigger>
+            </TabsList>
+
             <NominationsList 
               type="student"
               nominations={studentNominations}
@@ -122,7 +135,7 @@ const AdminDashboard = () => {
               nominations={adminNominations}
               isLoading={loadingAdmins}
             />
-          </div>
+          </Tabs>
         </div>
       </div>
     </div>
@@ -130,4 +143,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
