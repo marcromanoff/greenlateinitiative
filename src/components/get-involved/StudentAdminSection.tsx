@@ -45,28 +45,30 @@ const StudentAdminSection = () => {
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
+      // First try to insert the nomination
+      const { error: dbError } = await supabase
         .from("student_nominations")
         .insert({
           email: values.email,
           name: values.name,
           school: values.school,
-          school_type: values.schoolType as any,
+          school_type: values.schoolType,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: 'student' as any,
+          position: 'student',
           town_state: values.townState
         });
 
-      if (error) throw error;
+      if (dbError) throw dbError;
 
+      // If successful, try to send the email
       await sendConfirmationEmail(values);
 
       toast.success("Student nomination submitted successfully!");
       setShowStudentForm(false);
       studentForm.reset();
-    } catch (error) {
-      console.error("Error submitting student nomination:", error);
-      toast.error("Failed to submit nomination. Please try again.");
+    } catch (error: any) {
+      console.error("Error in student nomination process:", error);
+      toast.error(error.message || "Failed to submit nomination. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -75,28 +77,30 @@ const StudentAdminSection = () => {
   const handleAdminSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
+      // First try to insert the nomination
+      const { error: dbError } = await supabase
         .from("admin_nominations")
         .insert({
           email: values.email,
           name: values.name,
           school: values.school,
-          school_type: values.schoolType as any,
+          school_type: values.schoolType,
           school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: 'administrator' as any,
+          position: 'administrator',
           town_state: values.townState
         });
 
-      if (error) throw error;
+      if (dbError) throw dbError;
 
+      // If successful, try to send the email
       await sendConfirmationEmail(values);
 
       toast.success("Administrator nomination submitted successfully!");
       setShowAdminForm(false);
       adminForm.reset();
-    } catch (error) {
-      console.error("Error submitting administrator nomination:", error);
-      toast.error("Failed to submit nomination. Please try again.");
+    } catch (error: any) {
+      console.error("Error in administrator nomination process:", error);
+      toast.error(error.message || "Failed to submit nomination. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

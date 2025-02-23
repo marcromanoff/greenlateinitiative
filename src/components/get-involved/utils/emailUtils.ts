@@ -13,27 +13,33 @@ interface NominationFormValues {
 
 export const sendConfirmationEmail = async (values: NominationFormValues) => {
   try {
-    // Get all required EmailJS credentials from Supabase secrets
-    const [
-      { data: { EMAILJS_PUBLIC_KEY } },
-      { data: { EMAILJS_SERVICE_ID } },
-      { data: { EMAILJS_TEMPLATE_ID } },
-      { data: { EMAILJS_API_KEY } }
-    ] = await Promise.all([
-      supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_PUBLIC_KEY' } }),
-      supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_SERVICE_ID' } }),
-      supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_TEMPLATE_ID' } }),
-      supabase.functions.invoke('get-secret', { body: { name: 'EMAILJS_API_KEY' } })
-    ]);
+    const secretsToFetch = [
+      'EMAILJS_PUBLIC_KEY',
+      'EMAILJS_SERVICE_ID',
+      'EMAILJS_TEMPLATE_ID',
+      'EMAILJS_API_KEY'
+    ];
 
-    if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_API_KEY) {
-      throw new Error('Missing EmailJS configuration');
-    }
+    const secretPromises = secretsToFetch.map(secretName => 
+      supabase.functions.invoke('get-secret', { body: { name: secretName } })
+    );
+
+    const secretsResponses = await Promise.all(secretPromises);
+    
+    const secrets = secretsResponses.reduce((acc, { data }, index) => {
+      const secretValue = data?.[secretsToFetch[index]];
+      if (!secretValue) {
+        throw new Error(`Missing ${secretsToFetch[index]} configuration`);
+      }
+      return { ...acc, [secretsToFetch[index]]: secretValue };
+    }, {});
+
+    console.log('EmailJS configuration loaded successfully');
 
     // Initialize EmailJS with the public key
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.init(secrets.EMAILJS_PUBLIC_KEY);
 
-    // Prepare template parameters to match the email template variables
+    // Prepare template parameters
     const templateParams = {
       Name: values.name,
       "Your School": values.school,
@@ -41,15 +47,18 @@ export const sendConfirmationEmail = async (values: NominationFormValues) => {
     };
 
     // Send the confirmation email
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
+    const response = await emailjs.send(
+      secrets.EMAILJS_SERVICE_ID,
+      secrets.EMAILJS_TEMPLATE_ID,
       templateParams,
-      EMAILJS_API_KEY
+      secrets.EMAILJS_API_KEY
     );
+
+    console.log('Email sent successfully:', response);
+    return response;
 
   } catch (error: any) {
     console.error('Error sending confirmation email:', error);
-    throw error;
+    throw new Error(`Failed to send confirmation email: ${error.message}`);
   }
 };
