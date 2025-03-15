@@ -28,6 +28,7 @@ export const useUserRoles = (user: User | null, setIsLoading: (loading: boolean)
 
       if (adminCheckError) {
         console.error('❌ Error checking admin role:', adminCheckError);
+        toast.error('Error checking user permissions. Default to user role.');
         return ['user'];
       }
 
@@ -82,6 +83,7 @@ export const useUserRoles = (user: User | null, setIsLoading: (loading: boolean)
         console.error('❌ Error updating roles:', error);
         if (mounted) {
           setRoles(['user']); // Default to user role on error
+          toast.error('Failed to load user permissions. Using default role.');
         }
       } finally {
         if (mounted) {
