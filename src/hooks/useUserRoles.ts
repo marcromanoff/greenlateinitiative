@@ -17,40 +17,30 @@ export const useUserRoles = (user: User | null, setIsLoading: (loading: boolean)
     }
 
     try {
-      console.log('📊 Fetching roles using direct query instead of RPC...');
+      console.log('📊 Fetching roles using rpc...');
       
-      // Use a direct query to check user roles instead of RPC
-      // This avoids potential recursion in RLS policies
-      const { data: roleData, error: rolesError } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', userId);
+      // Use our has_role function to check admin status (using SECURITY DEFINER)
+      const { data: isAdmin, error: adminCheckError } = await supabase
+        .rpc('has_role', { 
+          _user_id: userId,
+          _role: 'admin'
+        });
 
-      if (rolesError) {
-        console.error('❌ Error checking user roles:', rolesError);
+      if (adminCheckError) {
+        console.error('❌ Error checking admin role:', adminCheckError);
         toast.error('Error checking user permissions. Default to user role.');
         return ['user'];
       }
 
-      if (roleData && roleData.length > 0) {
-        // Extract the roles from the response
-        const userRoles = roleData.map(r => r.role as AppRole);
-        
-        // Always include 'user' role as a fallback
-        if (!userRoles.includes('user')) {
-          userRoles.push('user');
-        }
-        
-        console.log('✅ User roles retrieved:', {
+      if (isAdmin) {
+        console.log('✅ User is admin:', {
           userId,
-          roles: userRoles,
           timestamp: new Date().toISOString()
         });
-        
-        return userRoles;
+        return ['admin', 'user'];
       }
 
-      console.log('ℹ️ No roles found, defaulting to user role');
+      console.log('ℹ️ User is not admin, defaulting to user role');
       return ['user'];
     } catch (error) {
       console.error('❌ Error in fetchUserRoles:', error);
