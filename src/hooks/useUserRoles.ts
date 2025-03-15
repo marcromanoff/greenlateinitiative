@@ -19,7 +19,7 @@ export const useUserRoles = (user: User | null, setIsLoading: (loading: boolean)
     try {
       console.log('📊 Fetching roles using rpc...');
       
-      // Use RPC call to has_role function to check admin status
+      // Use our has_role function to check admin status (using SECURITY DEFINER)
       const { data: isAdmin, error: adminCheckError } = await supabase
         .rpc('has_role', { 
           _user_id: userId,
@@ -41,7 +41,6 @@ export const useUserRoles = (user: User | null, setIsLoading: (loading: boolean)
 
       console.log('ℹ️ User is not admin, defaulting to user role');
       return ['user'];
-
     } catch (error) {
       console.error('❌ Error in fetchUserRoles:', error);
       return ['user'];
