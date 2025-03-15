@@ -62,10 +62,10 @@ const NominationsFilters = ({ filters, setFilters }: NominationsFiltersProps) =>
           value={filters.schoolType}
           onValueChange={(value) => setFilters({ ...filters, schoolType: value })}
         >
-          <SelectTrigger id="schoolType">
+          <SelectTrigger id="schoolType" className="bg-white">
             <SelectValue placeholder="Select school type" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-white z-50">
             <SelectItem value="all">All Types</SelectItem>
             <SelectItem value="public">Public</SelectItem>
             <SelectItem value="charter">Charter</SelectItem>
@@ -85,10 +85,10 @@ const NominationsFilters = ({ filters, setFilters }: NominationsFiltersProps) =>
           value={filters.position}
           onValueChange={(value) => setFilters({ ...filters, position: value })}
         >
-          <SelectTrigger id="position">
+          <SelectTrigger id="position" className="bg-white">
             <SelectValue placeholder="Select position" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-white z-50">
             <SelectItem value="all">All Positions</SelectItem>
             <SelectItem value="student">Student</SelectItem>
             <SelectItem value="administrator">Administrator</SelectItem>
@@ -112,4 +112,3 @@ const NominationsFilters = ({ filters, setFilters }: NominationsFiltersProps) =>
 };
 
 export default NominationsFilters;
-

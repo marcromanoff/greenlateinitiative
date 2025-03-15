@@ -82,13 +82,16 @@ const NominationForm = ({ form, onSubmit, onCancel, isSubmitting }: NominationFo
           render={({ field }) => (
             <FormItem>
               <FormLabel>School Type</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              <Select 
+                onValueChange={field.onChange} 
+                defaultValue={field.value}
+              >
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full bg-white">
                     <SelectValue placeholder="Select school type" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent>
+                <SelectContent position="popper" className="bg-white">
                   <SelectItem value="public">Public</SelectItem>
                   <SelectItem value="charter">Charter</SelectItem>
                   <SelectItem value="private">Private</SelectItem>
