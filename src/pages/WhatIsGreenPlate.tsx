@@ -1,10 +1,8 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Link } from "react-router-dom";
-
 const WhatIsGreenPlate = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
+  return <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
@@ -18,28 +16,13 @@ const WhatIsGreenPlate = () => {
               <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    The GreenPlate Initiative is a structured grading system that evaluates school lunch sustainability. 
-                    We grade using completely objective criteria and information provided by schools and GreenPlate ambassadors. 
-                    We assess schools based on four key categories:
-                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">The GreenPlate Initiative combines a rigorous, objective grading system with a dynamic points-based leaderboard to drive real cafeteria change. Schools and ambassadors are evaluated in four core sustainability areas (below), earning points for their contributions. The more sustainable actions taken, the higher a school ranks—unlocking opportunities for recognition, prizes, and visibility within a growing national movement.</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                {[
-                  "Variety & Inclusivity",
-                  "Sourcing & Sustainability",
-                  "Nutritional Value",
-                  "Accessibility & Labeling"
-                ].map((category, index) => (
-                  <Link 
-                    to="/grading" 
-                    key={index}
-                    className="bg-green-50 p-4 rounded-lg border border-green-200 text-primary font-medium text-center hover:bg-green-100 transition-colors"
-                  >
+                {["Variety & Inclusivity", "Sourcing & Sustainability", "Nutritional Value", "Accessibility & Labeling"].map((category, index) => <Link to="/grading" key={index} className="bg-green-50 p-4 rounded-lg border border-green-200 text-primary font-medium text-center hover:bg-green-100 transition-colors">
                     {category}
-                  </Link>
-                ))}
+                  </Link>)}
               </div>
             </section>
 
@@ -48,11 +31,7 @@ const WhatIsGreenPlate = () => {
                 <div className="order-2 md:order-1">
                   <div className="space-y-2">
                     <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png"
-                        alt="Sustainable catering display"
-                        className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                      />
+                      <img src="/lovable-uploads/ea3c79ad-54c2-435c-9726-38bd0f049a85.png" alt="Sustainable catering display" className="object-cover w-full h-full hover:scale-105 transition-transform duration-300" />
                     </div>
                     <p className="text-sm text-gray-500 italic">Photo credit: Food Service Company</p>
                   </div>
@@ -88,11 +67,7 @@ const WhatIsGreenPlate = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="relative h-48 rounded-lg overflow-hidden">
-                    <img 
-                      src="/lovable-uploads/6c0b369e-324c-45be-a5ff-5e99569d221f.png"
-                      alt="School lunch options"
-                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src="/lovable-uploads/6c0b369e-324c-45be-a5ff-5e99569d221f.png" alt="School lunch options" className="object-cover w-full h-full hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-sm text-gray-500 italic">Photo credit: Machiso's Food Services</p>
                 </div>
@@ -103,11 +78,7 @@ const WhatIsGreenPlate = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-2">
                   <div className="relative h-48 rounded-lg overflow-hidden">
-                    <img 
-                      src="/lovable-uploads/fb80305d-12fc-4647-b326-9b441fe226c8.png"
-                      alt="Sustainable meal preparation"
-                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src="/lovable-uploads/fb80305d-12fc-4647-b326-9b441fe226c8.png" alt="Sustainable meal preparation" className="object-cover w-full h-full hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-sm text-gray-500 italic">Photo credit: Creative Dining Services</p>
                 </div>
@@ -127,8 +98,6 @@ const WhatIsGreenPlate = () => {
 
         <ScrollingFact fact="Schools with sustainable dining programs see a 45% increase in student participation in environmental initiatives." />
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default WhatIsGreenPlate;
