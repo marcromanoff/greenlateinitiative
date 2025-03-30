@@ -104,9 +104,7 @@ const NominationPointsCard = () => {
             <Badge variant="outline" className="mt-1 bg-green-50">100 <GPSymbol /></Badge>
             <Dialog open={isStudentDialogOpen} onOpenChange={setIsStudentDialogOpen}>
               <DialogTrigger asChild>
-                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">
-                  Submit a verified school contact
-                </button>
+                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">Refer an administrator/school sustainability contact</button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <div className="p-4">
