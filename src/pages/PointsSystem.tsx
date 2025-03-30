@@ -148,7 +148,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🌱</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Eco Vanguard</h3>
-                      <p className="text-sm text-gray-500">10,000 <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">10,000 <GPSymbol /></p>
                     </div>
                   </div>
                   
@@ -156,7 +156,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🌿</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Guardian of Change</h3>
-                      <p className="text-sm text-gray-500">50,000 <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">50,000 <GPSymbol /></p>
                     </div>
                   </div>
                   
@@ -164,7 +164,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🏆</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Champion of the Future</h3>
-                      <p className="text-sm text-gray-500">100,000 <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">100,000 <GPSymbol /></p>
                     </div>
                   </div>
                   
@@ -172,7 +172,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🔥</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Pathfinder for the Planet</h3>
-                      <p className="text-sm text-gray-500">250,000 <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">250,000 <GPSymbol /></p>
                     </div>
                   </div>
                   
@@ -180,7 +180,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🛡️</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Defender of Earth</h3>
-                      <p className="text-sm text-gray-500">500,000 <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">500,000 <GPSymbol /></p>
                     </div>
                   </div>
                   
@@ -188,7 +188,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">✨</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Legend of the GreenVerse</h3>
-                      <p className="text-sm text-gray-500">1,000,000+ <GPSymbol /> points</p>
+                      <p className="text-sm text-gray-500">1,000,000+ <GPSymbol /></p>
                     </div>
                   </div>
                 </div>
