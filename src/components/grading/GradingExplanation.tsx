@@ -1,13 +1,6 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const GradingExplanation = () => {
-  return (
-    <div className="mb-8">
+  return <div className="mb-8">
       <p className="text-lg mb-6">
         At GreenPlate, we are committed to 100% objectivity in evaluating school dining programs. 
         Our grading system is designed to be fair, consistent, and free from subjective bias. 
@@ -101,11 +94,7 @@ const GradingExplanation = () => {
         </AccordionItem>
       </Accordion>
 
-      <p className="mt-8 text-lg">
-        By sticking to objective data and a rigorous evaluation process, GreenPlate ensures that every school is graded fairly and has a clear path to achieving excellence. If your school is ready to lead the way in sustainability, we're here to provide the tools and support to get you there! 🌱
-      </p>
-    </div>
-  );
+      <p className="mt-8 text-lg">By sticking to objective data and a rigorous evaluation process, GreenPlate ensures that every school is graded fairly and has a clear path to achieving excellence. If your school is ready to lead the way in sustainability, we're here to provide the tools and support to get you there!</p>
+    </div>;
 };
-
 export default GradingExplanation;
