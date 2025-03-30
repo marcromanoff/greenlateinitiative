@@ -1,13 +1,12 @@
-
+import React from 'react';
 import Navigation from "../components/Navigation";
 import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Star, Trophy, Upload, School, Medal, GraduationCap, Share2, Leaf } from "lucide-react";
 
-// Custom GreenPlate Points symbol component
+// Custom GreenPlate Points symbol component with added spacing
 const GPSymbol = ({ className = "" }: { className?: string }) => (
-  <span className={`inline-flex items-center ${className}`}>
+  <span className={`inline-flex items-center ml-1 ${className}`}>
     <Leaf className="h-3 w-3 text-primary stroke-[3] -ml-0.5 mr-0.5" />
   </span>
 );
