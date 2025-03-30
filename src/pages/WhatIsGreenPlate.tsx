@@ -79,12 +79,10 @@ const WhatIsGreenPlate = () => {
                 </div>
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Vision</h2>
-                  <p className="text-gray-700 leading-relaxed">
-                    Our ultimate goal is to make sustainable dining practices the norm in schools, empowering them to 
-                    serve meals that are not only nutritious and inclusive but also environmentally responsible. 
-                    Together, we can build a future where every school cafeteria embodies the principles of health, 
-                    school lunch sustainability, and inclusivity.
-                  </p>
+                  <p className="text-gray-700 leading-relaxed">Our goal is to make sustainable dining the standard in schools—where every meal is nutritious, inclusive, and environmentally responsible. 
+
+
+By turning action into points and progress into recognition, we empower schools to lead purposefully. Through friendly competition and measurable impact, we see a future where every cafeteria reflects the values of health, ethical value, and sustainability.</p>
                 </div>
               </div>
             </section>
