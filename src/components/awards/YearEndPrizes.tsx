@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Medal, Trophy, User, School, Users } from "lucide-react";
 import { motion } from "framer-motion";
-
 const fadeIn = {
   hidden: {
     opacity: 0,
@@ -15,15 +14,13 @@ const fadeIn = {
     }
   }
 };
-
 const YearEndPrizes = () => {
-  return (
-    <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-12">
+  return <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-12">
       <Card className="hover:shadow-lg transition-shadow overflow-hidden border-amber-200">
         <CardHeader className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-white pb-6">
           <CardTitle className="flex items-center gap-4">
             <Award className="h-7 w-7 text-white animate-pulse" />
-            <span className="text-2xl">Year-End Prizes</span>
+            <span className="text-2xl">End-of-Year Prizes</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="bg-amber-50 pt-8">
@@ -136,8 +133,6 @@ const YearEndPrizes = () => {
           </div>
         </CardContent>
       </Card>
-    </motion.div>
-  );
+    </motion.div>;
 };
-
 export default YearEndPrizes;
