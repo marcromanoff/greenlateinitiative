@@ -1,18 +1,16 @@
-
 import React from 'react';
 import { Award, Star, Trophy, Medal, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-
 interface AwardsCardProps {
   className?: string;
 }
-
-const AwardsCard = ({ className }: AwardsCardProps) => {
-  return (
-    <Card className={cn("overflow-hidden hover:shadow-lg transition-all", className)}>
+const AwardsCard = ({
+  className
+}: AwardsCardProps) => {
+  return <Card className={cn("overflow-hidden hover:shadow-lg transition-all", className)}>
       <div className="bg-primary text-white p-4 flex items-center gap-3">
         <Trophy className="h-6 w-6 animate-pulse" />
         <h2 className="text-xl font-semibold">End-of-Year Medals & Awards</h2>
@@ -26,7 +24,7 @@ const AwardsCard = ({ className }: AwardsCardProps) => {
         <div className="mb-6 bg-gradient-to-r from-amber-50 via-amber-100 to-amber-50 border border-amber-200 p-4 rounded-lg hover:shadow-md transition-all">
           <div className="flex items-center gap-2 mb-2">
             <Award className="h-5 w-5 text-amber-600" />
-            <h3 className="font-semibold text-amber-800">Year-End Prizes</h3>
+            <h3 className="font-semibold text-amber-800">End-of-Year Prizes</h3>
           </div>
           <p className="text-sm text-gray-600 mb-2">
             At the end of each year, the <span className="font-semibold">top 3 schools</span> and <span className="font-semibold">top 3 advocates</span> win exclusive prizes and recognition!
@@ -58,8 +56,6 @@ const AwardsCard = ({ className }: AwardsCardProps) => {
           </div>
         </Link>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
-
 export default AwardsCard;
