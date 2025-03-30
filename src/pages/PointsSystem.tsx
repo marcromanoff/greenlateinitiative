@@ -3,7 +3,14 @@ import Navigation from "../components/Navigation";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, Star, Trophy, Upload, School, Medal, GraduationCap, Share2 } from "lucide-react";
+import { Award, Star, Trophy, Upload, School, Medal, GraduationCap, Share2, Leaf } from "lucide-react";
+
+// Custom GreenPlate Points symbol component
+const GPSymbol = ({ className = "" }: { className?: string }) => (
+  <span className={`inline-flex items-center ${className}`}>
+    <Leaf className="h-3 w-3 text-primary stroke-[3] -ml-0.5 mr-0.5" />
+  </span>
+);
 
 const PointsSystem = () => {
   return (
@@ -37,15 +44,15 @@ const PointsSystem = () => {
               <CardContent className="pt-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">100</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">100 <GPSymbol /></Badge>
                     <span>Submit a verified school contact</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">4,000</Badge>
-                    <span>School completes assessment <span className="text-sm text-gray-500">(1,000 points for the referrer)</span></span>
+                    <Badge variant="outline" className="mt-1 bg-green-50">4,000 <GPSymbol /></Badge>
+                    <span>School completes assessment <span className="text-sm text-gray-500">(1,000 <GPSymbol /> for the referrer)</span></span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">10,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">10,000 <GPSymbol /></Badge>
                     <span>School joins officially</span>
                   </li>
                 </ul>
@@ -60,35 +67,35 @@ const PointsSystem = () => {
               <CardContent className="pt-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">10,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">10,000 <GPSymbol /></Badge>
                     <span>Complete GreenPlate Assessment</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">25,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">25,000 <GPSymbol /></Badge>
                     <span>Earn a Bronze Medal</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">50,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">50,000 <GPSymbol /></Badge>
                     <span>Earn a Silver Medal</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">100,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">100,000 <GPSymbol /></Badge>
                     <span>Earn a Gold Medal</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">250,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">250,000 <GPSymbol /></Badge>
                     <span>Earn Diamond Standard</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">10,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">10,000 <GPSymbol /></Badge>
                     <span>Host a GreenPlate Presentation</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">5,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">5,000 <GPSymbol /></Badge>
                     <span>Social Media Posts <span className="text-sm text-gray-500">(Instagram, X, YouTube - proof required)</span></span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">10,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">10,000 <GPSymbol /></Badge>
                     <span>Feature GreenPlate on School Website</span>
                   </li>
                 </ul>
@@ -103,27 +110,27 @@ const PointsSystem = () => {
               <CardContent className="pt-6">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">2,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">2,000 <GPSymbol /></Badge>
                     <span>Post on Instagram</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">1,500</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">1,500 <GPSymbol /></Badge>
                     <span>Post on Facebook Group</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">6,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">6,000 <GPSymbol /></Badge>
                     <span>YouTube Explainer Video</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">5,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">5,000 <GPSymbol /></Badge>
                     <span>Write a Blog or Article</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">50,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">50,000 <GPSymbol /></Badge>
                     <span>Secure Local News Coverage</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Badge variant="outline" className="mt-1 bg-green-50">20,000</Badge>
+                    <Badge variant="outline" className="mt-1 bg-green-50">20,000 <GPSymbol /></Badge>
                     <span>Submit a Testimonial Video</span>
                   </li>
                 </ul>
@@ -141,7 +148,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🌱</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Eco Vanguard</h3>
-                      <p className="text-sm text-gray-500">10,000 points</p>
+                      <p className="text-sm text-gray-500">10,000 <GPSymbol /> points</p>
                     </div>
                   </div>
                   
@@ -149,7 +156,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🌿</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Guardian of Change</h3>
-                      <p className="text-sm text-gray-500">50,000 points</p>
+                      <p className="text-sm text-gray-500">50,000 <GPSymbol /> points</p>
                     </div>
                   </div>
                   
@@ -157,7 +164,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🏆</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Champion of the Future</h3>
-                      <p className="text-sm text-gray-500">100,000 points</p>
+                      <p className="text-sm text-gray-500">100,000 <GPSymbol /> points</p>
                     </div>
                   </div>
                   
@@ -165,7 +172,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🔥</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Pathfinder for the Planet</h3>
-                      <p className="text-sm text-gray-500">250,000 points</p>
+                      <p className="text-sm text-gray-500">250,000 <GPSymbol /> points</p>
                     </div>
                   </div>
                   
@@ -173,7 +180,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">🛡️</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Defender of Earth</h3>
-                      <p className="text-sm text-gray-500">500,000 points</p>
+                      <p className="text-sm text-gray-500">500,000 <GPSymbol /> points</p>
                     </div>
                   </div>
                   
@@ -181,7 +188,7 @@ const PointsSystem = () => {
                     <div className="text-2xl">✨</div>
                     <div className="flex-1">
                       <h3 className="font-medium">Legend of the GreenVerse</h3>
-                      <p className="text-sm text-gray-500">1,000,000+ points</p>
+                      <p className="text-sm text-gray-500">1,000,000+ <GPSymbol /> points</p>
                     </div>
                   </div>
                 </div>
