@@ -6,7 +6,7 @@ import { Toaster as Sonner } from "./components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
-import About from "./pages/About";
+// Removed About import
 import GetInvolved from "./pages/GetInvolved";
 import Process from "./pages/Process";
 import Grading from "./pages/Grading";
@@ -33,7 +33,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/what-is-greenplate" element={<WhatIsGreenPlate />} />
-              <Route path="/about" element={<About />} />
+              {/* Removed About route */}
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/process" element={<Process />} />
               <Route path="/grading" element={<Grading />} />
