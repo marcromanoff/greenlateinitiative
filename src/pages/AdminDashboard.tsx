@@ -103,7 +103,7 @@ const AdminDashboard = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-[#DBE6F6] via-[#E8F4E2] to-[#F2FAFC]">
       <Navigation />
       
       <div className="container mx-auto px-4 py-8">

@@ -26,7 +26,7 @@ const fadeIn = {
 
 const Awards = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#DBE6F6] via-[#E8F4E2] to-[#F2FAFC]">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">

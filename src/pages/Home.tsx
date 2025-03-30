@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 const Home = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-[#D3E4FD] via-[#E8F4E2] to-[#F2FCE2] font-sans">
+  return <div className="min-h-screen bg-gradient-to-br from-[#DBE6F6] via-[#E8F4E2] to-[#F2FAFC] font-sans">
       <Navigation />
       
       <main className="container mx-auto px-4 py-12">

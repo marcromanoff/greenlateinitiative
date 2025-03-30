@@ -9,7 +9,7 @@ import AwardsCard from '../components/points-system/AwardsCard';
 
 const PointsSystem = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#E8F4E2] via-[#D3E4FD] to-[#F2FCE2]">
+    <div className="min-h-screen bg-gradient-to-br from-[#DBE6F6] via-[#E8F4E2] to-[#F2FAFC]">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">

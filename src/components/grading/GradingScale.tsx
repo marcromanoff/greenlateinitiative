@@ -1,6 +1,8 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Sparkles, Trophy, Medal } from "lucide-react";
+
 const GradingScale = () => {
   return <Card className="mb-8">
       <CardContent className="p-6">
@@ -59,4 +61,5 @@ const GradingScale = () => {
       </CardContent>
     </Card>;
 };
+
 export default GradingScale;
