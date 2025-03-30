@@ -71,7 +71,7 @@ const Awards = () => {
                         <li>Diamond Award Certification + custom banner mailed to school</li>
                         <li>Top placement on GreenPlate map + homepage spotlight</li>
                         <li>Featured on the Official GreenPlate Initiative home page</li>
-                        <li>Social Media support to help them share their win locally</li>
+                        <li>Social Media support to help them share win</li>
                       </ul>
                     </div>
                   </div>
