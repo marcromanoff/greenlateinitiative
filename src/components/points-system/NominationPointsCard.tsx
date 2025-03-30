@@ -9,8 +9,10 @@ import NominationForm from '../get-involved/forms/NominationForm';
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { sendConfirmationEmail } from "../get-involved/utils/emailUtils";
+
 type SchoolType = "public" | "charter" | "private" | "parochial" | "religious" | "language_immersion" | "boarding" | "other";
 type PositionType = "student" | "administrator" | "parent" | "other";
+
 interface NominationFormValues {
   email: string;
   name: string;
@@ -19,10 +21,12 @@ interface NominationFormValues {
   schoolTypeOther?: string;
   townState: string;
 }
+
 const NominationPointsCard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isStudentDialogOpen, setIsStudentDialogOpen] = useState(false);
   const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
+
   const studentForm = useForm<NominationFormValues>({
     defaultValues: {
       email: "",
@@ -32,6 +36,7 @@ const NominationPointsCard = () => {
       townState: ""
     }
   });
+
   const adminForm = useForm<NominationFormValues>({
     defaultValues: {
       email: "",
@@ -41,6 +46,7 @@ const NominationPointsCard = () => {
       townState: ""
     }
   });
+
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
@@ -67,6 +73,7 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
+
   const handleAdminSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
@@ -93,6 +100,7 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
+
   return <Card className="overflow-hidden">
       <div className="bg-primary text-white p-4 flex items-center gap-3">
         <GraduationCap className="h-6 w-6" />
@@ -100,11 +108,11 @@ const NominationPointsCard = () => {
       </div>
       <CardContent className="pt-6">
         <ul className="space-y-3">
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-green-50 rounded-md p-2">
             <Badge variant="outline" className="mt-1 bg-green-50">100 <GPSymbol /></Badge>
             <Dialog open={isStudentDialogOpen} onOpenChange={setIsStudentDialogOpen}>
               <DialogTrigger asChild>
-                <button className="text-left hover:text-primary hover:underline transition-colors">
+                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">
                   Submit a verified school contact
                 </button>
               </DialogTrigger>
@@ -119,11 +127,11 @@ const NominationPointsCard = () => {
               </DialogContent>
             </Dialog>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 bg-green-50 rounded-md p-2">
             <Badge variant="outline" className="mt-1 bg-green-50">4,000 <GPSymbol /></Badge>
             <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
               <DialogTrigger asChild>
-                <button className="text-left hover:text-primary hover:underline transition-colors">
+                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">
                   Administrator completes GreenPlate Assessment
                 </button>
               </DialogTrigger>
@@ -142,7 +150,7 @@ const NominationPointsCard = () => {
           
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">2,000 <GPSymbol /></Badge>
-            <span>Post on Instagram (tag official_greenplate_initiative)</span>
+            <span>Post on Instagram (tag official_greenplate_initiative)</span>
           </li>
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">1,500 <GPSymbol /></Badge>
@@ -158,14 +166,15 @@ const NominationPointsCard = () => {
           </li>
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">50,000 <GPSymbol /></Badge>
-            <span>Secure Local News Coverage about GreenPlate</span>
+            <span>Secure Local News Coverage about GreenPlate</span>
           </li>
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">20,000 <GPSymbol /></Badge>
-            <span>Submit a Testimonial Video about GreenPlate</span>
+            <span>Submit a Testimonial Video about GreenPlate</span>
           </li>
         </ul>
       </CardContent>
     </Card>;
 };
+
 export default NominationPointsCard;
