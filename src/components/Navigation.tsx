@@ -1,3 +1,4 @@
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
@@ -54,7 +55,7 @@ const Navigation = () => {
     { to: "/process", label: "Process" },
     { to: "/points-system", label: "Points System" },
     { to: "/grading", label: "Grading" },
-    { to: "/awards", label: "Medals" },
+    { to: "/awards", label: "Medals & Awards" },
     { to: "/vendors", label: "Vendors" },
     { to: "/downloads", label: "Downloads" },
     { to: "/faq", label: "FAQ" },

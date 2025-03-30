@@ -1,4 +1,3 @@
-
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,7 +9,7 @@ const Awards = () => {
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-primary">GreenPlate Medals & Recognition</h1>
+          <h1 className="text-4xl font-bold mb-8 text-primary">GreenPlate Medals & Awards</h1>
           
           {/* Gold Standard Section with Certificate */}
           <div className="mb-8">
