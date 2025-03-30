@@ -46,7 +46,7 @@ const AwardsCard = ({
           <div className="mt-2 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 border border-blue-100 p-4 rounded-lg hover:shadow-md transition-all">
             <div className="flex items-center gap-2 mb-2">
               <Trophy className="h-5 w-5 text-blue-600 group-hover:rotate-12 transition-transform" />
-              <h3 className="font-semibold text-blue-800">See All Medals</h3>
+              <h3 className="font-semibold text-blue-800">See Medals</h3>
             </div>
             <p className="text-sm text-gray-600">
               View the complete medal system and learn what your school can earn through the GreenPlate program.
