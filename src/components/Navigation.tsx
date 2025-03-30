@@ -53,6 +53,7 @@ const Navigation = () => {
     // Removed "Why GreenPlate" link
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },
+    { to: "/points-system", label: "Points System" },
     { to: "/grading", label: "Grading" },
     // Removed "GreenGauge" link
     // Removed "GreenPlate Ambassador" link

@@ -9,6 +9,7 @@ import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
 // Removed About import
 import GetInvolved from "./pages/GetInvolved";
 import Process from "./pages/Process";
+import PointsSystem from "./pages/PointsSystem";
 import Grading from "./pages/Grading";
 // Removed Calculator import
 import Ambassador from "./pages/Ambassador";
@@ -36,6 +37,7 @@ const App = () => {
               {/* Removed About route */}
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/process" element={<Process />} />
+              <Route path="/points-system" element={<PointsSystem />} />
               <Route path="/grading" element={<Grading />} />
               {/* Removed Calculator route */}
               <Route path="/ambassador" element={<Ambassador />} />
