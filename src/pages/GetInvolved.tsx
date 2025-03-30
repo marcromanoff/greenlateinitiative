@@ -2,7 +2,6 @@
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
 import StudentAdminSection from "@/components/get-involved/StudentAdminSection";
-import VendorRecommendations from "@/components/get-involved/VendorRecommendations";
 
 const GetInvolved = () => {
   return (
@@ -14,7 +13,6 @@ const GetInvolved = () => {
           <h1 className="text-4xl font-bold mb-8 text-primary">Get Involved</h1>
           
           <StudentAdminSection />
-          <VendorRecommendations />
         </div>
 
         <ScrollingFact fact="Schools generate 530,000 tons of food waste annually. Compostable utensils and better planning can reduce this by 30%. (USDA)" />
