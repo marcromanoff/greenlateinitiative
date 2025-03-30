@@ -1,6 +1,5 @@
 
 import Navigation from "../components/Navigation";
-import ScrollingFact from "../components/ScrollingFact";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
@@ -137,41 +136,55 @@ const PointsSystem = () => {
                 <h2 className="text-xl font-semibold">Level Up with Titles</h2>
               </div>
               <CardContent className="pt-6">
-                <p className="mb-4">Earn public ranking titles as you climb:</p>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-1/2">Title</TableHead>
-                      <TableHead className="text-right">Points</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell className="font-medium">🌱 Eco Vanguard</TableCell>
-                      <TableCell className="text-right">10,000</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">🌿 Guardian of Change</TableCell>
-                      <TableCell className="text-right">50,000</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">🏆 Champion of the Future</TableCell>
-                      <TableCell className="text-right">100,000</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">🔥 Pathfinder for the Planet</TableCell>
-                      <TableCell className="text-right">250,000</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">🛡️ Defender of Earth</TableCell>
-                      <TableCell className="text-right">500,000</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell className="font-medium">✨ Legend of the GreenVerse</TableCell>
-                      <TableCell className="text-right">1,000,000+</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">🌱</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Eco Vanguard</h3>
+                      <p className="text-sm text-gray-500">10,000 points</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">🌿</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Guardian of Change</h3>
+                      <p className="text-sm text-gray-500">50,000 points</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">🏆</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Champion of the Future</h3>
+                      <p className="text-sm text-gray-500">100,000 points</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">🔥</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Pathfinder for the Planet</h3>
+                      <p className="text-sm text-gray-500">250,000 points</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">🛡️</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Defender of Earth</h3>
+                      <p className="text-sm text-gray-500">500,000 points</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-100">
+                    <div className="text-2xl">✨</div>
+                    <div className="flex-1">
+                      <h3 className="font-medium">Legend of the GreenVerse</h3>
+                      <p className="text-sm text-gray-500">1,000,000+ points</p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -199,8 +212,6 @@ const PointsSystem = () => {
             </CardContent>
           </Card>
         </div>
-
-        <ScrollingFact fact="Schools participating in the GreenPlate Points System report 40% higher student engagement in sustainability programs. Points-driven initiatives create measurable, positive change." />
       </main>
     </div>
   );
