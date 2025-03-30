@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -53,9 +54,13 @@ export default {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        pulse: {
+        "pulse": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
+        },
+        "shine": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
         },
       },
       animation: {
@@ -63,7 +68,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "scroll-left": "scroll-left 40s linear infinite",
         "fade-in": "fade-in 0.5s ease-out",
-        pulse: "pulse 2s ease-in-out infinite",
+        "pulse": "pulse 2s ease-in-out infinite",
+        "shine": "shine 2s linear infinite",
       },
     },
   },
