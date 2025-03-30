@@ -58,12 +58,7 @@ const WhatIsGreenPlate = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Collaborative Approach</h2>
-                  <p className="text-gray-700 leading-relaxed">
-                    The GreenPlate Initiative encourages schools to take pride in their efforts, share their progress 
-                    with their communities, and inspire others to join the movement. By fostering collaboration between 
-                    students, administrators, and GreenPlate Ambassadors, we aim to create a nationwide shift toward 
-                    ethical and sustainable dining standards, one school at a time.
-                  </p>
+                  <p className="text-gray-700 leading-relaxed">The GreenPlate Initiative brings together students, administrators, and Ambassadors to drive change through shared action. Every step toward sustainable dining earns points—fueling leaderboard rankings, recognition, and real impact. By working together, schools build momentum, celebrate progress, and lead a growing movement for healthier, more ethical lunches nationwide.</p>
                 </div>
                 <div className="space-y-2">
                   <div className="relative h-48 rounded-lg overflow-hidden">
