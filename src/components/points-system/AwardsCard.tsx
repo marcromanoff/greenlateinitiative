@@ -1,12 +1,16 @@
+
 import React from 'react';
 import { Award, Star, Trophy, Medal, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
 interface AwardsCardProps {
   className?: string;
 }
+
 const AwardsCard = ({
   className
 }: AwardsCardProps) => {
@@ -26,19 +30,16 @@ const AwardsCard = ({
             <Award className="h-5 w-5 text-amber-600" />
             <h3 className="font-semibold text-amber-800">End-of-Year Prizes</h3>
           </div>
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-gray-600 mb-3">
             At the end of each year, the <span className="font-semibold">top 3 schools</span> and <span className="font-semibold">top 3 advocates</span> win exclusive prizes and recognition!
           </p>
-          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="group flex items-center gap-2 bg-white p-2 rounded border border-amber-100 hover:border-amber-300 transition-all">
-              <Medal className="h-4 w-4 text-amber-500 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">National Champions</span>
-            </div>
-            <div className="group flex items-center gap-2 bg-white p-2 rounded border border-amber-100 hover:border-amber-300 transition-all">
-              <Users className="h-4 w-4 text-amber-500 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Featured Recognition</span>
-            </div>
-          </div>
+          
+          <Link to="/awards" className="block w-full">
+            <Button variant="outline" size="sm" className="w-full bg-white hover:bg-amber-50 border-amber-200 text-amber-700 hover:text-amber-800 hover:border-amber-300">
+              <Trophy className="mr-1 h-4 w-4 text-amber-500" />
+              See Prizes
+            </Button>
+          </Link>
         </div>
         
         <Link to="/awards" className="block w-full group">
@@ -58,4 +59,5 @@ const AwardsCard = ({
       </CardContent>
     </Card>;
 };
+
 export default AwardsCard;
