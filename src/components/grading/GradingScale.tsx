@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 
 const GradingScale = () => {
   return (
@@ -13,8 +14,17 @@ const GradingScale = () => {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <p className="font-semibold text-blue-800">97-100%: Diamond Standard Medal</p>
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 relative overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="absolute top-0 right-0 animate-pulse">
+              <Sparkles className="h-6 w-6 text-amber-400" />
+            </div>
+            <div className="absolute -top-4 -left-4 animate-pulse delay-150">
+              <Sparkles className="h-6 w-6 text-blue-400" />
+            </div>
+            <p className="font-semibold text-blue-800 flex items-center">
+              97-100%: Diamond Standard Medal 
+              <Sparkles className="h-5 w-5 text-purple-400 ml-2 animate-pulse" />
+            </p>
             <p className="text-sm text-blue-700">A perfect or near perfect score</p>
           </div>
           <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
@@ -29,8 +39,8 @@ const GradingScale = () => {
             <p className="font-semibold text-orange-800">70%–79%: Bronze Medal</p>
             <p className="text-sm text-orange-600">Solid Progress</p>
           </div>
-          <div className="bg-blue-50 p-4 rounded-lg col-span-full">
-            <p className="font-semibold text-blue-800">Below 70%: Keep Up the Good Work</p>
+          <div className="bg-red-50 p-4 rounded-lg col-span-full border border-red-100">
+            <p className="font-semibold text-red-700">Below 70%: Keep Up the Good Work</p>
             <p className="text-sm text-gray-600">Room for improvement</p>
           </div>
         </div>
