@@ -44,7 +44,7 @@ const GradingScale = () => {
             </div>
             <p className="text-sm text-gray-600">Strong progress toward sustainability</p>
           </div>
-          <div className="bg-amber-50 p-4 rounded-lg border border-amber-300">
+          <div className="p-4 rounded-lg border border-amber-300 bg-[#ffe9d2]">
             <div className="flex items-center">
               <Medal className="h-5 w-5 text-amber-700 mr-2" />
               <p className="font-semibold text-amber-800">70%–79%: Bronze Medal</p>
