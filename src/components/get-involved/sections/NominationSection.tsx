@@ -38,7 +38,7 @@ const NominationSection = ({
           <span>{buttonText}</span>
         </button>
         <p className="text-sm text-gray-600 text-center">
-          Be the spark for your school
+          {title === "Quick Start" ? "Be the spark for your school" : "Every answer counts. Every point brings change."}
         </p>
         <div className="mt-4 space-y-2">
           <div className="relative h-48 rounded-lg overflow-hidden">
