@@ -25,9 +25,20 @@ interface NominationFormValues {
 
 const NominationPointsCard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isStudentDialogOpen, setIsStudentDialogOpen] = useState(false);
+  const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
 
-  const form = useForm<NominationFormValues>({
+  const studentForm = useForm<NominationFormValues>({
+    defaultValues: {
+      email: "",
+      name: "",
+      school: "",
+      schoolType: "public",
+      townState: ""
+    }
+  });
+
+  const adminForm = useForm<NominationFormValues>({
     defaultValues: {
       email: "",
       name: "",
@@ -57,10 +68,40 @@ const NominationPointsCard = () => {
       await sendConfirmationEmail(values);
 
       toast.success("Student nomination submitted successfully!");
-      setIsDialogOpen(false);
-      form.reset();
+      setIsStudentDialogOpen(false);
+      studentForm.reset();
     } catch (error: any) {
       console.error("Error in student nomination process:", error);
+      toast.error(error.message || "Failed to submit nomination. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  const handleAdminSubmit = async (values: NominationFormValues) => {
+    setIsSubmitting(true);
+    try {
+      const { error: dbError } = await supabase
+        .from("admin_nominations")
+        .insert({
+          email: values.email,
+          name: values.name,
+          school: values.school,
+          school_type: values.schoolType as SchoolType,
+          school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
+          position: "administrator" as PositionType,
+          town_state: values.townState
+        });
+
+      if (dbError) throw dbError;
+
+      await sendConfirmationEmail(values);
+
+      toast.success("Administrator nomination submitted successfully!");
+      setIsAdminDialogOpen(false);
+      adminForm.reset();
+    } catch (error: any) {
+      console.error("Error in administrator nomination process:", error);
       toast.error(error.message || "Failed to submit nomination. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -77,7 +118,7 @@ const NominationPointsCard = () => {
         <ul className="space-y-3">
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">100 <GPSymbol /></Badge>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <Dialog open={isStudentDialogOpen} onOpenChange={setIsStudentDialogOpen}>
               <DialogTrigger asChild>
                 <button className="text-left hover:text-primary hover:underline transition-colors">
                   Submit a verified school contact
@@ -90,9 +131,9 @@ const NominationPointsCard = () => {
                     Submit an admin's contact info to earn 100 GreenPlate Points and boost your leaderboard rank.
                   </p>
                   <NominationForm 
-                    form={form} 
+                    form={studentForm} 
                     onSubmit={handleStudentSubmit}
-                    onCancel={() => setIsDialogOpen(false)}
+                    onCancel={() => setIsStudentDialogOpen(false)}
                     isSubmitting={isSubmitting}
                   />
                 </div>
@@ -101,7 +142,28 @@ const NominationPointsCard = () => {
           </li>
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">4,000 <GPSymbol /></Badge>
-            <span>School completes assessment <span className="text-sm text-gray-500">(1,000 <GPSymbol /> for the referrer)</span></span>
+            <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
+              <DialogTrigger asChild>
+                <button className="text-left hover:text-primary hover:underline transition-colors">
+                  Administrator completes GreenPlate Assessment
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <div className="p-4">
+                  <h2 className="text-xl font-bold mb-4">GreenPlate Assessment</h2>
+                  <p className="mb-4 text-sm text-gray-600">
+                    Earn 4,000 points and get your school officially scored. Your responses determine your school's sustainability grade—and help push it closer to national recognition.
+                  </p>
+                  <NominationForm 
+                    form={adminForm}
+                    onSubmit={handleAdminSubmit}
+                    onCancel={() => setIsAdminDialogOpen(false)}
+                    isSubmitting={isSubmitting}
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
+            <span className="text-sm text-gray-500">(1,000 <GPSymbol /> for the referrer)</span>
           </li>
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">10,000 <GPSymbol /></Badge>
