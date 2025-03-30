@@ -51,9 +51,9 @@ const GradingScale = () => {
             </div>
             <p className="text-sm text-amber-700">Solid progress</p>
           </div>
-          <div className="p-4 rounded-lg col-span-full border border-gray-200 bg-red-100">
+          <div className="p-4 rounded-lg col-span-full border border-gray-200 bg-red-50">
             <p className="font-semibold text-gray-700">Below 70%: Keep Up the Good Work</p>
-            <p className="text-sm text-gray-600">On the journey with room to improve</p>
+            <p className="text-sm text-gray-600 bg-red-50">On the journey with room to improve</p>
           </div>
         </div>
       </CardContent>
