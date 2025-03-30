@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
             GreenPlate Initiative
           </h1>
           <p className="text-lg md:text-3xl mb-12 text-gray-700 font-medium">
-            Seize the <span className="font-bold text-amber-500">gold standard</span> in sustainable school lunches
+            Your Score. Your School. Your Impact.
           </p>
           <Link to="/get-involved" className="inline-block bg-[#4D9E76] text-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-[#4D9E76]/90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
             Start Now
