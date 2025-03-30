@@ -1,11 +1,8 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Sparkles, Trophy, Medal } from "lucide-react";
-
 const GradingScale = () => {
-  return (
-    <Card className="mb-8">
+  return <Card className="mb-8">
       <CardContent className="p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">Grading Scale</h2>
@@ -54,14 +51,12 @@ const GradingScale = () => {
             </div>
             <p className="text-sm text-amber-700">Solid progress</p>
           </div>
-          <div className="bg-gray-50 p-4 rounded-lg col-span-full border border-gray-200">
+          <div className="p-4 rounded-lg col-span-full border border-gray-200 bg-red-100">
             <p className="font-semibold text-gray-700">Below 70%: Keep Up the Good Work</p>
             <p className="text-sm text-gray-600">On the journey with room to improve</p>
           </div>
         </div>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
-
 export default GradingScale;
