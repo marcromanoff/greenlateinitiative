@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
-import { Link } from "react-router-dom";
+
 const WhatIsGreenPlate = () => {
   return <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       <Navigation />
@@ -39,17 +40,17 @@ const WhatIsGreenPlate = () => {
                 <div className="order-1 md:order-2">
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Recognition System</h2>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Schools can earn <Link to="/awards" className="text-amber-600 hover:text-amber-700 font-semibold">Gold</Link>, 
-                    <Link to="/awards" className="text-gray-500 hover:text-gray-600 font-semibold"> Silver</Link>, or 
-                    <Link to="/awards" className="text-orange-600 hover:text-orange-700 font-semibold"> Bronze</Link> certification 
-                    based on their commitment to sustainable dining practices. These certifications not only recognize schools 
-                    for their achievements but also serve as a symbol of their commitment to creating a healthier, greener 
-                    future for students and the planet.
+                    The GreenPlate Initiative uses a gamified points system to encourage schools and advocates to take action toward more sustainable, healthy, and ethical school lunches. The more impact you make, the more points you earn—and the higher you climb on the official leaderboard.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Schools also earn Diamond, Gold, Silver, or Bronze medals based on their performance in the GreenPlate sustainability grading system.
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    Schools earning certifications are celebrated for their leadership in school lunch sustainability and receive tools, 
-                    resources, and actionable feedback to continue improving their dining programs.
+                    These certifications recognize schools' achievements and symbolize their leadership in creating healthier, more ethical, and environmentally responsible dining programs.
                   </p>
+                  <Link to="/awards" className="text-primary hover:underline mt-4 inline-block">
+                    Find out more about recognition and prizes here →
+                  </Link>
                 </div>
               </div>
             </section>
