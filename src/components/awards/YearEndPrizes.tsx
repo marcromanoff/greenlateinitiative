@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Medal, Trophy, User, School, Users } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,13 +20,13 @@ const YearEndPrizes = () => {
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-12">
       <Card className="hover:shadow-lg transition-shadow overflow-hidden border-amber-200">
-        <CardHeader className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-white">
+        <CardHeader className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-white pb-6">
           <CardTitle className="flex items-center gap-4">
             <Award className="h-7 w-7 text-white animate-pulse" />
             <span className="text-2xl">Year-End Prizes</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="bg-amber-50">
+        <CardContent className="bg-amber-50 pt-8">
           <p className="text-amber-800 mb-6">
             At the end of each year, the top 3 schools and top 3 advocates will receive special recognition and exclusive prizes:
           </p>
