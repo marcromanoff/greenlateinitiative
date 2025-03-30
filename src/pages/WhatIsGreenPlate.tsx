@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
 const WhatIsGreenPlate = () => {
   return <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       <Navigation />
@@ -19,10 +22,12 @@ const WhatIsGreenPlate = () => {
                   <p className="text-gray-700 leading-relaxed mb-4">The GreenPlate Initiative combines an objective grading system with a points-based leaderboard to drive real cafeteria change. Schools and ambassadors are evaluated in four core sustainability areas (below), earning points for their contributions. The more sustainable actions taken, the higher a school ranks—unlocking opportunities for recognition, prizes, and visibility within a growing national movement.</p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                {["Variety & Inclusivity", "Sourcing & Sustainability", "Nutritional Value", "Accessibility & Labeling"].map((category, index) => <Link to="/grading" key={index} className="bg-green-50 p-4 rounded-lg border border-green-200 text-primary font-medium text-center hover:bg-green-100 transition-colors">
-                    {category}
-                  </Link>)}
+              <div className="flex justify-center mt-6">
+                <Button asChild className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-md">
+                  <Link to="/get-involved" className="flex items-center gap-2">
+                    Start Now <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
               </div>
             </section>
 
