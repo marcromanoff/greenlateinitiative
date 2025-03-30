@@ -34,7 +34,7 @@ const AwardsCard = ({
             At the end of each year, the <span className="font-semibold">top 3 schools</span> and <span className="font-semibold">top 3 advocates</span> win exclusive prizes and recognition!
           </p>
           
-          <Link to="/awards" className="block w-full">
+          <Link to="/awards#top" className="block w-full">
             <Button variant="outline" size="sm" className="w-full bg-white hover:bg-amber-50 border-amber-200 text-amber-700 hover:text-amber-800 hover:border-amber-300">
               <Trophy className="mr-1 h-4 w-4 text-amber-500" />
               See Prizes
@@ -42,11 +42,11 @@ const AwardsCard = ({
           </Link>
         </div>
         
-        <Link to="/awards" className="block w-full group">
+        <Link to="/awards#top" className="block w-full group">
           <div className="mt-2 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 border border-blue-100 p-4 rounded-lg hover:shadow-md transition-all">
             <div className="flex items-center gap-2 mb-2">
               <Trophy className="h-5 w-5 text-blue-600 group-hover:rotate-12 transition-transform" />
-              <h3 className="font-semibold text-blue-800">See All Medals & Awards</h3>
+              <h3 className="font-semibold text-blue-800">See All Medals</h3>
             </div>
             <p className="text-sm text-gray-600">
               View the complete medal system and learn what your school can earn through the GreenPlate program.
