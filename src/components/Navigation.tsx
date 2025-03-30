@@ -1,4 +1,3 @@
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIsMobile } from "../hooks/use-mobile";
 import { Menu } from "lucide-react";
@@ -55,8 +54,8 @@ const Navigation = () => {
     { to: "/get-involved", label: "Get Involved" },
     { to: "/process", label: "Process" },
     { to: "/grading", label: "Grading" },
-    { to: "/calculator", label: "GreenGauge" },
-    { to: "/ambassador", label: "GreenPlate Ambassador" },
+    // Removed "GreenGauge" link
+    // Removed "GreenPlate Ambassador" link
     { to: "/awards", label: "Awards" },
     { to: "/vendors", label: "Vendors" },
     { to: "/downloads", label: "Downloads" },
@@ -181,4 +180,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
