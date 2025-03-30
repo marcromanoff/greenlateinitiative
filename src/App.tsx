@@ -6,14 +6,12 @@ import { Toaster as Sonner } from "./components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
-// Removed About import
 import GetInvolved from "./pages/GetInvolved";
 import Process from "./pages/Process";
 import PointsSystem from "./pages/PointsSystem";
 import Grading from "./pages/Grading";
-// Removed Calculator import
 import Ambassador from "./pages/Ambassador";
-import Awards from "./pages/Awards";
+import Awards from "./pages/Awards"; // This import stays the same
 import Vendors from "./pages/Vendors";
 import Downloads from "./pages/Downloads";
 import FAQ from "./pages/FAQ";
@@ -22,7 +20,6 @@ import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import PrivateRoute from "./components/PrivateRoute";
 
-// Create a client
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -34,14 +31,12 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/what-is-greenplate" element={<WhatIsGreenPlate />} />
-              {/* Removed About route */}
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/process" element={<Process />} />
               <Route path="/points-system" element={<PointsSystem />} />
               <Route path="/grading" element={<Grading />} />
-              {/* Removed Calculator route */}
               <Route path="/ambassador" element={<Ambassador />} />
-              <Route path="/awards" element={<Awards />} />
+              <Route path="/awards" element={<Awards />} /> {/* This route stays the same */}
               <Route path="/vendors" element={<Vendors />} />
               <Route path="/downloads" element={<Downloads />} />
               <Route path="/faq" element={<FAQ />} />
