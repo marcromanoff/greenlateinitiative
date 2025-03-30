@@ -19,10 +19,18 @@ const PointsSystem = () => {
             <PointsSystemIntro />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <NominationPointsCard />
-              <SchoolPointsCard />
-              <AwardsCard />
-              <TitleLevelsCard />
+              <div className="animate-fade-in" style={{ animationDelay: "500ms" }}>
+                <NominationPointsCard />
+              </div>
+              <div className="animate-fade-in" style={{ animationDelay: "600ms" }}>
+                <SchoolPointsCard />
+              </div>
+              <div className="animate-fade-in" style={{ animationDelay: "700ms" }}>
+                <AwardsCard />
+              </div>
+              <div className="animate-fade-in" style={{ animationDelay: "800ms" }}>
+                <TitleLevelsCard />
+              </div>
             </div>
           </div>
         </main>
