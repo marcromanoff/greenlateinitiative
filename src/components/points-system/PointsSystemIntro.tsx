@@ -1,11 +1,8 @@
-
 import React from 'react';
-
 const PointsSystemIntro = () => {
-  return (
-    <>
+  return <>
       <h1 className="text-4xl font-bold mb-3 text-primary">
-        <span className="text-primary">🟢 </span>
+        
         How the GreenPlate Points System Works
       </h1>
       
@@ -19,8 +16,6 @@ const PointsSystemIntro = () => {
           Advocates and schools earn points for taking action—from nominations to public impact—and rise on national leaderboards.
         </p>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default PointsSystemIntro;
