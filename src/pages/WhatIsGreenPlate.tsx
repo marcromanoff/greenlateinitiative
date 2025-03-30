@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import ScrollingFact from "../components/ScrollingFact";
-
 const WhatIsGreenPlate = () => {
   return <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
       <Navigation />
@@ -17,7 +16,7 @@ const WhatIsGreenPlate = () => {
               <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
                 <div>
                   <h2 className="text-2xl font-semibold mb-4 text-primary">Our Initiative</h2>
-                  <p className="text-gray-700 leading-relaxed mb-4">The GreenPlate Initiative combines a rigorous, objective grading system with a dynamic points-based leaderboard to drive real cafeteria change. Schools and ambassadors are evaluated in four core sustainability areas (below), earning points for their contributions. The more sustainable actions taken, the higher a school ranks—unlocking opportunities for recognition, prizes, and visibility within a growing national movement.</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">The GreenPlate Initiative combines an objective grading system with a points-based leaderboard to drive real cafeteria change. Schools and ambassadors are evaluated in four core sustainability areas (below), earning points for their contributions. The more sustainable actions taken, the higher a school ranks—unlocking opportunities for recognition, prizes, and visibility within a growing national movement.</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
