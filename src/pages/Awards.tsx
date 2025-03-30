@@ -3,35 +3,31 @@ import ScrollingFact from "../components/ScrollingFact";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, Medal, Trophy, Award, User, School, Users } from "lucide-react";
 import { motion } from "framer-motion";
-
 const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  hidden: {
+    opacity: 0,
+    y: 20
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6
+    }
+  }
 };
-
 const Awards = () => {
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <motion.h1 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="text-4xl font-bold mb-8 text-primary"
-          >
+          <motion.h1 initial="hidden" animate="visible" variants={fadeIn} className="text-4xl font-bold mb-8 text-primary">
             GreenPlate Medals & Awards
           </motion.h1>
           
           {/* Year-End Prizes Section */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mb-12"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-12">
             <Card className="hover:shadow-lg transition-shadow overflow-hidden border-amber-200">
               <CardHeader className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-white">
                 <CardTitle className="flex items-center gap-4">
@@ -59,9 +55,9 @@ const Awards = () => {
                       </div>
                       <ul className="space-y-2 list-disc pl-6 text-gray-700">
                         <li>Custom certificate with name and title: "National GreenPlate Champion"</li>
-                        <li>Feature interview on GreenPlate's website + social media takeover</li>
+                        
                         <li>"Lead Advocate" medal on the leaderboard (permanent)</li>
-                        <li>Design input on next year's GreenPlate assessment</li>
+                        
                         <li>Lifetime VIP access to future GreenPlate programs/events</li>
                       </ul>
                     </div>
@@ -154,12 +150,7 @@ const Awards = () => {
           </motion.div>
           
           {/* Diamond Standard Medal Section with Certificate */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mb-8"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
             <Card className="hover:shadow-lg transition-shadow overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 text-white">
                 <CardTitle className="flex items-center gap-4">
@@ -195,11 +186,7 @@ const Awards = () => {
                   <div>
                     <p className="text-sm text-gray-500 mb-2">Example Certificate:</p>
                     <div className="relative">
-                      <img 
-                        src="/lovable-uploads/67d6aa38-24ae-46ec-adca-f610a85f0846.png"
-                        alt="Example Diamond Standard Certificate"
-                        className="w-full rounded-lg shadow-md"
-                      />
+                      <img src="/lovable-uploads/67d6aa38-24ae-46ec-adca-f610a85f0846.png" alt="Example Diamond Standard Certificate" className="w-full rounded-lg shadow-md" />
                       <div className="absolute -top-4 -right-4 animate-pulse">
                         <Sparkles className="h-8 w-8 text-purple-400" />
                       </div>
@@ -214,12 +201,7 @@ const Awards = () => {
           </motion.div>
 
           {/* Gold Medal Section with Certificate */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mb-8"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader className="bg-amber-500 text-white">
                 <CardTitle className="flex items-center gap-4">
@@ -252,11 +234,7 @@ const Awards = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-2">Example Certificate:</p>
-                    <img 
-                      src="/lovable-uploads/bc5fc1cb-bafb-4067-9cfc-b00a2b9d7260.png"
-                      alt="Example Gold Medal Certificate"
-                      className="w-full rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/bc5fc1cb-bafb-4067-9cfc-b00a2b9d7260.png" alt="Example Gold Medal Certificate" className="w-full rounded-lg shadow-md" />
                   </div>
                 </div>
               </CardContent>
@@ -264,12 +242,7 @@ const Awards = () => {
           </motion.div>
 
           {/* Silver Medal Section with Certificate */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mb-8"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader className="bg-gray-400 text-white">
                 <CardTitle className="flex items-center gap-4">
@@ -302,11 +275,7 @@ const Awards = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-2">Example Certificate:</p>
-                    <img 
-                      src="/lovable-uploads/46f68c12-3244-417a-8f7d-74cc51f7d41e.png"
-                      alt="Example Silver Medal Certificate"
-                      className="w-full rounded-lg shadow-md"
-                    />
+                    <img src="/lovable-uploads/46f68c12-3244-417a-8f7d-74cc51f7d41e.png" alt="Example Silver Medal Certificate" className="w-full rounded-lg shadow-md" />
                   </div>
                 </div>
               </CardContent>
@@ -314,12 +283,7 @@ const Awards = () => {
           </motion.div>
 
           {/* Bronze Medal Section */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mb-8"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader className="bg-amber-700 text-white">
                 <CardTitle className="flex items-center gap-4">
@@ -354,11 +318,7 @@ const Awards = () => {
           </motion.div>
 
           {/* Keep Up the Good Work Section */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn}>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader className="bg-gray-200">
                 <CardTitle className="flex items-center gap-4">
@@ -385,12 +345,7 @@ const Awards = () => {
             </Card>
           </motion.div>
 
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mt-8 p-6 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 rounded-lg border border-blue-200"
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mt-8 p-6 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 rounded-lg border border-blue-200">
             <p className="text-blue-800 italic">
               Each medal is designed to recognize schools for their efforts while motivating further action. 
               GreenPlate is here to support every school on its journey to sustainability, making sure 
@@ -401,8 +356,6 @@ const Awards = () => {
 
         <ScrollingFact fact="Schools with sustainable dining programs see a 45% increase in student participation in environmental initiatives." />
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default Awards;
