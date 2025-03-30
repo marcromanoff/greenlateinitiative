@@ -38,7 +38,7 @@ const NominationSection = ({
           <span>{buttonText}</span>
         </button>
         <p className="text-sm text-gray-600 text-center">
-          Start making a difference at your school
+          Be the spark for your school
         </p>
         <div className="mt-4 space-y-2">
           <div className="relative h-48 rounded-lg overflow-hidden">
@@ -56,4 +56,3 @@ const NominationSection = ({
 };
 
 export default NominationSection;
-

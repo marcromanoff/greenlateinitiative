@@ -110,9 +110,9 @@ const StudentAdminSection = () => {
       <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
         {!showStudentForm ? (
           <NominationSection
-            title="For students"
-            description="Nominate Your School for the GreenPlate Challenge. Put a spotlight on your school's sustainability efforts and make a real impact!"
-            buttonText="Student Nomination Form"
+            title="Quick Start"
+            description="Submit an admin's contact info to earn 100 GreenPlate Points and boost your leaderboard rank. The more referrals, the bigger your impact."
+            buttonText="Refer Now"
             Icon={GraduationCap}
             onButtonClick={() => setShowStudentForm(true)}
             imageSrc="/lovable-uploads/b1242c21-9120-419b-992a-f60f8e53669a.png"
