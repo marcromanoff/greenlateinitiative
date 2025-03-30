@@ -10,7 +10,7 @@ import WhatIsGreenPlate from "./pages/WhatIsGreenPlate";
 import GetInvolved from "./pages/GetInvolved";
 import Process from "./pages/Process";
 import Grading from "./pages/Grading";
-import Calculator from "./pages/Calculator";
+// Removed Calculator import
 import Ambassador from "./pages/Ambassador";
 import Awards from "./pages/Awards";
 import Vendors from "./pages/Vendors";
@@ -37,7 +37,7 @@ const App = () => {
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/process" element={<Process />} />
               <Route path="/grading" element={<Grading />} />
-              <Route path="/calculator" element={<Calculator />} />
+              {/* Removed Calculator route */}
               <Route path="/ambassador" element={<Ambassador />} />
               <Route path="/awards" element={<Awards />} />
               <Route path="/vendors" element={<Vendors />} />
