@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Medal } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,13 +20,13 @@ const BronzeMedal = () => {
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
       <Card className="hover:shadow-lg transition-shadow">
-        <CardHeader className="bg-amber-700 text-white">
+        <CardHeader className="bg-amber-700 text-white pb-6">
           <CardTitle className="flex items-center gap-4">
             <Medal className="h-7 w-7 text-white" />
             <span className="text-2xl">70%–79%: Bronze Medal</span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-8">
           <div className="space-y-4">
             <div>
               <h3 className="font-semibold mb-2">What It Means:</h3>

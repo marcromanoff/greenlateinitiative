@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,13 +20,13 @@ const DiamondStandardMedal = () => {
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeIn} className="mb-8">
       <Card className="hover:shadow-lg transition-shadow overflow-hidden">
-        <CardHeader className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 text-white">
+        <CardHeader className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 text-white pb-6">
           <CardTitle className="flex items-center gap-4">
             <Trophy className="h-7 w-7 text-white" />
             <span className="text-2xl">97–100%: Diamond Standard Medal</span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <div className="space-y-4">
               <div>

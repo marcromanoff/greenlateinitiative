@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
@@ -20,12 +19,12 @@ const KeepUpGoodWork = () => {
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeIn}>
       <Card className="hover:shadow-lg transition-shadow">
-        <CardHeader className="bg-gray-200">
+        <CardHeader className="bg-gray-200 pb-6">
           <CardTitle className="flex items-center gap-4">
             <span className="text-2xl text-gray-800">Below 70%: Keep Up the Good Work</span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-8">
           <div className="space-y-4">
             <div>
               <h3 className="font-semibold mb-2">What It Means:</h3>
