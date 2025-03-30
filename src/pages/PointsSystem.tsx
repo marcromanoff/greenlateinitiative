@@ -4,7 +4,6 @@ import Navigation from "../components/Navigation";
 import PointsSystemIntro from '../components/points-system/PointsSystemIntro';
 import NominationPointsCard from '../components/points-system/NominationPointsCard';
 import SchoolPointsCard from '../components/points-system/SchoolPointsCard';
-import AdvocateActionsCard from '../components/points-system/AdvocateActionsCard';
 import TitleLevelsCard from '../components/points-system/TitleLevelsCard';
 import AwardsCard from '../components/points-system/AwardsCard';
 
@@ -20,11 +19,9 @@ const PointsSystem = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <NominationPointsCard />
             <SchoolPointsCard />
-            <AdvocateActionsCard />
+            <AwardsCard />
             <TitleLevelsCard />
           </div>
-          
-          <AwardsCard className="mb-12" />
         </div>
       </main>
     </div>
