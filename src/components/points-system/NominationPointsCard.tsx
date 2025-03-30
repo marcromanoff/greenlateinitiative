@@ -9,10 +9,8 @@ import NominationForm from '../get-involved/forms/NominationForm';
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { sendConfirmationEmail } from "../get-involved/utils/emailUtils";
-
 type SchoolType = "public" | "charter" | "private" | "parochial" | "religious" | "language_immersion" | "boarding" | "other";
 type PositionType = "student" | "administrator" | "parent" | "other";
-
 interface NominationFormValues {
   email: string;
   name: string;
@@ -21,12 +19,10 @@ interface NominationFormValues {
   schoolTypeOther?: string;
   townState: string;
 }
-
 const NominationPointsCard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isStudentDialogOpen, setIsStudentDialogOpen] = useState(false);
   const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
-
   const studentForm = useForm<NominationFormValues>({
     defaultValues: {
       email: "",
@@ -36,7 +32,6 @@ const NominationPointsCard = () => {
       townState: ""
     }
   });
-
   const adminForm = useForm<NominationFormValues>({
     defaultValues: {
       email: "",
@@ -46,7 +41,6 @@ const NominationPointsCard = () => {
       townState: ""
     }
   });
-
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
@@ -73,7 +67,6 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
-
   const handleAdminSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
@@ -100,7 +93,6 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
-
   return <Card className="overflow-hidden">
       <div className="bg-primary text-white p-4 flex items-center gap-3">
         <GraduationCap className="h-6 w-6" />
@@ -131,9 +123,7 @@ const NominationPointsCard = () => {
             <Badge variant="outline" className="mt-1 bg-green-50">4,000 <GPSymbol /></Badge>
             <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
               <DialogTrigger asChild>
-                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">
-                  Administrator completes GreenPlate Assessment
-                </button>
+                <button className="text-left hover:text-primary hover:underline transition-colors text-green-800">Complete GreenPlate Assessment</button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <div className="p-4">
@@ -176,5 +166,4 @@ const NominationPointsCard = () => {
       </CardContent>
     </Card>;
 };
-
 export default NominationPointsCard;
