@@ -12,12 +12,14 @@ type SchoolType = "public" | "charter" | "private" | "parochial" | "religious" |
 type PositionType = "student" | "administrator" | "parent" | "other";
 
 interface NominationFormValues {
-  email: string;
-  name: string;
-  school: string;
-  schoolType: SchoolType;
-  schoolTypeOther?: string;
-  townState: string;
+  userNameWithInitial: string;
+  userSchool: string;
+  userSchoolEmail: string;
+  nominatorName: string;
+  nominatorSchool: string;
+  nominatorPosition: string;
+  nominatorSchoolEmail: string;
+  consentToDisplay: boolean;
 }
 
 const StudentAdminSection = () => {
@@ -27,21 +29,27 @@ const StudentAdminSection = () => {
 
   const studentForm = useForm<NominationFormValues>({
     defaultValues: {
-      email: "",
-      name: "",
-      school: "",
-      schoolType: "public",
-      townState: ""
+      userNameWithInitial: "",
+      userSchool: "",
+      userSchoolEmail: "",
+      nominatorName: "",
+      nominatorSchool: "",
+      nominatorPosition: "",
+      nominatorSchoolEmail: "",
+      consentToDisplay: false
     }
   });
 
   const adminForm = useForm<NominationFormValues>({
     defaultValues: {
-      email: "",
-      name: "",
-      school: "",
-      schoolType: "public",
-      townState: ""
+      userNameWithInitial: "",
+      userSchool: "",
+      userSchoolEmail: "",
+      nominatorName: "",
+      nominatorSchool: "",
+      nominatorPosition: "",
+      nominatorSchoolEmail: "",
+      consentToDisplay: false
     }
   });
 
@@ -51,18 +59,22 @@ const StudentAdminSection = () => {
       const { error: dbError } = await supabase
         .from("student_nominations")
         .insert({
-          email: values.email,
-          name: values.name,
-          school: values.school,
-          school_type: values.schoolType as SchoolType,
-          school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
+          email: values.userSchoolEmail,
+          name: values.userNameWithInitial,
+          school: values.userSchool,
+          school_type: "public" as SchoolType, // Default value, could add this back as a field if needed
+          school_type_other: null,
           position: "student" as PositionType,
-          town_state: values.townState
+          town_state: `${values.nominatorName} - ${values.nominatorSchool}` // Using this field to store nominator info
         });
 
       if (dbError) throw dbError;
 
-      await sendConfirmationEmail(values);
+      await sendConfirmationEmail({
+        email: values.userSchoolEmail,
+        name: values.userNameWithInitial,
+        school: values.userSchool
+      });
 
       toast.success("Student nomination submitted successfully!");
       setShowStudentForm(false);
@@ -81,18 +93,22 @@ const StudentAdminSection = () => {
       const { error: dbError } = await supabase
         .from("admin_nominations")
         .insert({
-          email: values.email,
-          name: values.name,
-          school: values.school,
-          school_type: values.schoolType as SchoolType,
-          school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-          position: "administrator" as PositionType,
-          town_state: values.townState
+          email: values.nominatorSchoolEmail,
+          name: values.nominatorName,
+          school: values.nominatorSchool,
+          school_type: "public" as SchoolType, // Default value, could add this back as a field if needed
+          school_type_other: null,
+          position: values.nominatorPosition as PositionType || "administrator" as PositionType,
+          town_state: `Referred by: ${values.userNameWithInitial} - ${values.userSchool}` // Using this field to store referrer info
         });
 
       if (dbError) throw dbError;
 
-      await sendConfirmationEmail(values);
+      await sendConfirmationEmail({
+        email: values.userSchoolEmail,
+        name: values.userNameWithInitial,
+        school: values.userSchool
+      });
 
       toast.success("Administrator nomination submitted successfully!");
       setShowAdminForm(false);

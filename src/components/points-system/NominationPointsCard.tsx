@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,54 +10,71 @@ import NominationForm from '../get-involved/forms/NominationForm';
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { sendConfirmationEmail } from "../get-involved/utils/emailUtils";
+
 type SchoolType = "public" | "charter" | "private" | "parochial" | "religious" | "language_immersion" | "boarding" | "other";
 type PositionType = "student" | "administrator" | "parent" | "other";
+
 interface NominationFormValues {
-  email: string;
-  name: string;
-  school: string;
-  schoolType: SchoolType;
-  schoolTypeOther?: string;
-  townState: string;
+  userNameWithInitial: string;
+  userSchool: string;
+  userSchoolEmail: string;
+  nominatorName: string;
+  nominatorSchool: string;
+  nominatorPosition: string;
+  nominatorSchoolEmail: string;
+  consentToDisplay: boolean;
 }
+
 const NominationPointsCard = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isStudentDialogOpen, setIsStudentDialogOpen] = useState(false);
   const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
+  
   const studentForm = useForm<NominationFormValues>({
     defaultValues: {
-      email: "",
-      name: "",
-      school: "",
-      schoolType: "public",
-      townState: ""
+      userNameWithInitial: "",
+      userSchool: "",
+      userSchoolEmail: "",
+      nominatorName: "",
+      nominatorSchool: "",
+      nominatorPosition: "",
+      nominatorSchoolEmail: "",
+      consentToDisplay: false
     }
   });
+
   const adminForm = useForm<NominationFormValues>({
     defaultValues: {
-      email: "",
-      name: "",
-      school: "",
-      schoolType: "public",
-      townState: ""
+      userNameWithInitial: "",
+      userSchool: "",
+      userSchoolEmail: "",
+      nominatorName: "",
+      nominatorSchool: "",
+      nominatorPosition: "",
+      nominatorSchoolEmail: "",
+      consentToDisplay: false
     }
   });
+
   const handleStudentSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      const {
-        error: dbError
-      } = await supabase.from("student_nominations").insert({
-        email: values.email,
-        name: values.name,
-        school: values.school,
-        school_type: values.schoolType as SchoolType,
-        school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-        position: "student" as PositionType,
-        town_state: values.townState
-      });
+      const { error: dbError } = await supabase
+        .from("student_nominations")
+        .insert({
+          email: values.userSchoolEmail,
+          name: values.userNameWithInitial,
+          school: values.userSchool,
+          school_type: "public" as SchoolType, // Default value
+          school_type_other: null,
+          position: "student" as PositionType,
+          town_state: `${values.nominatorName} - ${values.nominatorSchool}` // Using this field to store nominator info
+        });
+
       if (dbError) throw dbError;
+
       await sendConfirmationEmail(values);
+
       toast.success("Student nomination submitted successfully!");
       setIsStudentDialogOpen(false);
       studentForm.reset();
@@ -67,22 +85,30 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
+
   const handleAdminSubmit = async (values: NominationFormValues) => {
     setIsSubmitting(true);
     try {
-      const {
-        error: dbError
-      } = await supabase.from("admin_nominations").insert({
-        email: values.email,
-        name: values.name,
-        school: values.school,
-        school_type: values.schoolType as SchoolType,
-        school_type_other: values.schoolType === "other" ? values.schoolTypeOther : null,
-        position: "administrator" as PositionType,
-        town_state: values.townState
-      });
+      const { error: dbError } = await supabase
+        .from("admin_nominations")
+        .insert({
+          email: values.nominatorSchoolEmail,
+          name: values.nominatorName,
+          school: values.nominatorSchool,
+          school_type: "public" as SchoolType, // Default value
+          school_type_other: null,
+          position: values.nominatorPosition as PositionType || "administrator" as PositionType,
+          town_state: `Referred by: ${values.userNameWithInitial} - ${values.userSchool}` // Using this field to store referrer info
+        });
+
       if (dbError) throw dbError;
-      await sendConfirmationEmail(values);
+
+      await sendConfirmationEmail({
+        email: values.userSchoolEmail,
+        name: values.userNameWithInitial,
+        school: values.userSchool
+      });
+
       toast.success("Administrator nomination submitted successfully!");
       setIsAdminDialogOpen(false);
       adminForm.reset();
@@ -93,6 +119,7 @@ const NominationPointsCard = () => {
       setIsSubmitting(false);
     }
   };
+
   return <Card className="overflow-hidden">
       <div className="bg-primary text-white p-4 flex items-center gap-3">
         <GraduationCap className="h-6 w-6" />
@@ -117,6 +144,7 @@ const NominationPointsCard = () => {
               </DialogContent>
             </Dialog>
           </li>
+          
           <li className="flex items-start gap-2 bg-green-50 rounded-md p-2">
             <Badge variant="outline" className="mt-1 bg-green-50">4,000 <GPSymbol /></Badge>
             <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
@@ -140,22 +168,27 @@ const NominationPointsCard = () => {
             <Badge variant="outline" className="mt-1 bg-green-50">2,000 <GPSymbol /></Badge>
             <span>Post on Instagram (tag official_greenplate_initiative)</span>
           </li>
+          
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">1,500 <GPSymbol /></Badge>
             <span>Post on Facebook Group about GreenPlate</span>
           </li>
+          
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">6,000 <GPSymbol /></Badge>
             <span>YouTube Explainer Video about GreenPlate</span>
           </li>
+          
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">5,000 <GPSymbol /></Badge>
             <span>Write a Blog or Article about GreenPlate</span>
           </li>
+          
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">50,000 <GPSymbol /></Badge>
             <span>Secure Local News Coverage about GreenPlate</span>
           </li>
+          
           <li className="flex items-start gap-2">
             <Badge variant="outline" className="mt-1 bg-green-50">20,000 <GPSymbol /></Badge>
             <span>Submit a Testimonial Video about GreenPlate</span>
@@ -164,4 +197,5 @@ const NominationPointsCard = () => {
       </CardContent>
     </Card>;
 };
+
 export default NominationPointsCard;
