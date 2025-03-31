@@ -1,21 +1,17 @@
 
-import React from 'react';
-import { Form } from "@/components/ui/form";
-import FormSection from './components/FormSection';
-import UserInfoSection from './components/UserInfoSection';
-import NominatorInfoSection from './components/NominatorInfoSection';
-import ConsentSection from './components/ConsentSection';
-import FormActions from './components/FormActions';
+import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface NominationFormValues {
-  userNameWithInitial: string;
-  userSchool: string;
-  userSchoolEmail: string;
-  nominatorName: string;
-  nominatorSchool: string;
-  nominatorPosition: string;
-  nominatorSchoolEmail: string;
-  consentToDisplay: boolean;
+  email: string;
+  name: string;
+  school: string;
+  schoolType: string;
+  schoolTypeOther?: string;
+  townState: string;
 }
 
 interface NominationFormProps {
@@ -26,41 +22,138 @@ interface NominationFormProps {
 }
 
 const NominationForm = ({ form, onSubmit, onCancel, isSubmitting }: NominationFormProps) => {
-  const validateSchoolEmail = (email: string) => {
-    // Common school email domains
-    const schoolDomains = ['.edu', '.k12', '.school', '.sch', '.ac'];
-    // Personal email domains to block
-    const personalDomains = ['@gmail.com', '@yahoo.com', '@hotmail.com', '@outlook.com', '@aol.com', '@icloud.com'];
-    
-    // Check if email contains any personal domains
-    const isPersonalEmail = personalDomains.some(domain => email.toLowerCase().endsWith(domain));
-    if (isPersonalEmail) {
-      return "Please use a school email address, not a personal one";
-    }
-    
-    // Check if email likely contains a school domain
-    const isLikelySchoolEmail = schoolDomains.some(domain => email.toLowerCase().includes(domain));
-    if (!isLikelySchoolEmail) {
-      return "This doesn't appear to be a school email. Please use your school email address";
-    }
-    
-    return true;
-  };
+  const schoolType = form.watch("schoolType");
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormSection title="Your Information">
-          <UserInfoSection control={form.control} validateSchoolEmail={validateSchoolEmail} />
-        </FormSection>
+        <FormField
+          control={form.control}
+          name="email"
+          rules={{ required: "Email is required", pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "Invalid email address"
+          }}}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} type="email" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <FormSection title="Nominator's Information">
-          <NominatorInfoSection control={form.control} validateSchoolEmail={validateSchoolEmail} />
-        </FormSection>
+        <FormField
+          control={form.control}
+          name="name"
+          rules={{ required: "Name is required" }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <ConsentSection control={form.control} />
+        <FormField
+          control={form.control}
+          name="school"
+          rules={{ required: "School name is required" }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>School Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <FormActions onCancel={onCancel} isSubmitting={isSubmitting} />
+        <FormField
+          control={form.control}
+          name="schoolType"
+          rules={{ required: "School type is required" }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>School Type</FormLabel>
+              <Select 
+                onValueChange={field.onChange} 
+                defaultValue={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-full bg-white">
+                    <SelectValue placeholder="Select school type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent position="popper" className="bg-white">
+                  <SelectItem value="public">Public</SelectItem>
+                  <SelectItem value="charter">Charter</SelectItem>
+                  <SelectItem value="private">Private</SelectItem>
+                  <SelectItem value="parochial">Parochial</SelectItem>
+                  <SelectItem value="religious">Religious</SelectItem>
+                  <SelectItem value="language_immersion">Language Immersion</SelectItem>
+                  <SelectItem value="boarding">Boarding</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {schoolType === "other" && (
+          <FormField
+            control={form.control}
+            name="schoolTypeOther"
+            rules={{ required: "Please specify the school type" }}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Specify School Type</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
+
+        <FormField
+          control={form.control}
+          name="townState"
+          rules={{ required: "Town and state are required" }}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Town and State</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="e.g., Boston, MA" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="flex gap-4 pt-4">
+          <Button 
+            type="button" 
+            variant="outline"
+            onClick={onCancel}
+          >
+            Cancel
+          </Button>
+          <Button 
+            type="submit"
+            disabled={isSubmitting}
+          >
+            Submit Nomination
+          </Button>
+        </div>
       </form>
     </Form>
   );
