@@ -73,7 +73,11 @@ const NominationPointsCard = () => {
 
       if (dbError) throw dbError;
 
-      await sendConfirmationEmail(values);
+      await sendConfirmationEmail({
+        email: values.userSchoolEmail,
+        name: values.userNameWithInitial,
+        school: values.userSchool
+      });
 
       toast.success("Student nomination submitted successfully!");
       setIsStudentDialogOpen(false);

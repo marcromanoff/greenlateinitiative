@@ -3,13 +3,10 @@ import { supabase } from "@/integrations/supabase/client";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
-interface NominationFormValues {
+interface EmailData {
   email: string;
   name: string;
   school: string;
-  schoolType: string;
-  schoolTypeOther?: string;
-  townState: string;
 }
 
 interface EmailJSSecrets {
@@ -18,7 +15,7 @@ interface EmailJSSecrets {
   EMAILJS_PUBLIC_KEY: string;
 }
 
-export const sendConfirmationEmail = async (values: NominationFormValues) => {
+export const sendConfirmationEmail = async (values: EmailData) => {
   try {
     const secretsToFetch = [
       'EMAILJS_SERVICE_ID',
